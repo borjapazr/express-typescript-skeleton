@@ -32,7 +32,7 @@ install:
 	@echo "📦 Installing dependencies locally..."
 	@npm install
 
-local/dev:
+local/dev: install
 	@echo "▶️ Starting app in development mode (local)..."
 	@npm run dev
 
