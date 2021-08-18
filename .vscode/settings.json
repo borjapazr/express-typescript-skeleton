@@ -1,0 +1,12 @@
+{
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.format": true
+  },
+  "eslint.alwaysShowStatus": true,
+  "cSpell.userWords": [], // only use words from .cspell.json
+  "cSpell.enabled": true
+}

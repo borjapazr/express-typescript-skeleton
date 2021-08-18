@@ -1,0 +1,14 @@
+.commitlintrc*
+.DS_Store
+.editorconfig
+.eslintcache
+.eslintignore
+.eslintrc*
+.nycrc
+.prettierrc*
+.travis.yml
+*.log
+coverage
+node_modules
+README.md
+test

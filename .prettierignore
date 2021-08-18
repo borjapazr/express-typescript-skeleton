@@ -1,0 +1,7 @@
+coverage
+dist
+node_modules
+package-lock.json
+# package.json is formatted by package managers, so it is ignored
+package.json
+yarn.lock

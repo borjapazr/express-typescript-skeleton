@@ -1,0 +1,39 @@
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.{java,gradle,xml}]
+indent_size = 4
+continuation_indent_size = 8
+
+[*.py]
+indent_size = 4
+max_line_length = 80
+
+[*.php]
+indent_size = 4
+
+[**.min.js]
+indent_style = ignore
+insert_final_newline = ignore
+
+[{Makefile,**.mk}]
+indent_style = tab
+
+[*.mk]
+indent_style = tab
+
+[*.bat]
+indent_style = tab
+
+[*.json]
+insert_final_newline = ignore
+
+[*.md]
+trim_trailing_whitespace = false

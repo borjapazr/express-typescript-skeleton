@@ -1,0 +1,54 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+      args:
+        - PORT=${PORT}
+      dockerfile: Dockerfile
+      target: dev
+    image: ${APP_NAME}:dev
+    container_name: ${APP_NAME}
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - TZ=${TZ}
+      - WAIT_HOSTS=db:3306
+    volumes:
+      - .:/code/app
+      - ./package.json:/code/package.json
+      - ./package-lock.json:/code/package-lock.json
+      - not_used_node_modules:/code/app/node_modules
+    ports:
+      - ${EXTERNAL_PORT}:${PORT}
+  db:
+    image: mariadb
+    container_name: db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
+      - MYSQL_USER=${DB_USER}
+      - MYSQL_PASSWORD=${DB_PWD}
+      - MYSQL_DATABASE=${DB_NAME}
+    volumes:
+      - ${DB_VOLUME}:/var/lib/mysql
+    ports:
+      - ${DB_PORT}:3306
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    environment:
+      - ADMINER_DEFAULT_SERVER=db
+      - TZ=${TZ}
+    ports:
+      - ${DB_MANAGER_PORT}:8080
+
+volumes:
+  not_used_node_modules:
+
+networks:
+  default:
+    name: ${APP_NAME}-network
