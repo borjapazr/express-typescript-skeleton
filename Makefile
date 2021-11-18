@@ -24,7 +24,7 @@ ifdef NPM
 	@echo "📦🧩 npm is not available. Please install npm."
 endif
 
-.PHONY = default deps install
+.PHONY: default deps install
 
 default: install
 
