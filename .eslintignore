@@ -1,10 +1,12 @@
 .commitlintrc*
+.docker
 .eslintcache
 .eslintrc*
 .prettierrc*
 coverage
 dist
 jest.config.js
+logs
 node_modules
 package-lock.json
 yarn.lock

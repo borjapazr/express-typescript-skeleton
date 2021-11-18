@@ -1,4 +1,5 @@
 .commitlintrc*
+.docker
 .DS_Store
 .editorconfig
 .eslintcache
@@ -9,6 +10,7 @@
 .travis.yml
 *.log
 coverage
+logs
 node_modules
 README.md
 test

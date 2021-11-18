@@ -105,6 +105,7 @@ module.exports = {
       },
       rules: {
         // For faster development
+        'no-process-exit': 'off',
         'no-useless-constructor': 'off',
         'class-methods-use-this': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
@@ -129,6 +130,8 @@ module.exports = {
             groups: importGroups
           }
         ],
+        'import/no-named-as-default': 'off',
+        'import/no-named-as-default-member': 'off',
         'simple-import-sort/exports': 'error',
         'import/prefer-default-export': 'off',
         'import/no-default-export': 'error',

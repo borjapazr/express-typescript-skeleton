@@ -1,5 +1,8 @@
+
+.docker
 coverage
 dist
+logs
 node_modules
 package-lock.json
 # package.json is formatted by package managers, so it is ignored
