@@ -7,16 +7,81 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: 🧑‍🔬 Test project
+  validate:
+    name: ✅ Validate project
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
 
     steps:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v2
 
+      - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
       - name: 📥 Install dependencies
-        run: npm install
+        run: npm ci
+
+      - name: 🖍️ Check types
+        run: npm run check:format
+
+      - name: 💅 Check format
+        run: npm run check:types
+
+      - name: 📑 Check lint
+        run: npm run check:lint
+
+      - name: 🔤 Check spelling
+        run: npm run check:spelling
+
+  test:
+    name: 🧑‍🔬 Test project
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
+        cache: npm
+
+    steps:
+      - name: ⬇️ Checkout project
+        uses: actions/checkout@v2
+
+      - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: 📥 Install dependencies
+        run: npm ci
 
       - name: 🧪 Run the tests
-        run: npm run test
+        run: npm run test:coverage
+
+  build:
+    name: 🧰 Build project
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14.x, 15.x, 16.x]
+
+    steps:
+      - name: ⬇️ Checkout project
+        uses: actions/checkout@v2
+
+      - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: 📥 Install dependencies
+        run: npm ci
+
+      - name: ⚒️ Build project
+        run: npm run build

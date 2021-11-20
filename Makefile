@@ -24,43 +24,50 @@ ifdef NPM
 	@echo "📦🧩 npm is not available. Please install npm."
 endif
 
-.PHONY: default deps install
+.PHONY: default
+default: start/dev
 
-default: install
+build/dev start/dev test/dev stop/dev clean/dev: ENVIRONMENT = dev
 
-install:
-	@echo "📦 Installing dependencies locally..."
-	@npm install
+build/prod start/prod stop/prod clean/prod: ENVIRONMENT = prod
 
-local/dev: install
-	@echo "▶️ Starting app in development mode (local)..."
-	@npm run dev
+.PHONY: build/dev build/prod
+build/dev build/prod:
+	@echo "📦 Building project Docker image..."
+	@docker build --build-arg PORT=$(PORT) --target $(ENVIRONMENT) -t $(APP_NAME):$(ENVIRONMENT) .
 
-start/dev stop/dev clean/dev: ENVIRONMENT = dev
-
-start/prod stop/prod clean/prod: ENVIRONMENT = prod
-
+.PHONY: start/dev
 start/dev:
 	@echo "▶️ Starting app in development mode (Docker)..."
 	@docker-compose -f docker-compose.$(ENVIRONMENT).yml up --build
 
+.PHONY: start/prod
 start/prod:
 	@echo "▶️ Starting app in production mode (Docker)..."
 	@mkdir -p -m 755 ${LOGS_VOLUME}
 	@docker-compose -f docker-compose.$(ENVIRONMENT).yml up -d --build
 
+.PHONY: start/db
 start/db:
 	@echo "▶️ Starting database (Docker)..."
 	@docker-compose -f docker-compose.dev.yml up -d db adminer
 
+PHONY: test/dev
+test/dev: build/dev
+	@echo "👨‍🔬 Testing project..."
+	@docker run --rm $(APP_NAME):$(ENVIRONMENT) npm run test:coverage
+
+.PHONY: stop/dev stop/prod
 stop/dev stop/prod:
 	@echo "🛑 Stopping app..."
 	@docker-compose -f docker-compose.$(ENVIRONMENT).yml down
 
+.PHONY: stop/db
 stop/db:
 	@echo "🛑 Stopping database (Docker)..."
 	@docker-compose -f docker-compose.dev.yml stop db adminer
 
+.PHONY: clean/dev clean/prod
 clean/dev clean/prod:
 	@echo "🧼 Cleaning all resources..."
 	@docker-compose -f docker-compose.$(ENVIRONMENT).yml down --rmi local --volumes --remove-orphans

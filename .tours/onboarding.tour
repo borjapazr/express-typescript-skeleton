@@ -4,23 +4,8 @@
   "steps": [
     {
       "file": "Makefile",
-      "description": "# Installation\n\nThe first step is to initialize and install the project dependencies. To do this it is necessary to execute the command `make` or `make install` (both trigger the same action).\n\n>> make install\n\n💡 *It is necessary to have **make** installed on the system.*\n",
-      "line": 31,
-      "selection": {
-        "start": {
-          "line": 31,
-          "character": 1
-        },
-        "end": {
-          "line": 31,
-          "character": 8
-        }
-      }
-    },
-    {
-      "file": "Makefile",
       "description": "# Launch the application\n\nTo start the project just execute the following command:\n\n>> make start/dev\n\n💡 *It is necessary to have **docker** and **docker-compose** installed on the system.*\n",
-      "line": 43
+      "line": 40
     }
   ],
   "ref": "main"
