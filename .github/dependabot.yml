@@ -1,0 +1,12 @@
+version: 2
+updates:
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    commit-message:
+      prefix: 'npm'
+      include: 'scope'
+    labels:
+      - 'npm'
+      - 'dependencies'
