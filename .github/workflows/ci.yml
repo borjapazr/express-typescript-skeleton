@@ -84,3 +84,6 @@ jobs:
 
       - name: ⚒️ Build project
         run: npm run build
+
+      - name: 💽 Create OCI image
+        run: make build/prod

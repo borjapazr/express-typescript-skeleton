@@ -38,7 +38,7 @@ RUN mkdir dist logs
 RUN chown -R node:node /home/node/app
 RUN npm install -g pm2
 USER node
-COPY --chown=node:node package*.json process.json ./
+COPY --chown=node:node package*.json ./docker/pm2/process.json ./
 RUN npm ci --production --ignore-scripts
 ENV PATH /home/node/app/node_modules/.bin:$PATH
 COPY --chown=node:node --from=builder /code/app/dist ./dist

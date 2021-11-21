@@ -3,10 +3,10 @@ version: '3.7'
 services:
   app:
     build:
-      context: .
+      context: ..
       args:
         - PORT=${PORT}
-      dockerfile: Dockerfile
+      dockerfile: ./docker/Dockerfile
       target: dev
     image: ${APP_NAME}:dev
     container_name: ${APP_NAME}
@@ -17,9 +17,9 @@ services:
       - TZ=${TZ}
       - WAIT_HOSTS=db:3306
     volumes:
-      - .:/code/app
-      - ./package.json:/code/package.json
-      - ./package-lock.json:/code/package-lock.json
+      - ../:/code/app
+      - ../package.json:/code/package.json
+      - ../package-lock.json:/code/package-lock.json
       - not_used_node_modules:/code/app/node_modules
     ports:
       - ${EXTERNAL_PORT}:${PORT}

@@ -3,10 +3,10 @@ version: '3.7'
 services:
   base-app:
     build:
-      context: .
+      context: ..
       args:
         - PORT=${PORT}
-      dockerfile: Dockerfile
+      dockerfile: ./docker/Dockerfile
       target: prod
     image: ${APP_NAME}:prod
     container_name: ${APP_NAME}
@@ -14,7 +14,7 @@ services:
     depends_on:
       - db
     env_file:
-      - .env
+      - ../.env
     environment:
       - TZ=${TZ}
       - WAIT_HOSTS=db:3306
