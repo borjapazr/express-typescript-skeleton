@@ -152,7 +152,12 @@ module.exports = {
         '@typescript-eslint/member-ordering': 'error',
 
         /* General rules */
-        'unicorn/prevent-abbreviations': 'warn',
+        'unicorn/prevent-abbreviations': [
+          'warn',
+          {
+            ignore: ['\\.e2e$', /^ignore/i]
+          }
+        ],
         // This is disabled because of this issue: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/52595
         'unicorn/prefer-node-protocol': 'off',
         'deprecation/deprecation': 'warn',

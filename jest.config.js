@@ -12,6 +12,7 @@ module.exports = {
   // A list of paths to directories that Jest should use to search for files in
   roots: ['<rootDir>'],
   testEnvironment: 'node',
+  testMatch: ['**/?(*.)+(unit|int|e2e|spec|test).(ts|js)'],
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
@@ -25,7 +26,7 @@ module.exports = {
 
   /* Bootstrap settings */
   // Set initial config and enable jest-extended features
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts', 'jest-extended'],
+  setupFilesAfterEnv: ['<rootDir>/test/jest.setup.ts', 'jest-extended'],
 
   /* Global test settings */
   // Automatically clear mock calls and instances between every test
@@ -42,7 +43,9 @@ module.exports = {
     '<rootDir>/src/types',
     '<rootDir>/src/index.ts',
     '<rootDir>/src/healthcheck.ts'
-  ]
+  ],
+  // Jest custom reporters
+  reporters: ['default', 'jest-sonar']
   /*
    * Uncomment if you want to set thresholds for code coverage
   coverageThreshold: {
