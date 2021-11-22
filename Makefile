@@ -3,8 +3,12 @@ include .env
 
 # Root directory
 ROOT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+
 # Shell to use for running scripts
 SHELL := $(shell which bash)
+
+# Set default goal
+.DEFAULT_GOAL := deps
 
 # Test if the dependencies we need to run this Makefile are installed
 DOCKER := $(shell command -v docker)
@@ -20,12 +24,10 @@ ifndef DOCKER_COMPOSE
 	@echo "🐳🧩 docker-compose is not available. Please install docker-compose."
 	@exit 1
 endif
-ifdef NPM
+ifndef NPM
 	@echo "📦🧩 npm is not available. Please install npm."
 endif
-
-.PHONY: default
-default: start/dev
+	@echo "🆗 The necessary dependencies are already installed!"
 
 build/dev start/dev test/dev stop/dev clean/dev: ENVIRONMENT = dev
 

@@ -86,15 +86,3 @@ jobs:
 
       - name: ⚒️ Build project
         run: npm run build
-
-  distribute:
-    name: 🛩️ Deliver project
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: ⬇️ Checkout project
-        uses: actions/checkout@v2
-
-      - name: 💽 Build OCI image
-        run: make build/prod

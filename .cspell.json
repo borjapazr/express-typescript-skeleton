@@ -11,6 +11,7 @@
     "circleci",
     "codecov",
     "commitlint",
+    "Containerised",
     "dependabot",
     "dtos",
     "editorconfig",
@@ -36,6 +37,7 @@
     "openapi",
     "prettierignore",
     "printf",
+    "roadmap",
     "Rodríguez",
     "sandboxed",
     "sonarjs",
@@ -43,6 +45,7 @@
     "transpiled",
     "typedoc",
     "typeorm",
+    "unopinionated",
     "untracked",
     "usecase"
   ],
