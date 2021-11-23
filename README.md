@@ -6,9 +6,10 @@
 <br>
 <br>
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/borjapazr/express-typescript-skeleton/CI?style=flat-square)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/borjapazr/express-typescript-skeleton?style=flat-square)
-![GitHub](https://img.shields.io/github/license/borjapazr/express-typescript-skeleton?style=flat-square)
+![GitHub CI Workflow Status](https://img.shields.io/github/workflow/status/borjapazr/express-typescript-skeleton/CI?style=flat-square&logo=github&label=CI)
+![GitHub CD Workflow Status](https://img.shields.io/github/workflow/status/borjapazr/express-typescript-skeleton/CD?style=flat-square&logo=github&label=CD)
+![GitHub LICENSE](https://img.shields.io/github/license/borjapazr/express-typescript-skeleton?style=flat-square)
 
 <h4>
   🔰🦸 Production-ready template for backends created with Node.js, Typescript and Express
