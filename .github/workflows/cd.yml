@@ -16,16 +16,12 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 📋 Build Changelog
-        id: github_release
-        uses: mikepenz/release-changelog-builder-action@v1
-        with:
-          commitMode: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+        run: npx standard-version -i RELEASE_BODY.md --skip.commit
 
       - name: 🍻 Build and generate new release
         uses: softprops/action-gh-release@v1
         with:
-          body: ${{steps.github_release.outputs.changelog}}
+          body_path: RELEASE_BODY.md
           token: ${{ secrets.GITHUB_TOKEN }}
 
   distribute:
@@ -39,7 +35,7 @@ jobs:
 
       - name: 🏷️ Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//v}
 
       - name: 💽 Build OCI image
         run: make build/prod TAG=${{ steps.get_version.outputs.VERSION }}
