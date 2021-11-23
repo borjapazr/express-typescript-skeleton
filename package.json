@@ -34,7 +34,7 @@
     "check:types": "tsc --pretty --noEmit",
     "check:format": "prettier --check .",
     "check:lint": "eslint . --ext .js,.ts --color",
-    "check:spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
+    "check:spelling": "cspell \"{README.md,TODO.md,.github/*.md,src/**/*.ts}\"",
     "fix:format": "prettier --check --write --ignore-unknown .",
     "fix:lint": "npm run check:lint -- --fix",
     "check:staged": "lint-staged",

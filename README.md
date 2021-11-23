@@ -17,7 +17,7 @@
 <a href="#ℹ️-about">ℹ️ About</a> •
 <a href="#-features">📋 Features</a> •
 <a href="#-contributing"> 🤝 Contributing</a> •
-<a href="#-roadmap"> 🛣️ Roadmap</a> •
+<a href="#️-roadmap"> 🛣️ Roadmap</a> •
 <a href="#-credits">🎯 Credits</a> •
 <a href="#-license">🚩 License</a>
 
@@ -30,6 +30,20 @@
 The main goal of this project is to provide a base template for the generation of a production-ready REST API made with `Node.js`, `Express` and `Typescript`. The idea is to avoid having to configure all the tools involved in a project every time it is started and thus be able to focus on the definition and implementation of the business logic.
 
 > 📣 This is an opinionated template. The architecture of the code base and the configuration of the different tools used has been based on best practices and personal preferences.
+
+### 🚀 Quick start
+
+- Start project in development mode:
+
+  ```bash
+  npm run dev
+  ```
+
+- Start project in production mode:
+
+  ```bash
+  npm run start
+  ```
 
 ## 📋 Features
 
