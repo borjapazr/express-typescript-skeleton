@@ -5,7 +5,7 @@
     {
       "file": "Makefile",
       "description": "# Launch the application\n\nTo start the project just execute the following command:\n\n>> make start/dev\n\n💡 *It is necessary to have **docker** and **docker-compose** installed on the system.*\n",
-      "line": 40
+      "line": 43
     }
   ],
   "ref": "main"

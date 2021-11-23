@@ -29,14 +29,15 @@ ifndef NPM
 endif
 	@echo "🆗 The necessary dependencies are already installed!"
 
-build/dev start/dev test/dev stop/dev clean/dev: ENVIRONMENT = dev
-
-build/prod start/prod stop/prod clean/prod: ENVIRONMENT = prod
+# Target specific variables
+%/dev: ENVIRONMENT = dev
+%/prod: ENVIRONMENT = prod
+build/%: TAG ?= $(ENVIRONMENT)
 
 .PHONY: build/dev build/prod
 build/dev build/prod:
 	@echo "📦 Building project Docker image..."
-	@docker build --build-arg PORT=$(PORT) --target $(ENVIRONMENT) -t $(APP_NAME):$(ENVIRONMENT) -f ./docker/Dockerfile .
+	@docker build --build-arg PORT=$(PORT) --target $(ENVIRONMENT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
 
 .PHONY: start/dev
 start/dev:
