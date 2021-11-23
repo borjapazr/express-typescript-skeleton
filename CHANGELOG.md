@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.0.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.0.0...v1.0.1) (2021-11-23)
+
+### Bug Fixes
+
+- **cd:** remove extra "v" in OCI image version ([89622c5](https://github.com/borjapazr/express-typescript-skeleton/commit/89622c595c7fb9bc098a814fdbd8d0466eb45921))
+
 ## 1.0.0 (2021-11-23)
 
 ### Features
