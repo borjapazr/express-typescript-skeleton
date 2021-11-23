@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.2.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.2.1...v1.2.2) (2021-11-23)
+
 ### [1.2.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.2.0...v1.2.1) (2021-11-23)
 
 ### Bug Fixes
