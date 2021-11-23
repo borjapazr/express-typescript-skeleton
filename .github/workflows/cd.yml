@@ -15,10 +15,16 @@ jobs:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v2
 
+      - name: 📋 Build Changelog
+        id: github_release
+        uses: mikepenz/release-changelog-builder-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: 🍻 Build and generate new release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: CHANGELOG.md
+          body: ${{steps.github_release.outputs.changelog}}
           token: ${{ secrets.GITHUB_TOKEN }}
 
   distribute:
