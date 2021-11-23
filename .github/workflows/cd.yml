@@ -35,7 +35,7 @@ jobs:
 
       - name: 🏷️ Get the version
         id: get_version
-        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//v}
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
 
       - name: 💽 Build OCI image
         run: make build/prod TAG=${{ steps.get_version.outputs.VERSION }}
