@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.0.0...v1.1.0) (2021-11-23)
+
+### Features
+
+- **cd:** improve CD workflow ([0accedf](https://github.com/borjapazr/express-typescript-skeleton/commit/0accedfa17098572c9bf117a91b11907d0445853))
+
 ## 1.0.0 (2021-11-23)
 
 ### Features
