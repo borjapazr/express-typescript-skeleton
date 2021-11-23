@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: 📋 Build Changelog
-        run: npx standard-version -i RELEASE_BODY.md --skip.commit
+        run: npx extract-changelog-release > RELEASE_BODY.md
 
       - name: 🍻 Build and generate new release
         uses: softprops/action-gh-release@v1
