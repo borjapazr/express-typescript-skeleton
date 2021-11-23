@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.0...v1.3.1) (2021-11-23)
+
+### Bug Fixes
+
+- **cd:** fix CD workflow ([d5d3a27](https://github.com/borjapazr/express-typescript-skeleton/commit/d5d3a2718bcf903f9de81c9621c5c2e27585a08a))
+
 ## [1.3.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.2.3...v1.3.0) (2021-11-23)
 
 ### Features
