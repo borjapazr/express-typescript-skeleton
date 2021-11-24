@@ -118,9 +118,13 @@ Please, check [TODO](TODO.md) for the current roadmap.
 
 ## 🎯 Credits
 
-To realise this project I have based myself on many similar projects. There were countless of them and I gave them all a star ⭐.
+To realise this project I have based myself on many similar projects. There were countless of them and I gave them all a star.
 
 🙏 Thank you very much for these wonderful creations.
+
+### ⭐ Stargazers
+
+[![Stargazers repo roster for @borjapazr/express-typescript-skeleton](https://reporoster.com/stars/borjapazr/express-typescript-skeleton)](https://github.com/borjapazr/express-typescript-skeleton/stargazers)
 
 ## 🚩 License
 
