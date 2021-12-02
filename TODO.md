@@ -2,12 +2,12 @@
 
 ### Todo
 
-- [ ] Task 3
+- [ ] 👋 Improve project onboarding by configuring all steps in Codetour
 
 ### In Progress
 
-- [ ] Task 2
+- [ ] 🔄 Continuous improvement of the project
 
 ### Done ✓
 
-- [x] Task 1
+- [x] 🥇 Create the first release of the project
