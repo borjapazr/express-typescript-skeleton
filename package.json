@@ -77,7 +77,7 @@
     "cspell": "^5.13.1",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.32.0",
-    "eslint-config-airbnb-typescript": "^16.0.0",
+    "eslint-config-airbnb-typescript": "^16.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-deprecation": "^1.2.1",
