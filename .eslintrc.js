@@ -171,7 +171,7 @@ module.exports = {
       },
       overrides: [
         {
-          files: ['*.test.ts', '*.spec.ts'],
+          files: ['*.unit.ts', '*.int.ts', '*.e2e.ts', '*.spec.ts', '*.test.ts'],
           plugins: ['jest'],
           env: {
             jest: true,
