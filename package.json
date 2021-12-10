@@ -126,7 +126,7 @@
     "jsonwebtoken": "^8.5.1",
     "luxon": "^2.1.1",
     "morgan": "^1.10.0",
-    "multer": "^1.4.3",
+    "multer": "^1.4.4",
     "mysql": "^2.18.1",
     "node-emoji": "^1.11.0",
     "reflect-metadata": "^0.1.13",
