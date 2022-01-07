@@ -52,7 +52,7 @@
     "prepare": "husky install"
   },
   "devDependencies": {
-    "@commitlint/cli": "^15.0.0",
+    "@commitlint/cli": "^16.0.1",
     "@commitlint/config-conventional": "^16.0.0",
     "@types/body-parser": "^1.19.2",
     "@types/cookie-parser": "^1.4.2",
