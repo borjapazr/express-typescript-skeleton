@@ -92,7 +92,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-sonarjs": "^0.11.0",
     "eslint-plugin-unicorn": "^40.0.0",
-    "http-server": "^14.0.0",
+    "http-server": "^14.1.0",
     "husky": "^7.0.4",
     "jest": "^27.4.7",
     "jest-extended": "^1.2.0",
