@@ -60,7 +60,7 @@
     "@types/express": "^4.17.13",
     "@types/figlet": "^1.5.4",
     "@types/jest": "^27.4.0",
-    "@types/jsonwebtoken": "^8.5.6",
+    "@types/jsonwebtoken": "^8.5.7",
     "@types/luxon": "^2.0.8",
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
