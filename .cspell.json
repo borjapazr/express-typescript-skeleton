@@ -1,7 +1,19 @@
 {
-  "version": "0.1",
   "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/master/cspell.schema.json",
+  "flagWords": [],
+  "ignorePaths": [
+    ".eslintcache",
+    ".vscode/**",
+    "dist/**",
+    "node_modules/**",
+    "package-lock.json",
+    "package.json",
+    "tsconfig.json",
+    "tsconfig.build.json",
+    "yarn.lock"
+  ],
   "language": "en",
+  "version": "0.2",
   "words": [
     "backends",
     "bitauth",
@@ -44,23 +56,11 @@
     "sandboxed",
     "sonarjs",
     "topbar",
+    "Traefik",
     "transpiled",
     "typedoc",
-    "typeorm",
     "unopinionated",
     "untracked",
     "usecase"
-  ],
-  "flagWords": [],
-  "ignorePaths": [
-    ".eslintcache",
-    ".vscode/**",
-    "dist/**",
-    "node_modules/**",
-    "package-lock.json",
-    "package.json",
-    "tsconfig.json",
-    "tsconfig.build.json",
-    "yarn.lock"
   ]
 }

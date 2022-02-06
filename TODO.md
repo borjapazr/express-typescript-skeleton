@@ -3,6 +3,8 @@
 ### Todo
 
 - [ ] 👋 Improve project onboarding by configuring all steps in Codetour
+- [ ] 📦 Add reverse proxy to server REST API (for example, Traefik)
+- [ ] 📦 Add dependency injection to all components
 
 ### In Progress
 

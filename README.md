@@ -50,7 +50,7 @@ The main goal of this project is to provide a base template for the generation o
 
 - Built using [Typescript](https://github.com/microsoft/TypeScript)
 - Built using [Express Framework](https://github.com/expressjs/express): Fast, unopinionated, minimalist web framework for node.
-- Built using [TypeORM](https://typeorm.io/): ORM for TypeScript and JavaScript
+- Built using [Prisma](https://www.prisma.io/): Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite & MongoDB
 - Built using [Routing Controllers](https://github.com/typestack/routing-controllers): Allows to create controller classes with methods as actions that handle requests
 - JWT authentication and role based authorization using custom middleware
 - OpenAPI definition
