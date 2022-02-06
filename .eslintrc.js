@@ -134,14 +134,18 @@ module.exports = {
         'import/no-named-as-default-member': 'off',
         'simple-import-sort/exports': 'error',
         'import/prefer-default-export': 'off',
-        'import/no-default-export': 'error',
+        'import/no-default-export': 'off',
         'import/first': 'error',
         'import/newline-after-import': 'error',
         'import/no-duplicates': 'error',
         'import/no-deprecated': 'error',
         'import/group-exports': 'error',
         'import/exports-last': 'error',
-        'padding-line-between-statements': ['error', { blankLine: 'always', prev: '*', next: 'export' }],
+        'padding-line-between-statements': [
+          'error',
+          { blankLine: 'always', prev: '*', next: 'export' },
+          { blankLine: 'any', prev: 'export', next: 'export' }
+        ],
         quotes: [
           'error',
           'single',

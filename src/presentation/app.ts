@@ -15,13 +15,11 @@ import swaggerUiExpress from 'swagger-ui-express';
 import { LOGGER } from '@domain/shared';
 import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
 import { HealthController } from '@presentation/controllers/health/health.controller';
-import { ErrorHandlerMiddleware } from '@presentation/middlewares/error-handler.middleware';
-import { MorganMiddleware } from '@presentation/middlewares/morgan.middleware';
-import { NotFoundMiddleware } from '@presentation/middlewares/not-found.middleware';
 
 import { checkRole, checkUser } from './authentication';
 import { AppConfig, AppInfo } from './config/app.config';
 import { AuthenticationController } from './controllers/authentication/authentication.controller';
+import { ErrorHandlerMiddleware, MorganMiddleware, NotFoundMiddleware } from './middlewares';
 
 class App {
   public app: Application;

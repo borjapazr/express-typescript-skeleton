@@ -12,6 +12,9 @@ module.exports = {
   // A list of paths to directories that Jest should use to search for files in
   roots: ['<rootDir>'],
   testEnvironment: 'node',
+  testEnvironmentOptions: {
+    NODE_ENV: 'test'
+  },
   testMatch: ['**/?(*.)+(unit|int|e2e|spec|test).(ts|js)'],
   preset: 'ts-jest',
   globals: {

@@ -2,7 +2,7 @@ import { performance } from 'perf_hooks';
 
 import { LOGGER } from '@domain/shared';
 
-import { DatabaseInitializer } from './persistence/database.initializer';
+import { DiContainer } from './di/di-container';
 
 interface BootstrapResult {
   bootstrapDuration: number;
@@ -13,18 +13,16 @@ const bootstrap = async (): Promise<BootstrapResult> => {
 
   LOGGER.info('Bootstrapping infrastructure...');
 
-  LOGGER.info('Initializing database...');
-  await DatabaseInitializer.initialize();
-  LOGGER.info('Database initialized!');
+  LOGGER.info('Initializing DI container...');
+  await DiContainer.initialize();
+  LOGGER.info('DI container initialized!');
 
   const bootstrapEndTime = performance.now();
   const bootstrapDuration = Math.floor(bootstrapEndTime - bootstrapStartTime);
 
   LOGGER.info(`Infrastructure bootstrap took ${bootstrapDuration} ms!`);
 
-  return {
-    bootstrapDuration
-  };
+  return { bootstrapDuration };
 };
 
 export { bootstrap, BootstrapResult };

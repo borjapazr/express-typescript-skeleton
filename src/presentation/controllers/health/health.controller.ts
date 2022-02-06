@@ -1,13 +1,16 @@
 import { StatusCodes } from 'http-status-codes';
 import { Get, HttpCode, JsonController } from 'routing-controllers';
 
-import { healthCheckerUseCase } from '@application/health';
 import { HealthCheckerUseCase } from '@application/health/health-checker.usecase';
 import { HealthStatusResponse } from '@application/health/health-status.response';
 
 @JsonController('/healthz')
 class HealthController {
-  private readonly healthCheckerUseCase: HealthCheckerUseCase = healthCheckerUseCase;
+  private healthCheckerUseCase: HealthCheckerUseCase;
+
+  constructor(healthCheckerUseCase: HealthCheckerUseCase) {
+    this.healthCheckerUseCase = healthCheckerUseCase;
+  }
 
   @Get()
   @HttpCode(StatusCodes.OK)
