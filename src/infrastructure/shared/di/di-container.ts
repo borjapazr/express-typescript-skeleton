@@ -24,16 +24,18 @@ class DiContainer {
   static async initialize(): Promise<AwilixContainer> {
     try {
       // Core dependencies
-      this.registerSingletonDependency(AuthenticationMiddleware);
-      this.registerSingletonDependency(ErrorHandlerMiddleware);
-      this.registerSingletonDependency(MorganMiddleware);
-      this.registerSingletonDependency(NotFoundMiddleware);
+      this.registerSingletonDependencies([
+        AuthenticationMiddleware,
+        ErrorHandlerMiddleware,
+        MorganMiddleware,
+        NotFoundMiddleware
+      ]);
 
       // Use cases
-      this.registerSingletonDependency(HealthCheckerUseCase);
+      this.registerSingletonDependencies([HealthCheckerUseCase]);
 
       // Controllers
-      this.registerSingletonDependency(HealthController);
+      this.registerSingletonDependencies([HealthController]);
 
       useContainer(new AwilixAdapter(this.diContainer, camelCaseClassNameMapper));
 
@@ -44,10 +46,15 @@ class DiContainer {
     }
   }
 
-  static registerSingletonDependency = (dependency: any): void => {
-    this.diContainer.register({
-      [camelCaseClassNameMapper(dependency.name)]: asClass(dependency).singleton()
-    });
+  static registerSingletonDependencies = (dependencies: any[]): void => {
+    const dependenciesMap = Object.assign(
+      {},
+      ...dependencies.map(dependency => ({
+        [camelCaseClassNameMapper(dependency.name)]: asClass(dependency).singleton()
+      }))
+    );
+
+    this.diContainer.register(dependenciesMap);
   };
 }
 
