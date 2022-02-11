@@ -13,12 +13,12 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUiExpress from 'swagger-ui-express';
 
 import { LOGGER } from '@domain/shared';
-import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
-import { HealthController } from '@presentation/controllers/health/health.controller';
+import { GlobalConfig } from '@infrastructure/shared/config';
 
 import { checkRole, checkUser } from './authentication';
 import { AppConfig, AppInfo } from './config/app.config';
-import { AuthenticationController } from './controllers/authentication/authentication.controller';
+import { AuthenticationController } from './controllers/authentication';
+import { HealthController } from './controllers/health';
 import { ErrorHandlerMiddleware, MorganMiddleware, NotFoundMiddleware } from './middlewares';
 
 class App {

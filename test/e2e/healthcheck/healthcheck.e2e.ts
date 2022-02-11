@@ -1,6 +1,6 @@
 import request from 'supertest';
 
-import { app } from '../bootstrap';
+import { app } from '@test/bootstrap';
 
 describe('Testing health check controller/entrypoint', () => {
   describe('[GET] /api/healthz', () => {

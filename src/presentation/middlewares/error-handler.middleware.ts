@@ -4,8 +4,7 @@ import emoji from 'node-emoji';
 import { ExpressErrorMiddlewareInterface, Middleware } from 'routing-controllers';
 
 import { LOGGER } from '@domain/shared';
-import { ApiError } from '@presentation/errors/api.error';
-import { ErrorResponse } from '@presentation/errors/error.response';
+import { ApiError, ErrorResponse } from '@presentation/errors';
 
 const ERROR_HANDLERS: { [error: string]: (response: Response, error: Error) => void } = {
   AccessDeniedError: (response: Response, error: Error) => {

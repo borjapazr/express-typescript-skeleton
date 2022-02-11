@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { ExpressMiddlewareInterface, Middleware } from 'routing-controllers';
 
-import { NotFoundError } from '@presentation/errors/not-found.error';
+import { NotFoundError } from '@presentation/errors';
 
 @Middleware({ type: 'after' })
 class NotFoundMiddleware implements ExpressMiddlewareInterface {

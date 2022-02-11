@@ -20,6 +20,7 @@
       "@domain/*": ["src/domain/*"],
       "@infrastructure/*": ["src/infrastructure/*"],
       "@presentation/*": ["src/presentation/*"],
+      "@test/*": ["test/*"],
       "@/*": ["src/*"]
     }, // A series of entries which re-map imports to lookup locations relative to the baseUrl
     "typeRoots": ["../node_modules/@types", "node_modules/@types", "src/types"],

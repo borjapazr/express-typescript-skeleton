@@ -130,6 +130,17 @@ module.exports = {
             groups: importGroups
           }
         ],
+        'no-restricted-imports': [
+          'error',
+          {
+            patterns: [
+              {
+                group: ['../*'],
+                message: 'For imports of parent elements use better path aliases. For example, @domain/shared.'
+              }
+            ]
+          }
+        ],
         'import/no-named-as-default': 'off',
         'import/no-named-as-default-member': 'off',
         'simple-import-sort/exports': 'error',
