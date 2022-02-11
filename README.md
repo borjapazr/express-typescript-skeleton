@@ -107,6 +107,9 @@ The main actions on this project are managed using a [Makefile](Makefile) as an 
 - `coverage:view`: Show coverage information
 - `commit`: Help to commit changes using conventional commits
 - `version`: Generate new project version
+- `reset-hard`: Reset git repository to a clean state
+- `prepare-release`: Prepare the project for a release and generates a new release
+- `update-deps`: Update the project dependencies
 
 ## 🤝 Contributing
 
