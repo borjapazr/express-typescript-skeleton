@@ -91,7 +91,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-sonarjs": "^0.11.0",
+    "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-unicorn": "^41.0.0",
     "http-server": "^14.1.0",
     "husky": "^7.0.4",
