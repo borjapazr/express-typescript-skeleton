@@ -48,18 +48,18 @@ build/dev build/prod:
 .PHONY: start/dev
 start/dev: ## Start application in development mode
 	@echo "▶️ Starting app in development mode (Docker)..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml up --build
+	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env up --build
 
 .PHONY: start/prod
 start/prod: ## Start application in production mode
 	@echo "▶️ Starting app in production mode (Docker)..."
 	@mkdir -p -m 755 ${LOGS_VOLUME}
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml up -d --build
+	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env up -d --build
 
 .PHONY: start/db
 start/db: ## Start database container
 	@echo "▶️ Starting database (Docker)..."
-	@docker-compose -f ./docker/docker-compose.dev.yml up -d db adminer
+	@docker-compose -f ./docker/docker-compose.dev.yml --env-file .env up -d db adminer
 
 PHONY: test/dev
 test/dev: build/dev ## Run tests in development mode
@@ -71,17 +71,17 @@ stop/dev: ## Stop development environment
 stop/prod: ## Stop production environment
 stop/dev stop/prod:
 	@echo "🛑 Stopping app..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml down
+	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env down
 
 .PHONY: stop/db
 stop/db: ## Stop database container
 	@echo "🛑 Stopping database (Docker)..."
-	@docker-compose -f ./docker/docker-compose.dev.yml stop db adminer
+	@docker-compose -f ./docker/docker-compose.dev.yml --env-file .env stop db adminer
 
 .PHONY: clean/dev clean/prod
 clean/dev: ## Clean development environment
 clean/prod: ## Clean production environment
 clean/dev clean/prod:
 	@echo "🧼 Cleaning all resources..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml down --rmi local --volumes --remove-orphans
+	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env down --rmi local --volumes --remove-orphans
 
