@@ -121,7 +121,7 @@ Please, check [TODO](TODO.md) for the current roadmap.
 
 ## 🎯 Credits
 
-To realise this project I have based myself on many similar projects. There were countless of them and I gave them all a star.
+To implement this project I have based myself on many similar projects. There were countless of them and I gave them all a star.
 
 🙏 Thank you very much for these wonderful creations.
 
