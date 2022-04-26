@@ -1,7 +1,7 @@
 const { compilerOptions } = JSON.parse(
   require('strip-json-comments')(require('fs').readFileSync('./tsconfig.json', 'utf8'))
 );
-const { pathsToModuleNameMapper } = require('ts-jest/utils');
+const { pathsToModuleNameMapper } = require('ts-jest');
 
 module.exports = {
   /* Basic settings */
