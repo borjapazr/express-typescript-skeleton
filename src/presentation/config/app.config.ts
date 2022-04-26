@@ -6,7 +6,7 @@ const AppInfo = {
   APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', '🚀👩‍🚀 To infinity and beyond!'),
   AUTHOR_NAME: getEnvironmentString('AUTHOR_NAME', 'Borja Paz Rodríguez'),
   AUTHOR_EMAIL: getEnvironmentString('AUTHOR_EMAIL', 'borjapazr@gmail.com'),
-  AUTHOR_WEBSITE: getEnvironmentString('AUTHOR_WEBSITE', 'https://me.marsmachine.space')
+  AUTHOR_WEBSITE: getEnvironmentString('AUTHOR_WEBSITE', 'https://bpaz.dev')
 };
 
 const AppConfig = {

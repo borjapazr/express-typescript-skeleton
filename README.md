@@ -131,4 +131,4 @@ To implement this project I have based myself on many similar projects. There we
 
 ## 🚩 License
 
-MIT @ [borjapazr](https://me.marsmachine.space). Please see [License](LICENSE) for more information.
+MIT @ [borjapazr](https://bpaz.dev). Please see [License](LICENSE) for more information.
