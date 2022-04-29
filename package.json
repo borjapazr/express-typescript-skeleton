@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
-    "@commitlint/config-conventional": "^16.2.1",
+    "@commitlint/config-conventional": "^16.2.4",
     "@types/body-parser": "^1.19.2",
     "@types/cookie-parser": "^1.4.2",
     "@types/dotenv-defaults": "^2.0.1",
