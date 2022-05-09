@@ -25,12 +25,18 @@ RUN npm run build
 
 # Dev stage
 FROM builder as dev
+
+LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
+
 ENV NODE_ENV=development
 ENV FORCE_COLOR=1
 CMD /wait && npm run dev
 
 # Prod stage
 FROM node as prod
+
+LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
+
 ENV NODE_ENV=production
 ENV FORCE_COLOR=1
 WORKDIR /home/node/app
