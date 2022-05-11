@@ -80,6 +80,7 @@ module.exports = {
       ],
       plugins: [
         '@typescript-eslint',
+        'prefer-arrow',
         'node',
         'eslint-comments',
         'unicorn',
@@ -182,7 +183,16 @@ module.exports = {
         // node plugin cannot resolve TypeScript's path aliases. See https://github.com/mysticatea/eslint-plugin-node/issues/233
         'node/no-missing-import': 'off',
         'promise/no-callback-in-promise': 'off',
-        'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }]
+        'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+        '@typescript-eslint/no-unused-vars': 'error',
+        'prefer-arrow/prefer-arrow-functions': [
+          'warn',
+          {
+            disallowPrototype: true,
+            singleReturnOnly: false,
+            classPropertiesAllowed: false
+          }
+        ]
       },
       overrides: [
         {
