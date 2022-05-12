@@ -3,7 +3,7 @@ import { getEnvironmentNumber, getEnvironmentString } from '@infrastructure/shar
 const AppInfo = {
   APP_VERSION: getEnvironmentString('APP_VERSION', '1.0.1'),
   APP_NAME: getEnvironmentString('APP_NAME', 'base-app'),
-  APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', '🚀👩‍🚀 To infinity and beyond!'),
+  APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', '🚀 To infinity and beyond!'),
   AUTHOR_NAME: getEnvironmentString('AUTHOR_NAME', 'Borja Paz Rodríguez'),
   AUTHOR_EMAIL: getEnvironmentString('AUTHOR_EMAIL', 'borjapazr@gmail.com'),
   AUTHOR_WEBSITE: getEnvironmentString('AUTHOR_WEBSITE', 'https://bpaz.dev')

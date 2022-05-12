@@ -35,7 +35,7 @@ components:
         message:
           type: string
           description: Description of server status
-          example: '🚀👩‍🚀 To infinity and beyond!'
+          example: '🚀 To infinity and beyond!'
     ErrorResponse:
       type: object
       properties:
