@@ -6,28 +6,25 @@
   "cSpell.userWords": [], // only use words from .cspell.json
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
-    "source.fixAll.format": true
+    "source.fixAll.format": true,
+    "source.fixAll.stylelint": true,
+    "source.fixAll.htmlhint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "eslint.alwaysShowStatus": true,
   "eslint.options": {
-    "extensions": [".ts", ".html"]
+    "extensions": [".js", ".ts", ".html"]
   },
-  "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact", "html"],
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": false
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "editor.formatOnSave": false
-  }
+  "eslint.validate": ["javascript", "typescript", "html"],
+  "htmlhint.enable": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.gutterIconSet": "borderless",
+  "errorLens.followCursor": "activeLine",
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "scss"]
 }
