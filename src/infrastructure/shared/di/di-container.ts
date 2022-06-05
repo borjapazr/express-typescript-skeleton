@@ -3,6 +3,7 @@ import { useContainer } from 'routing-controllers';
 
 import { HealthCheckerUseCase } from '@application/health/health-checker.usecase';
 import { LOGGER } from '@domain/shared';
+import { AuthenticationController } from '@presentation/controllers/authentication';
 import { HealthController } from '@presentation/controllers/health/health.controller';
 import {
   AuthenticationMiddleware,
@@ -40,7 +41,7 @@ class DiContainer {
       ]);
 
       // Controllers
-      this.registerSingletonClass([HealthController]);
+      this.registerSingletonClass([HealthController, AuthenticationController]);
 
       useContainer(new AwilixAdapter(this.diContainer, camelCaseClassNameMapper));
 
