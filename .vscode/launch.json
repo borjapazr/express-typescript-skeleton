@@ -11,6 +11,15 @@
       "name": "testing",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "address": "localhost",
+      "localRoot": "${workspaceFolder}",
+      "name": "docker",
+      "port": 9229,
+      "remoteRoot": "/code/app",
+      "request": "attach",
+      "type": "node"
     }
   ],
   "version": "0.2.0"

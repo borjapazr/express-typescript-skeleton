@@ -22,6 +22,7 @@ services:
       - ../package-lock.json:/code/package-lock.json
       - not_used_node_modules:/code/app/node_modules
     ports:
+      - 9229:9229
       - ${EXTERNAL_PORT}:${PORT}
   db:
     image: mariadb
