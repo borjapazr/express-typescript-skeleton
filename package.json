@@ -106,7 +106,7 @@
     "eslint-plugin-unicorn": "^42.0.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.1",
-    "jest": "^28.1.0",
+    "jest": "^28.1.1",
     "jest-extended": "^2.0.0",
     "jest-sonar": "^0.2.12",
     "lint-staged": "^13.0.0",
