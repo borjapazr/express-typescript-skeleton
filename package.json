@@ -104,6 +104,7 @@
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-sonarjs": "^0.13.0",
     "eslint-plugin-unicorn": "^42.0.0",
+    "eslint-plugin-unused-imports": "^2.0.0",
     "http-server": "^14.1.1",
     "husky": "^8.0.1",
     "jest": "^28.1.1",

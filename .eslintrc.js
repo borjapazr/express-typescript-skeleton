@@ -91,6 +91,7 @@ module.exports = {
         'prettier',
         'security',
         'simple-import-sort',
+        'unused-imports',
         'deprecation'
       ],
       settings: {
@@ -166,6 +167,13 @@ module.exports = {
           }
         ],
         '@typescript-eslint/member-ordering': 'error',
+        '@typescript-eslint/no-unused-vars': 'off',
+        'no-unused-vars': 'off',
+        'unused-imports/no-unused-imports': 'error',
+        'unused-imports/no-unused-vars': [
+          'error',
+          { vars: 'all', varsIgnorePattern: '^_', args: 'after-used', argsIgnorePattern: '^_' }
+        ],
 
         /* General rules */
         'unicorn/prevent-abbreviations': [
@@ -184,7 +192,6 @@ module.exports = {
         'node/no-missing-import': 'off',
         'promise/no-callback-in-promise': 'off',
         'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
-        '@typescript-eslint/no-unused-vars': 'error',
         'prefer-arrow/prefer-arrow-functions': [
           'warn',
           {
