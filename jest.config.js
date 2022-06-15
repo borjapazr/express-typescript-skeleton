@@ -15,7 +15,7 @@ module.exports = {
   testEnvironmentOptions: {
     NODE_ENV: 'test'
   },
-  testMatch: ['**/?(*.)+(unit|int|e2e|spec|test).(ts|js)'],
+  testMatch: ['<rootDir>/test/**/?(*.)+(unit|int|e2e|spec|test).(ts|js)'],
   preset: 'ts-jest',
   globals: {
     'ts-jest': {
