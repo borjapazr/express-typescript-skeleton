@@ -48,7 +48,7 @@ module.exports = {
     '<rootDir>/src/healthcheck.ts'
   ],
   // Jest custom reporters
-  reporters: ['default', 'jest-sonar']
+  reporters: ['default']
   /*
    * Uncomment if you want to set thresholds for code coverage
   coverageThreshold: {

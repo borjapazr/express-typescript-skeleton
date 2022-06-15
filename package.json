@@ -109,7 +109,6 @@
     "husky": "^8.0.1",
     "jest": "^28.1.1",
     "jest-extended": "^2.0.0",
-    "jest-sonar": "^0.2.12",
     "lint-staged": "^13.0.1",
     "nodemon": "^2.0.16",
     "npm-check-updates": "^13.1.2",
