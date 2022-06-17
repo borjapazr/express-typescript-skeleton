@@ -118,7 +118,7 @@
     "rimraf": "^3.0.2",
     "standard-version": "^9.5.0",
     "supertest": "^6.2.3",
-    "ts-jest": "^28.0.4",
+    "ts-jest": "^28.0.5",
     "ts-node": "^10.8.1",
     "tsc-alias": "^1.6.9",
     "tsconfig-paths": "^4.0.0",
