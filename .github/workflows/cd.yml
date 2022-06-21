@@ -5,6 +5,9 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
   release:
     name: 🐙 Generate new release
@@ -13,7 +16,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 📋 Build Changelog
         run: npx extract-changelog-release > RELEASE_BODY.md
@@ -31,7 +34,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 🏷️ Get the version
         id: get_version
