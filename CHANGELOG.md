@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.1.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.1.0...v1.1.1) (2022-06-29)
+
+### Bug Fixes
+
+- **dockerfile:** update healthcheck script ([419749f](https://github.com/borjapazr/express-typescript-skeleton/commit/419749f1f5b444a2b456afd410725238922321ed))
+
 ## [1.1.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.0.1...v1.1.0) (2022-06-29)
 
 ### Features
