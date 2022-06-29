@@ -10,7 +10,7 @@ const options = {
   host: 'localhost',
   port: AppConfig.PORT,
   timeout: 2000,
-  path: '/healthz'
+  path: `${AppConfig.BASE_PATH}/healthz`
 };
 
 const request = http.request(options, (response: http.IncomingMessage) => {
