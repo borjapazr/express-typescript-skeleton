@@ -1,6 +1,3 @@
-const fs = require('fs');
-const stripJsonComments = require('strip-json-comments');
-
 /*
  * simple-import-sort default grouping, but with type imports last as a separate
  * group, sorting that group like non-type imports are grouped.
@@ -26,7 +23,7 @@ const importGroups = [
  * the different namespaces defined in the application.
  * This matches the "paths" property of the tsconfig.json file.
  */
-const compilerOptions = JSON.parse(stripJsonComments(fs.readFileSync('./tsconfig.json', 'utf8'))).compilerOptions;
+const { compilerOptions } = require('get-tsconfig').getTsconfig('./tsconfig.json')['config'];
 if ('paths' in compilerOptions) {
   const namespaces = Object.keys(compilerOptions.paths).map(path => path.replace('/*', ''));
   if (namespaces && namespaces.length > 0) {
