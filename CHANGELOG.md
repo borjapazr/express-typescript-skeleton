@@ -2,6 +2,61 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.0.1...v1.1.0) (2022-06-29)
+
+### Features
+
+- add Awilix ([900ffc4](https://github.com/borjapazr/express-typescript-skeleton/commit/900ffc4434a5966e0cee4b428b81fda3ad3faaca))
+- add Awilix ([8d5091a](https://github.com/borjapazr/express-typescript-skeleton/commit/8d5091a7933373849a51a2c8efba3fa09b3f21a7))
+- add Prisma ([7e24dd1](https://github.com/borjapazr/express-typescript-skeleton/commit/7e24dd1cc29e6858547a63067e62d5d28dd137b4))
+- **cspell:** improve spell check ([455edff](https://github.com/borjapazr/express-typescript-skeleton/commit/455edff44237e12d08541b577ccb8f7a31954b50))
+- **db:** add Role and User models ([ecfe28f](https://github.com/borjapazr/express-typescript-skeleton/commit/ecfe28f3caa60975b9b5c08c03c1d8d12658a002))
+- **debugger:** add docker debugging profile ([3e8f035](https://github.com/borjapazr/express-typescript-skeleton/commit/3e8f035b261d78a76b860d8a4299925bfae0629c))
+- **di:** add new method to register singletons ([b090341](https://github.com/borjapazr/express-typescript-skeleton/commit/b090341f61e91230d798a14c0500735a91bbcc93))
+- **eslint:** force arrow functions ([921e1db](https://github.com/borjapazr/express-typescript-skeleton/commit/921e1db4d28368c302c7588f8442b7244031aeb2))
+
+### Bug Fixes
+
+- **cd:** add permissions to cd workflow ([9a0ef2c](https://github.com/borjapazr/express-typescript-skeleton/commit/9a0ef2c841f964488e4f8751a054448e99fa86dc))
+- fix typo in CI workflow definition ([6f9e074](https://github.com/borjapazr/express-typescript-skeleton/commit/6f9e074d8e5ff504ef5f65feda3340f0986cc5c9))
+- improve eslint tests override section ([0a9e3b8](https://github.com/borjapazr/express-typescript-skeleton/commit/0a9e3b8d7dbedee32cd100dd77c1079b5f3de502))
+- **jest:** improve jest configuration file ([e9841e1](https://github.com/borjapazr/express-typescript-skeleton/commit/e9841e1435fab7129e59ea05bb0072cf95b39ee9))
+- **typo:** correct typo in README.md ([dcd879e](https://github.com/borjapazr/express-typescript-skeleton/commit/dcd879ef7cf07c45a1e984e01eefd7c38d8c082e))
+
+### Code Refactoring
+
+- improve Makefile and add documentation on it ([5bb238a](https://github.com/borjapazr/express-typescript-skeleton/commit/5bb238ae1c9a24ef2f276ba87dfb2eef7430632d))
+- improve Makefile help rule ([10d19ea](https://github.com/borjapazr/express-typescript-skeleton/commit/10d19ea347f05b67233a4c3020131c9131d94ebb))
+
+### Docs
+
+- improve documentation and todo's ([18ed2e6](https://github.com/borjapazr/express-typescript-skeleton/commit/18ed2e6a9352f50a386408994d9e76aa686f1c42))
+
+### Others
+
+- **barrel:** add barrel files ([73c5f5f](https://github.com/borjapazr/express-typescript-skeleton/commit/73c5f5fe346731fff1dba6374d849929f2e03516))
+- **cd:** add deployment job ([b20fe9d](https://github.com/borjapazr/express-typescript-skeleton/commit/b20fe9d4a5eb5ca7e1cb26605abf42d0de441d53))
+- **deps:** remove jest-sonar ([ebf7daf](https://github.com/borjapazr/express-typescript-skeleton/commit/ebf7daff149ff79de647c5ca7dd908471f6fc904))
+- **deps:** update dependencies ([b2da066](https://github.com/borjapazr/express-typescript-skeleton/commit/b2da06657335689e24634d373a24bd513bbb3224))
+- **deps:** update dependencies ([5e6390f](https://github.com/borjapazr/express-typescript-skeleton/commit/5e6390f2f23d11a0186963830659cbc8d453b8dc))
+- **deps:** update dependencies ([737a816](https://github.com/borjapazr/express-typescript-skeleton/commit/737a816529dd1a3ad5373340b76b135580f1d004))
+- **deps:** update dependencies ([a9ac64d](https://github.com/borjapazr/express-typescript-skeleton/commit/a9ac64dbfdb7e834f88e82e097db2290adb16487))
+- **deps:** update dependencies ([63205a1](https://github.com/borjapazr/express-typescript-skeleton/commit/63205a188e942921d53577a0192a3ffc73daefa4))
+- **deps:** update dependencies ([56a5d47](https://github.com/borjapazr/express-typescript-skeleton/commit/56a5d474b4125550ac460a2a01ff77df647e1891))
+- **deps:** update dependencies ([994b424](https://github.com/borjapazr/express-typescript-skeleton/commit/994b424d4558af1b7266b88dfc00e69c2732d276))
+- **deps:** update dependencies ([1366176](https://github.com/borjapazr/express-typescript-skeleton/commit/13661764cf2070873a79f1f7aa9bde93669dadf1))
+- **deps:** update dependencies ([d742354](https://github.com/borjapazr/express-typescript-skeleton/commit/d742354a6e0214822991aa19077cb0f41d84b3c1))
+- **deps:** update dependencies ([5012977](https://github.com/borjapazr/express-typescript-skeleton/commit/50129777fe1e20f668a6257b325dd428075ff0b9))
+- **deps:** update dependencies ([cda1afb](https://github.com/borjapazr/express-typescript-skeleton/commit/cda1afb0457ee2aaff144b00094e8a7fb8cd426d))
+- **deps:** update dependencies ([8e6c080](https://github.com/borjapazr/express-typescript-skeleton/commit/8e6c080a9cb393b7b25f8725ab6c9f0394340ce1))
+- **deps:** update dependencies ([eb96ca2](https://github.com/borjapazr/express-typescript-skeleton/commit/eb96ca234c99abfb42b56590962a2bd1b86afc16))
+- **deps:** update dependencies ([658a720](https://github.com/borjapazr/express-typescript-skeleton/commit/658a7201641b9ce237fb9c7d42527de4dc94b1fd))
+- **deps:** update dependencies ([c6a841c](https://github.com/borjapazr/express-typescript-skeleton/commit/c6a841c62ff211addedd47ef712f65935d5cd1a4))
+- **deps:** update dependencies ([dd99013](https://github.com/borjapazr/express-typescript-skeleton/commit/dd9901376dbffd753bd99e7c82a48b8ac6ab781d))
+- **deps:** update dependencies and add .ncurc.js ([a386024](https://github.com/borjapazr/express-typescript-skeleton/commit/a386024776861f673d8dc7827f69da12d2de2476))
+- **lint:** add eslint plugin to remove unused imports ([91a65e3](https://github.com/borjapazr/express-typescript-skeleton/commit/91a65e36535176ecb9e45d1ec397e9e464209904))
+- sync package.json and package-lock.json ([22a85f7](https://github.com/borjapazr/express-typescript-skeleton/commit/22a85f7b868e182a23c6aef70684fc54037180e3))
+
 ### [1.0.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.0.0...v1.0.1) (2021-11-23)
 
 ### Bug Fixes
