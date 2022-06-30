@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.1.1...v1.2.0) (2022-06-30)
+
+### Features
+
+- **version:** show package.json version ([75526e8](https://github.com/borjapazr/express-typescript-skeleton/commit/75526e8cbd010e9d2884330725ec7d0e4be0e833))
+
 ### [1.1.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.1.0...v1.1.1) (2022-06-29)
 
 ### Bug Fixes
