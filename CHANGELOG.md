@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.3.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.2.0...v1.3.0) (2022-06-30)
+
+### Features
+
+- **healthz:** add app version to response body ([1b30004](https://github.com/borjapazr/express-typescript-skeleton/commit/1b300045519051112a22aa4d0b76881434ae6104))
+
 ## [1.2.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.1.1...v1.2.0) (2022-06-30)
 
 ### Features
