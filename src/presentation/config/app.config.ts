@@ -1,7 +1,9 @@
+import { sync as readPackageJsonSync } from 'read-pkg';
+
 import { getEnvironmentNumber, getEnvironmentString } from '@infrastructure/shared/config/environment';
 
 const AppInfo = {
-  APP_VERSION: getEnvironmentString('APP_VERSION', '1.0.1'),
+  APP_VERSION: getEnvironmentString('APP_VERSION', readPackageJsonSync().version),
   APP_NAME: getEnvironmentString('APP_NAME', 'base-app'),
   APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', '🚀 To infinity and beyond!'),
   AUTHOR_NAME: getEnvironmentString('AUTHOR_NAME', 'Borja Paz Rodríguez'),
