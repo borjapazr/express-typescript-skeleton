@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.0...v1.3.1) (2022-06-30)
+
+### Bug Fixes
+
+- **oas:** remove timestamp field from responses ([9c03bda](https://github.com/borjapazr/express-typescript-skeleton/commit/9c03bda65715533127022537baa88a0a2b88a925))
+
 ## [1.3.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.2.0...v1.3.0) (2022-06-30)
 
 ### Features
