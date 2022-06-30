@@ -36,6 +36,14 @@ components:
           type: string
           description: Description of server status
           example: '🚀 To infinity and beyond!'
+        timestamp:
+          type: string
+          description: Timestamp of server status
+          example: '2020-01-01T00:00:00Z'
+        appVersion:
+          type: string
+          description: Application version
+          example: '1.0.0'
     ErrorResponse:
       type: object
       properties:
@@ -51,3 +59,11 @@ components:
           type: string
           description: Error description
           example: 'Unexpected internal server error'
+        timestamp:
+          type: string
+          description: Timestamp of server status
+          example: '2020-01-01T00:00:00Z'
+        appVersion:
+          type: string
+          description: Application version
+          example: '1.0.0'

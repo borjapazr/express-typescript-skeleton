@@ -1,9 +1,12 @@
 import { HealthStatus } from '@domain/health/health-status';
+import { AppInfo } from '@presentation/config/app.config';
 
 class HealthStatusResponse {
   readonly status: string;
 
   readonly message: string;
+
+  readonly appVersion = AppInfo.APP_VERSION;
 
   constructor(status: string, message: string) {
     this.status = status;

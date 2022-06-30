@@ -122,6 +122,7 @@ class App {
        Version: ${AppInfo.APP_VERSION}
        Port: ${this.port}
        Base Path: ${this.basePath}
+       OpenApi Spec Path: ${this.basePath}/spec
        Environment: ${this.env}
        Author: ${AppInfo.AUTHOR_NAME}
        Email: ${AppInfo.AUTHOR_EMAIL}
