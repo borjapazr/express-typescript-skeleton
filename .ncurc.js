@@ -1,4 +1,4 @@
 module.exports = {
   upgrade: true,
-  reject: ['class-transformer', 'class-validator']
+  reject: ['class-transformer', 'class-validator', 'read-pkg']
 };
