@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.1...v1.3.2) (2022-07-11)
+
+### Others
+
+- **deps:** update dependencies ([8f5839a](https://github.com/borjapazr/express-typescript-skeleton/commit/8f5839a4631c2d66c5a9cf9b7d290a7122b6da72))
+
 ### [1.3.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.0...v1.3.1) (2022-06-30)
 
 ### Bug Fixes
