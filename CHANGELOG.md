@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.3.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.2...v1.3.3) (2022-07-11)
+
+### Others
+
+- **ci:** remove node v15 checks ([0c7621c](https://github.com/borjapazr/express-typescript-skeleton/commit/0c7621cc72d918931dc29a7c249935d08b4031b3))
+
 ### [1.3.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.1...v1.3.2) (2022-07-11)
 
 ### Others
