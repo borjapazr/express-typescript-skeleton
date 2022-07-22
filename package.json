@@ -2,7 +2,11 @@
   "name": "node-ts-skeleton",
   "version": "1.3.3",
   "description": "This is a template to start developing a REST API with Node.js (Express), TypeScript, Eslint, Prettier, Husky, etc.",
-  "author": "Borja Paz Rodríguez (@borjapazr)",
+  "author": {
+    "name": "Borja Paz Rodríguez",
+    "email": "borjapazr@gmail.com",
+    "url": "https://github.com/borjapazr"
+  },
   "license": "MIT",
   "keywords": [
     "node",
