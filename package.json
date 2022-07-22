@@ -72,7 +72,7 @@
     "@types/figlet": "^1.5.4",
     "@types/jest": "^28.1.6",
     "@types/jsonwebtoken": "^8.5.8",
-    "@types/luxon": "^2.3.2",
+    "@types/luxon": "^3.0.0",
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
     "@types/node": "^18.0.6",
@@ -80,12 +80,12 @@
     "@types/source-map-support": "^0.5.4",
     "@types/supertest": "^2.0.12",
     "@types/swagger-ui-express": "^4.1.3",
-    "@typescript-eslint/eslint-plugin": "^5.30.6",
-    "@typescript-eslint/parser": "^5.30.6",
+    "@typescript-eslint/eslint-plugin": "^5.30.7",
+    "@typescript-eslint/parser": "^5.30.7",
     "commitizen": "^4.2.5",
     "copyfiles": "^2.4.1",
     "cross-env": "^7.0.3",
-    "cspell": "^6.3.0",
+    "cspell": "^6.4.0",
     "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.20.0",
     "eslint-config-airbnb-typescript": "^17.0.0",
@@ -102,7 +102,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint-plugin-sonarjs": "^0.13.0",
+    "eslint-plugin-sonarjs": "^0.14.0",
     "eslint-plugin-unicorn": "^42.0.0",
     "eslint-plugin-unused-imports": "^2.0.0",
     "get-tsconfig": "^4.2.0",
@@ -115,7 +115,7 @@
     "npm-check-updates": "^15.3.4",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
-    "prisma": "^4.0.0",
+    "prisma": "^4.1.0",
     "rimraf": "^3.0.2",
     "standard-version": "^9.5.0",
     "supertest": "^6.2.4",
@@ -126,7 +126,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "@prisma/client": "^4.0.0",
+    "@prisma/client": "^4.1.0",
     "@types/swagger-jsdoc": "^6.0.1",
     "awilix": "^7.0.3",
     "body-parser": "^1.20.0",
@@ -155,12 +155,6 @@
     "swagger-ui-express": "^4.5.0",
     "winston": "^3.8.1",
     "winston-daily-rotate-file": "^4.7.1"
-  },
-  "overrides": {
-    "commitizen": {
-      "inquirer": "8.2.0",
-      "minimist": "1.2.6"
-    }
   },
   "prisma": {
     "schema": "src/infrastructure/shared/persistence/prisma/schema.prisma"
