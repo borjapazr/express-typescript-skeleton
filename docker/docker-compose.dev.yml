@@ -8,8 +8,8 @@ services:
         - PORT=${PORT}
       dockerfile: ./docker/Dockerfile
       target: dev
-    image: ${APP_NAME}:dev
-    container_name: ${APP_NAME}
+    image: ${IMAGE_NAME}:dev
+    container_name: ${IMAGE_NAME}
     restart: always
     depends_on:
       - db
@@ -52,4 +52,4 @@ volumes:
 
 networks:
   default:
-    name: ${APP_NAME}-network
+    name: ${IMAGE_NAME}-network

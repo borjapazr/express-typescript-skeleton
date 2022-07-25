@@ -4,11 +4,11 @@ import { getEnvironmentNumber, getEnvironmentString } from '@infrastructure/shar
 
 const AppInfo = {
   APP_VERSION: getEnvironmentString('APP_VERSION', readPackageJsonSync().version),
-  APP_NAME: getEnvironmentString('APP_NAME', 'base-app'),
-  APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', '🚀 To infinity and beyond!'),
-  AUTHOR_NAME: getEnvironmentString('AUTHOR_NAME', 'Borja Paz Rodríguez'),
-  AUTHOR_EMAIL: getEnvironmentString('AUTHOR_EMAIL', 'borjapazr@gmail.com'),
-  AUTHOR_WEBSITE: getEnvironmentString('AUTHOR_WEBSITE', 'https://bpaz.dev')
+  APP_NAME: getEnvironmentString('APP_NAME', readPackageJsonSync().name),
+  APP_DESCRIPTION: getEnvironmentString('APP_DESCRIPTION', readPackageJsonSync().description || 'N/A'),
+  AUTHOR_NAME: getEnvironmentString('AUTHOR_NAME', readPackageJsonSync().author?.name || 'N/A'),
+  AUTHOR_EMAIL: getEnvironmentString('AUTHOR_EMAIL', readPackageJsonSync().author?.email || 'N/A'),
+  AUTHOR_WEBSITE: getEnvironmentString('AUTHOR_WEBSITE', readPackageJsonSync().author?.url || 'N/A')
 };
 
 const AppConfig = {

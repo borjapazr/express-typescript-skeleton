@@ -1,8 +1,12 @@
 {
-  "name": "node-ts-skeleton",
+  "name": "express-typescript-skeleton",
   "version": "1.3.3",
-  "description": "This is a template to start developing a REST API with Node.js (Express), TypeScript, Eslint, Prettier, Husky, etc.",
-  "author": "Borja Paz Rodríguez (@borjapazr)",
+  "description": "🔰🦸 Template to start developing a REST API with Node.js (Express), TypeScript, ESLint, Prettier, Husky, Prisma, etc.",
+  "author": {
+    "name": "Borja Paz Rodríguez",
+    "email": "borjapazr@gmail.com",
+    "url": "https://bpaz.dev"
+  },
   "license": "MIT",
   "keywords": [
     "node",
