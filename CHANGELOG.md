@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.4.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.3...v1.4.0) (2022-07-25)
+
+### Features
+
+- **ci:** add back node 15 validations ([#161](https://github.com/borjapazr/express-typescript-skeleton/issues/161)) ([e27d65e](https://github.com/borjapazr/express-typescript-skeleton/commit/e27d65e0118a1eaf93379ca8376c477feaacffbb))
+- **version:** read app info from package.json ([#174](https://github.com/borjapazr/express-typescript-skeleton/issues/174)) ([15224ce](https://github.com/borjapazr/express-typescript-skeleton/commit/15224ce5bdf930702569a6b3c2b6255d40dd1e88))
+
+### Others
+
+- **deps:** update dependencies ([415b435](https://github.com/borjapazr/express-typescript-skeleton/commit/415b4351b0910fe4ed53f51377c221d1eefecefe))
+- **deps:** update dependencies ([#175](https://github.com/borjapazr/express-typescript-skeleton/issues/175)) ([7b56d14](https://github.com/borjapazr/express-typescript-skeleton/commit/7b56d141391cab817f81e3d720efbde52ca652d3))
+
 ### [1.3.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.2...v1.3.3) (2022-07-11)
 
 ### Others
