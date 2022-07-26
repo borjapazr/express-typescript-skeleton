@@ -1,5 +1,5 @@
 # Base image stage
-FROM node:16-alpine as node
+FROM node:18-alpine as node
 
 ARG PORT=5000
 ENV PORT $PORT
