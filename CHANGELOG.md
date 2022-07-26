@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.4.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.4.0...v1.4.1) (2022-07-26)
+
+### Others
+
+- **ci:** add node 18.x validations ([5419a8a](https://github.com/borjapazr/express-typescript-skeleton/commit/5419a8a8ed0aeed1f4fa6b7fc352cbd3dd2efa38))
+- **ci:** validate only lts versions of node.js ([1f78e12](https://github.com/borjapazr/express-typescript-skeleton/commit/1f78e120a19245e079eb9942bd939fc969f4fda0))
+
 ## [1.4.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.3.3...v1.4.0) (2022-07-25)
 
 ### Features
