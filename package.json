@@ -143,7 +143,7 @@
     "express": "^4.18.1",
     "figlet": "^1.5.2",
     "helmet": "^5.1.1",
-    "http-graceful-shutdown": "^3.1.7",
+    "http-graceful-shutdown": "^3.1.8",
     "http-status-codes": "^2.2.0",
     "jsonwebtoken": "^8.5.1",
     "luxon": "^3.0.1",
