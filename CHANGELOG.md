@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [1.5.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.5.0...v1.5.1) (2022-08-06)
+
+### Bug Fixes
+
+- **package-lock:** fix npm install ([502c6b1](https://github.com/borjapazr/express-typescript-skeleton/commit/502c6b1af2993d35c48f03a864d55c373ee90c62))
+
 ## [1.5.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.4.1...v1.5.0) (2022-08-06)
 
 ### Features
