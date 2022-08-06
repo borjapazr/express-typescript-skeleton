@@ -64,6 +64,7 @@ module.exports = {
       extends: [
         'plugin:@typescript-eslint/recommended',
         'plugin:node/recommended',
+        'airbnb-base',
         'airbnb-typescript/base',
         'plugin:eslint-comments/recommended',
         'plugin:unicorn/recommended',
@@ -201,12 +202,12 @@ module.exports = {
       overrides: [
         {
           files: ['*.unit.ts', '*.int.ts', '*.e2e.ts', '*.spec.ts', '*.test.ts'],
-          plugins: ['jest'],
           env: {
             jest: true,
             'jest/globals': true
           },
           extends: ['plugin:jest/recommended', 'plugin:jest/style'],
+          plugins: ['jest'],
           rules: {
             'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }]
           }

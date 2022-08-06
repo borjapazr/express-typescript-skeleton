@@ -22,6 +22,7 @@ class DiContainer {
     injectionMode: InjectionMode.CLASSIC
   });
 
+  // eslint-disable-next-line consistent-return
   static async initialize(): Promise<AwilixContainer> {
     try {
       // Core dependencies
