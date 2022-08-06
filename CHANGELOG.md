@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.4.1...v1.5.0) (2022-08-06)
+
+### Features
+
+- **eslint:** add airbnb-base rules ([6b87be9](https://github.com/borjapazr/express-typescript-skeleton/commit/6b87be982edae60e2e3b2a765750628a6b92e499))
+
+### Others
+
+- **deps:** update dependencies ([a807f29](https://github.com/borjapazr/express-typescript-skeleton/commit/a807f29a4f861e8b47d85c33511e997aabce37ff))
+- **deps:** update dependencies ([8bb4a77](https://github.com/borjapazr/express-typescript-skeleton/commit/8bb4a770fdd2ec237bdaf836e1d2ff41c1e13a87))
+
 ### [1.4.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.4.0...v1.4.1) (2022-07-26)
 
 ### Others
