@@ -66,7 +66,7 @@
     "@cspell/dict-html": "^3.0.2",
     "@cspell/dict-lorem-ipsum": "^2.0.0",
     "@cspell/dict-node": "^3.0.1",
-    "@cspell/dict-npm": "^3.1.1",
+    "@cspell/dict-npm": "^3.1.2",
     "@cspell/dict-software-terms": "^2.2.2",
     "@cspell/dict-typescript": "^2.0.1",
     "@types/body-parser": "^1.19.2",
