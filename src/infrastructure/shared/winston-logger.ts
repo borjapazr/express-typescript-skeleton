@@ -3,7 +3,7 @@ import 'winston-daily-rotate-file';
 import emoji from 'node-emoji';
 import { addColors, createLogger, format, Logger as WinstonLoggerType, transports } from 'winston';
 
-import { Logger } from '@domain/shared/logger.interface';
+import { Logger } from '@domain/shared/logger';
 import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
 
 enum LevelName {

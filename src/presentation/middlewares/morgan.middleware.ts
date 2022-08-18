@@ -1,6 +1,6 @@
+import { Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { NextFunction, Request, Response } from 'express';
 import morgan, { StreamOptions } from 'morgan';
-import { ExpressMiddlewareInterface, Middleware } from 'routing-controllers';
 
 import { LOGGER } from '@domain/shared';
 import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
@@ -15,11 +15,11 @@ const stream: StreamOptions = {
  * we already told to the logger that it should print
  * only warning and error messages in production.
  */
-const skip = () => GlobalConfig.IS_PRODUCTION;
+const skip = (): boolean => GlobalConfig.IS_PRODUCTION;
 
-@Middleware({ type: 'before' })
-class MorganMiddleware implements ExpressMiddlewareInterface {
-  use(request: Request, response: Response, next: NextFunction): void {
+@Middleware()
+class MorganMiddleware implements MiddlewareMethods {
+  public use(@Req() request: Request, @Res() response: Response, @Next() next: NextFunction): void {
     morgan(':method :url :status :res[content-length] - :response-time ms', {
       stream,
       skip

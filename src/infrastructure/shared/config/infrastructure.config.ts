@@ -2,6 +2,7 @@ import { getEnvironmentNumber, getEnvironmentString } from './environment';
 
 const GlobalConfig = {
   ENVIRONMENT: getEnvironmentString('NODE_ENV', 'development'),
+  IS_TEST: getEnvironmentString('NODE_ENV', 'development') === 'test',
   IS_DEVELOPMENT: getEnvironmentString('NODE_ENV', 'development') === 'development',
   IS_PRODUCTION: getEnvironmentString('NODE_ENV', 'development') === 'production',
   LOGS_FOLDER: getEnvironmentString('LOGS_FOLDER', 'logs')

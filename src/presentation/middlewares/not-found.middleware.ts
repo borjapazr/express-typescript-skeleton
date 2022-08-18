@@ -1,15 +1,12 @@
+import { Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { NextFunction, Request, Response } from 'express';
-import { ExpressMiddlewareInterface, Middleware } from 'routing-controllers';
 
-import { NotFoundError } from '@presentation/errors';
+import { PathNotFoundException } from '@presentation/exceptions';
 
-@Middleware({ type: 'after' })
-class NotFoundMiddleware implements ExpressMiddlewareInterface {
-  use(request: Request, response: Response, next: NextFunction): void {
-    if (!response.headersSent) {
-      next(new NotFoundError(request.method, request.originalUrl));
-    }
-    response.end();
+@Middleware()
+class NotFoundMiddleware implements MiddlewareMethods {
+  public use(@Req() request: Request, @Res() _response: Response, @Next() next: NextFunction): void {
+    next(new PathNotFoundException(request.method, request.originalUrl));
   }
 }
 
