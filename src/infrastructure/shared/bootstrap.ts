@@ -2,7 +2,7 @@ import { performance } from 'perf_hooks';
 
 import { LOGGER } from '@domain/shared';
 
-import { DiContainer } from './di/di-container';
+import { DependencyInjection } from './di/dependency-injection';
 
 interface BootstrapResult {
   bootstrapDuration: number;
@@ -13,14 +13,17 @@ const bootstrap = async (): Promise<BootstrapResult> => {
 
   LOGGER.info('Bootstrapping infrastructure...');
 
+  const bootstrapEndTime = performance.now();
+
   LOGGER.info('Initializing DI container...');
-  await DiContainer.initialize();
+
+  await DependencyInjection.initialize();
+
   LOGGER.info('DI container initialized!');
 
-  const bootstrapEndTime = performance.now();
-  const bootstrapDuration = Math.floor(bootstrapEndTime - bootstrapStartTime);
+  const bootstrapDuration = bootstrapEndTime - bootstrapStartTime;
 
-  LOGGER.info(`Infrastructure bootstrap took ${bootstrapDuration} ms!`);
+  LOGGER.info(`Infrastructure bootstrap took +${bootstrapDuration} ms to execute!`);
 
   return { bootstrapDuration };
 };

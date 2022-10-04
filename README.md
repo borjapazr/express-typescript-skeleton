@@ -51,7 +51,7 @@ The main goal of this project is to provide a base template for the generation o
 - Built using [Typescript](https://github.com/microsoft/TypeScript)
 - Built using [Express Framework](https://github.com/expressjs/express): Fast, unopinionated, minimalist web framework for node.
 - Built using [Prisma](https://www.prisma.io/): Next-generation ORM for Node.js & TypeScript | PostgreSQL, MySQL, MariaDB, SQL Server, SQLite & MongoDB
-- Built using [Routing Controllers](https://github.com/typestack/routing-controllers): Allows to create controller classes with methods as actions that handle requests
+- Built using [Ts.ED](https://tsed.io/): Ts.ED is a Node.js Framework on top of Express/Koa.js. Written in Typescript, it helps you build your server-side application easily and quickly. If you want to start a complete out-of-the-box project or fully customize it yourself, Ts.ED will guide you there!
 - JWT authentication and role based authorization using custom middleware
 - OpenAPI definition
 - Fully configured logger with [Winston](https://github.com/winstonjs/winston) and [Morgan](https://github.com/expressjs/morgan)

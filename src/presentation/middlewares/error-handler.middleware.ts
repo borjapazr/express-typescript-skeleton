@@ -1,46 +1,65 @@
+import { Err, Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { NextFunction, Request, Response } from 'express';
-import { StatusCodes } from 'http-status-codes';
-import emoji from 'node-emoji';
-import { ExpressErrorMiddlewareInterface, Middleware } from 'routing-controllers';
 
-import { LOGGER } from '@domain/shared';
-import { ApiError, ErrorResponse } from '@presentation/errors';
+import {
+  ApiException,
+  ExceptionResponse,
+  ResourceNotFoundException,
+  UnauthorizedException
+} from '@presentation/exceptions';
+import { InternalServerErrorException } from '@presentation/exceptions/internal-server-error.exception';
 
-const ERROR_HANDLERS: { [error: string]: (response: Response, error: Error) => void } = {
-  AccessDeniedError: (response: Response, error: Error) => {
-    response
-      .status(StatusCodes.FORBIDDEN)
-      .send(new ErrorResponse(StatusCodes.FORBIDDEN, 'forbidden', `${emoji.get('x')} ${error.message}`));
-  },
+@Middleware()
+class ErrorHandlerMiddleware implements MiddlewareMethods {
+  public use(
+    @Err() error: Error,
+    @Req() _request: Request,
+    @Res() response: Response,
+    @Next() _next: NextFunction
+  ): void {
+    return this.getExceptionHandler(error)(response, error);
+  }
 
-  DefaultError: (response: Response, error: Error) => {
-    if (error instanceof ApiError) {
-      const apiError = <ApiError>error;
-      response.status(apiError.status).send(new ErrorResponse(apiError.status, apiError.code, apiError.message));
-    } else {
-      LOGGER.error(error);
+  private getExceptionHandler = (exception: Error): ((response: Response, error: Error) => void) => {
+    const invalidCredentialsHandler = (response: Response, _error: Error): void => {
+      const unauthorizedException = new UnauthorizedException();
+      response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
+    };
+
+    const userNotFoundHandler = (response: Response, error: Error): void => {
+      const resourceNotFoundException = new ResourceNotFoundException(error.message);
       response
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .send(
-          new ErrorResponse(
-            StatusCodes.INTERNAL_SERVER_ERROR,
-            'unexpected_error',
-            `${emoji.get('female-technologist')} An unexpected error has occurred. Please contact the administrator.`
-          )
-        );
-    }
-  }
-};
+        .status(resourceNotFoundException.status)
+        .send(ExceptionResponse.fromApiException(resourceNotFoundException));
+    };
 
-@Middleware({ type: 'after' })
-class ErrorHandlerMiddleware implements ExpressErrorMiddlewareInterface {
-  error(error: Error, _request: Request, response: Response, next: NextFunction): void {
-    if (response.headersSent) {
-      return next(error);
-    }
-    const handler = ERROR_HANDLERS[error.name || error.constructor.name] || ERROR_HANDLERS.DefaultError;
-    return handler(response, error);
-  }
+    const invalidSessionHandler = (response: Response, _error: Error): void => {
+      const unauthorizedException = new UnauthorizedException();
+      response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
+    };
+
+    const defaultHandler = (response: Response, error: Error): void => {
+      if (error instanceof ApiException) {
+        const apiException = error as ApiException;
+        response.status(apiException.status).send(ExceptionResponse.fromApiException(apiException));
+      } else {
+        const internalServerErrorException = new InternalServerErrorException();
+        response
+          .status(internalServerErrorException.status)
+          .send(ExceptionResponse.fromApiException(internalServerErrorException));
+      }
+    };
+
+    const exceptionHandlers: { [exception: string]: (response: Response, error: Error) => void } = {
+      InvalidAuthenticationUsernameException: invalidCredentialsHandler,
+      InvalidAuthenticationCredentialsException: invalidCredentialsHandler,
+      UserNotExistsException: userNotFoundHandler,
+      InvalidSessionException: invalidSessionHandler,
+      DefaultException: defaultHandler
+    };
+
+    return exceptionHandlers[exception.name || exception.constructor.name] || exceptionHandlers.DefaultException;
+  };
 }
 
 export { ErrorHandlerMiddleware };

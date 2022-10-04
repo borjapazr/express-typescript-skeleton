@@ -8,39 +8,63 @@ generator client {
   binaryTargets = ["native"]
 }
 
-model Role {
-  id        Int       @id @default(autoincrement())
-  uuid      String    @unique
-  name      String
-  enabled   Boolean   @default(true)
-  users     User[]
-  createdAt DateTime? @default(now())
-  createdBy String?
-  updatedAt DateTime? @default(now())
-  updatedBy String?
-  deletedAt DateTime?
-  deletedBy String?
+generator tsed {
+  provider      = "tsed-prisma"
+  binaryTargets = ["native"]
+  //output             = "./generated/tsed"
+  //emitTranspiledCode = false
+}
+
+enum Gender {
+  UNDEFINED
+  MALE
+  FEMALE
+}
+
+enum Role {
+  ADMIN
+  USER
+  AUDITOR
 }
 
 model User {
-  id            Int       @id @default(autoincrement())
-  uuid          String    @unique
-  gender        String
-  firstName     String
-  lastName      String
-  birthDate     DateTime
-  email         String    @unique
-  phoneNumber   String
-  address       String
-  profilePicUrl String
-  password      String
+  id            Int       @id @default(autoincrement()) @db.UnsignedInt
+  uuid          String    @unique @db.VarChar(1000)
+  gender        Gender    @default(UNDEFINED)
+  firstName     String    @db.VarChar(255)
+  lastName      String    @db.VarChar(500)
+  birthDate     DateTime  @db.Date
+  username      String    @unique @db.VarChar(100)
+  email         String    @unique @db.VarChar(255)
+  phoneNumber   String    @db.VarChar(100)
+  address       String    @db.VarChar(1500)
+  profilePicUrl String    @db.VarChar(2500)
+  passwordHash  String    @db.VarChar(100)
   verified      Boolean   @default(false)
   enabled       Boolean   @default(true)
-  roles         Role[]
-  createdAt     DateTime? @default(now())
-  createdBy     String?
-  updatedAt     DateTime? @default(now())
-  updatedBy     String?
-  deletedAt     DateTime?
-  deletedBy     String?
+  role          Role      @default(USER)
+  createdAt     DateTime? @default(now()) @db.DateTime(6)
+  createdBy     String?   @db.VarChar(255)
+  updatedAt     DateTime? @default(now()) @updatedAt @db.DateTime(6)
+  updatedBy     String?   @db.VarChar(255)
+  deletedAt     DateTime? @db.DateTime(6)
+  deletedBy     String?   @db.VarChar(255)
+}
+
+model Session {
+  id               Int       @id @default(autoincrement()) @db.UnsignedInt
+  uuid             String    @unique @db.VarChar(1000)
+  userUuid         String    @db.VarChar(1000)
+  userData         String    @db.Text
+  refreshTokenHash String    @db.VarChar(5000)
+  revokedAt        DateTime? @db.DateTime(6)
+  revokedBy        String?   @db.VarChar(255)
+  revocationReason String?   @db.VarChar(1000)
+  expiresAt        DateTime  @db.DateTime(6)
+  createdAt        DateTime? @default(now()) @db.DateTime(6)
+  createdBy        String?   @db.VarChar(255)
+  updatedAt        DateTime? @default(now()) @updatedAt @db.DateTime(6)
+  updatedBy        String?   @db.VarChar(255)
+  deletedAt        DateTime? @db.DateTime(6)
+  deletedBy        String?   @db.VarChar(255)
 }

@@ -90,7 +90,8 @@ module.exports = {
         'security',
         'simple-import-sort',
         'unused-imports',
-        'deprecation'
+        'deprecation',
+        'hexagonal-architecture'
       ],
       settings: {
         // Define import resolver for import plugin
@@ -109,7 +110,7 @@ module.exports = {
         'no-useless-constructor': 'off',
         'class-methods-use-this': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
-        '@typescript-eslint/explicit-function-return-type': 'off',
+        '@typescript-eslint/explicit-function-return-type': 'error',
         'unicorn/no-new-array': 'off',
         'unicorn/no-fn-reference-in-iterator': 'off',
         'unicorn/no-array-for-each': 'off',
@@ -190,6 +191,19 @@ module.exports = {
         'node/no-missing-import': 'off',
         'promise/no-callback-in-promise': 'off',
         'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
+        '@typescript-eslint/explicit-member-accessibility': [
+          'error',
+          {
+            accessibility: 'explicit',
+            overrides: {
+              accessors: 'explicit',
+              constructors: 'no-public',
+              methods: 'explicit',
+              properties: 'off',
+              parameterProperties: 'explicit'
+            }
+          }
+        ],
         'prefer-arrow/prefer-arrow-functions': [
           'warn',
           {
@@ -200,6 +214,12 @@ module.exports = {
         ]
       },
       overrides: [
+        {
+          files: ['src/!(presentation|types)/**/*.ts'],
+          rules: {
+            'hexagonal-architecture/enforce': ['error']
+          }
+        },
         {
           files: ['*.unit.ts', '*.int.ts', '*.e2e.ts', '*.spec.ts', '*.test.ts'],
           env: {
