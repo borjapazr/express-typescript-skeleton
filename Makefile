@@ -43,7 +43,7 @@ build/dev: ## Build development environment
 build/prod: ## Build production environment
 build/dev build/prod:
 	@echo "📦 Building project Docker image..."
-	@docker build --build-arg PORT=$(PORT) --target $(ENVIRONMENT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
+	@docker build --build-arg PORT=$(PORT) --platform=linux/amd64 --target $(ENVIRONMENT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
 
 .PHONY: start/dev
 start/dev: ## Start application in development mode

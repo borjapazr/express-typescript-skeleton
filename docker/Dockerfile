@@ -17,7 +17,9 @@ FROM node AS builder
 
 WORKDIR /code
 COPY package*.json ./
-RUN npm install --ignore-scripts --no-optional && npm cache clean --force
+COPY ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
+RUN npm install --ignore-scripts --omit=optional && npm cache clean --force
+RUN npx -y prisma generate --schema ./prisma/schema.prisma
 ENV PATH /code/node_modules/.bin:$PATH
 WORKDIR /code/app
 COPY . ./
@@ -45,7 +47,9 @@ RUN chown -R node:node /home/node/app
 RUN npm install -g pm2
 USER node
 COPY --chown=node:node package*.json ./docker/pm2/process.json ./
-RUN npm ci --production --ignore-scripts
+COPY --chown=node:node ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
+RUN npm ci --omit=dev --ignore-scripts
+RUN npx -y prisma generate --schema ./prisma/schema.prisma
 ENV PATH /home/node/app/node_modules/.bin:$PATH
 COPY --chown=node:node --from=builder /code/app/dist ./dist
 HEALTHCHECK --interval=30s --timeout=60s --start-period=10s --retries=3 CMD node ./dist/healthcheck.js

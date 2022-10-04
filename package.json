@@ -140,7 +140,6 @@
     "standard-version": "^9.5.0",
     "supertest": "^6.3.0",
     "ts-jest": "^29.0.3",
-    "ts-node": "^10.9.1",
     "tsc-alias": "^1.7.0",
     "tsconfig-paths": "^4.1.0",
     "typescript": "^4.8.4"
@@ -183,6 +182,7 @@
     "read-pkg": "5.2.0",
     "reflect-metadata": "^0.1.13",
     "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.1",
     "uuid": "^9.0.0",
     "winston": "^3.8.2",
     "winston-daily-rotate-file": "^4.7.1"
