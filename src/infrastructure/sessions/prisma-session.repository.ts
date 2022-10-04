@@ -35,7 +35,7 @@ class PrismaSessionRepository extends BasePrismaRepository<SessionModel> impleme
 
   public async update(session: Session): Promise<Session> {
     const updatedSession = await this.sessionRepository.update({
-      where: { id: session.id?.value },
+      where: { uuid: session.uuid.value },
       data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, SessionMapper.toPersistenceModel(session))
     });
     return SessionMapper.toDomainModel(updatedSession);

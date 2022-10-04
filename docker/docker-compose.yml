@@ -1,32 +1,31 @@
 version: '3.7'
 
 services:
-  app:
+  express-typescript-skeleton:
     build:
       context: ..
       args:
         - PORT=${PORT}
       dockerfile: ./docker/Dockerfile
-      target: dev
-    image: ${IMAGE_NAME}:dev
-    container_name: ${IMAGE_NAME}
+      target: prod
+    image: ${IMAGE_NAME}:prod
+    container_name: express-typescript-skeleton
     restart: always
     depends_on:
-      - db
+      - express-typescript-skeleton-db
+    env_file:
+      - ../.env
     environment:
       - TZ=${TZ}
-      - WAIT_HOSTS=db:3306
+      - WAIT_HOSTS=express-typescript-skeleton-db:3306
     volumes:
-      - ../:/code/app
-      - ../package.json:/code/package.json
-      - ../package-lock.json:/code/package-lock.json
-      - not_used_node_modules:/code/app/node_modules
+      - ${LOGS_VOLUME}:/home/node/app/logs
     ports:
-      - 9229:9229
       - ${EXTERNAL_PORT}:${PORT}
-  db:
+
+  express-typescript-skeleton-db:
     image: mariadb
-    container_name: db
+    container_name: express-typescript-skeleton-db
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
@@ -37,18 +36,16 @@ services:
       - ${DB_VOLUME}:/var/lib/mysql
     ports:
       - ${DB_PORT}:3306
-  adminer:
+
+  express-typescript-skeleton-adminer:
     image: adminer
-    container_name: adminer
+    container_name: express-typescript-skeleton-adminer
     restart: always
     environment:
-      - ADMINER_DEFAULT_SERVER=db
+      - ADMINER_DEFAULT_SERVER=express-typescript-skeleton-db
       - TZ=${TZ}
     ports:
       - ${DB_MANAGER_PORT}:8080
-
-volumes:
-  not_used_node_modules:
 
 networks:
   default:

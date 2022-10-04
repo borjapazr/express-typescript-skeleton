@@ -13,7 +13,7 @@ class DependencyInjection {
         }
       ]);
     } catch (error) {
-      LOGGER.error(error);
+      LOGGER.error(`[@Bootstrap] ${this.constructor.name}.initialize() threw the following error! --- ${error}`);
       process.exit(1);
     }
   };

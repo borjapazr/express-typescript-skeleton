@@ -1,9 +1,6 @@
-import { Nullable } from '@domain/shared';
 import { User } from '@domain/users';
 
 class UserResponse {
-  readonly id: Nullable<number>;
-
   readonly uuid: string;
 
   readonly gender: string;
@@ -33,7 +30,6 @@ class UserResponse {
   readonly enabled: boolean;
 
   constructor(
-    id: Nullable<number>,
     uuid: string,
     gender: string,
     firstName: string,
@@ -49,7 +45,6 @@ class UserResponse {
     verified: boolean,
     enabled: boolean
   ) {
-    this.id = id;
     this.uuid = uuid;
     this.gender = gender;
     this.firstName = firstName;
@@ -68,7 +63,6 @@ class UserResponse {
 
   public static fromDomainModel(user: User): UserResponse {
     return new UserResponse(
-      user.id?.value,
       user.uuid.value,
       user.gender.value,
       user.name.firstName,

@@ -4,8 +4,8 @@
   "steps": [
     {
       "file": "Makefile",
-      "description": "# Launch the application\n\nTo start the project just execute the following command:\n\n>> make start/dev\n\n💡 *It is necessary to have **docker** and **docker-compose** installed on the system.*\n",
-      "line": 49
+      "description": "# Launch the application\n\nTo start the project just execute the following command:\n\n>> make start\n\n💡 *It is necessary to have **docker** and **docker-compose** installed on the system.*\n",
+      "line": 44
     }
   ],
   "ref": "main"

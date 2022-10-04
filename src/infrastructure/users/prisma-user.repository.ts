@@ -1,7 +1,7 @@
 import { UserModel, UsersRepository } from '@tsed/prisma';
 
 import { Nullable } from '@domain/shared';
-import { UserEmail, UserId, UserRepository, UserUuid } from '@domain/users';
+import { UserEmail, UserRepository, UserUuid } from '@domain/users';
 import { User } from '@domain/users/user';
 import { UserUsername } from '@domain/users/user-username';
 import { BasePrismaRepository, RepositoryAction } from '@infrastructure/shared/persistence/base-prisma-repository';
@@ -16,14 +16,6 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
   constructor(usersRepository: UsersRepository) {
     super();
     this.usersRepository = usersRepository;
-  }
-
-  public async findById(id: UserId): Promise<Nullable<User>> {
-    const user = await this.usersRepository.findFirst({
-      where: { id: id.value, deletedAt: null }
-    });
-
-    return user ? UserMapper.toDomainModel(user) : null;
   }
 
   public async findByUuid(uuid: UserUuid): Promise<Nullable<User>> {
@@ -67,7 +59,7 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
 
   public async update(user: User): Promise<User> {
     const updatedUser = await this.usersRepository.update({
-      where: { id: user.id?.value },
+      where: { uuid: user.uuid.value },
       data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, UserMapper.toPersistenceModel(user))
     });
     return UserMapper.toDomainModel(updatedUser);

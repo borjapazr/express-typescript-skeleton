@@ -1,13 +1,9 @@
-import { Default, Email, Enum, Format, Integer, Property } from '@tsed/schema';
+import { Default, Email, Enum, Format, Property } from '@tsed/schema';
 
 import { UserResponse } from '@application/users';
-import { Nullable } from '@domain/shared';
 import { UserGenders, UserRoles } from '@domain/users';
 
 class UserApiResponse {
-  @Integer()
-  readonly id: Nullable<number>;
-
   @Property()
   readonly uuid: string;
 
@@ -53,7 +49,6 @@ class UserApiResponse {
   readonly enabled: boolean;
 
   constructor(
-    id: Nullable<number>,
     uuid: string,
     gender: string,
     firstName: string,
@@ -69,7 +64,6 @@ class UserApiResponse {
     verified: boolean,
     enabled: boolean
   ) {
-    this.id = id;
     this.uuid = uuid;
     this.gender = gender;
     this.firstName = firstName;
@@ -88,7 +82,6 @@ class UserApiResponse {
 
   public static fromUserApiResponse(user: UserResponse): UserApiResponse {
     return new UserApiResponse(
-      user.id,
       user.uuid,
       user.gender,
       user.firstName,

@@ -57,7 +57,9 @@ import { ErrorHandlerMiddleware, MetadataMiddleware, MorganMiddleware, NotFoundM
               \n
               The *Refresh Token* can be sent using the header \`refresh-token: <refresh-token>\` or the cookie \`refresh-token\`.
               \n
-              🧐 *The headers override the cookies, so if both are sent, the value of the headers will be used. In the case of the Access Token, the header with the highest priority is the one corresponding to the Authorization Bearer scheme.*`
+              🧐 *The headers override the cookies, so if both are sent, the value of the headers will be used. In the case of the Access Token, the header with the highest priority is the one corresponding to the Authorization Bearer scheme.*
+              \n
+              **Sample username and password to use on \`/api/auth/login\` endpoint**: \`janedoe\` / \`123456\``
             }
           }
         }

@@ -42,7 +42,7 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
         const apiException = error as ApiException;
         response.status(apiException.status).body(ExceptionResponse.fromApiException(apiException));
       } else {
-        LOGGER.error(error);
+        LOGGER.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
         const internalServerErrorException = new InternalServerErrorException();
         response
           .status(internalServerErrorException.status)

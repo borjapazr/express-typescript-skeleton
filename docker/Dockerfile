@@ -1,6 +1,8 @@
 # Base image stage
 FROM node:18 as node
 
+LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
+
 ARG PORT=5000
 ENV PORT $PORT
 EXPOSE $PORT
@@ -21,8 +23,7 @@ WORKDIR /code
 COPY package*.json ./
 COPY ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
 
-RUN npm set-script prepare ""
-RUN npm install && npm cache clean --force
+RUN npm install --omit=optional --ignore-scripts && npm cache clean --force
 RUN npx -y prisma generate --schema ./prisma/schema.prisma
 
 ENV PATH /code/node_modules/.bin:$PATH
@@ -34,20 +35,8 @@ COPY . ./
 RUN npm run build
 
 
-# Dev stage
-FROM builder as dev
-
-LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
-
-ENV NODE_ENV=development
-ENV FORCE_COLOR=1
-CMD /wait && npm run dev
-
-
 # Prod stage
 FROM node as prod
-
-LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
 
 ENV NODE_ENV=production
 ENV FORCE_COLOR=1
@@ -64,7 +53,7 @@ COPY --chown=node:node package*.json ./docker/pm2/process.json ./
 COPY --chown=node:node ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
 
 RUN npm set-script prepare ""
-RUN npm ci --omit=dev
+RUN npm ci --omit=dev && npm cache clean --force
 RUN npx -y prisma generate --schema ./prisma/schema.prisma
 
 ENV PATH /home/node/app/node_modules/.bin:$PATH

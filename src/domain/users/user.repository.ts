@@ -3,12 +3,9 @@ import { UserUsername } from '@domain/users/user-username';
 
 import { User } from './user';
 import { UserEmail } from './user-email';
-import { UserId } from './user-id';
 import { UserUuid } from './user-uuid';
 
 abstract class UserRepository {
-  public abstract findById(id: UserId): Promise<Nullable<User>>;
-
   public abstract findByUuid(uuid: UserUuid): Promise<Nullable<User>>;
 
   public abstract findByUsername(username: UserUsername): Promise<Nullable<User>>;

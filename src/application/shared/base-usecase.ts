@@ -21,7 +21,7 @@ abstract class BaseUseCase<IRequest extends UseCaseRequest, IResponse> {
 
       return response;
     } catch (error) {
-      LOGGER.error(`${this.constructor.name}.execute(${request}) threw the following error! --- ${error}`);
+      LOGGER.error(`[@UseCase] ${this.constructor.name}.execute(${request}) threw the following error! --- ${error}`);
       throw error;
     }
   }

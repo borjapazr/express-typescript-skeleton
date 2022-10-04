@@ -13,6 +13,7 @@ SHELL := $(shell which bash)
 ## Test if the dependencies we need to run this Makefile are installed
 DOCKER := $(shell command -v docker)
 DOCKER_COMPOSE := $(shell command -v docker-compose)
+DOCKER_COMPOSE_FILE := $(ROOT_DIR)/docker/docker-compose.yml
 NPM := $(shell command -v npm)
 
 .PHONY: help
@@ -33,55 +34,49 @@ ifndef NPM
 endif
 	@echo "🆗 The necessary dependencies are already installed!"
 
-## Target specific variables
-%/dev: ENVIRONMENT = dev
-%/prod: ENVIRONMENT = prod
-build/%: TAG ?= $(ENVIRONMENT)
+TAG ?= prod
 
-.PHONY: build/dev build/prod
-build/dev: ## Build development environment
-build/prod: ## Build production environment
-build/dev build/prod:
-	@echo "📦 Building project Docker image..."
-	@docker build --build-arg PORT=$(PORT) --platform=linux/amd64 --target $(ENVIRONMENT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
+.PHONY: install
+install: ## Install the project
+	@echo "🍿 Installing dependencies..."
+	@npm install
 
-.PHONY: start/dev
-start/dev: ## Start application in development mode
-	@echo "▶️ Starting app in development mode (Docker)..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env up --build
+.PHONY: start
+start: install ## Start application in development mode
+	@echo "▶️ Starting app in development mode..."
+	@npm run dev
+
+.PHONY: start/db
+start/db: ## Start database container
+	@echo "▶️ Starting database (Docker)..."
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-db express-typescript-skeleton-adminer
+
+.PHONY: stop/db
+stop/db: ## Stop database container
+	@echo "🛑 Stopping database (Docker)..."
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-db express-typescript-skeleton-adminer
 
 .PHONY: start/prod
 start/prod: ## Start application in production mode
 	@echo "▶️ Starting app in production mode (Docker)..."
 	@mkdir -p -m 755 ${LOGS_VOLUME}
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env up -d --build
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d --build
 
-.PHONY: start/db
-start/db: ## Start database container
-	@echo "▶️ Starting database (Docker)..."
-	@docker-compose -f ./docker/docker-compose.dev.yml --env-file .env up -d db adminer
-
-PHONY: test/dev
-test/dev: build/dev ## Run tests in development mode
-	@echo "👨‍🔬 Testing project..."
-	@docker run --rm $(APP_NAME):$(ENVIRONMENT) npm run test:coverage
-
-.PHONY: stop/dev stop/prod
-stop/dev: ## Stop development environment
+.PHONY: stop/prod
 stop/prod: ## Stop production environment
-stop/dev stop/prod:
 	@echo "🛑 Stopping app..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env down
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env down
 
-.PHONY: stop/db
-stop/db: ## Stop database container
-	@echo "🛑 Stopping database (Docker)..."
-	@docker-compose -f ./docker/docker-compose.dev.yml --env-file .env stop db adminer
-
-.PHONY: clean/dev clean/prod
-clean/dev: ## Clean development environment
+.PHONY: clean/prod
 clean/prod: ## Clean production environment
-clean/dev clean/prod:
 	@echo "🧼 Cleaning all resources..."
-	@docker-compose -f ./docker/docker-compose.$(ENVIRONMENT).yml --env-file .env down --rmi local --volumes --remove-orphans
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env down --rmi local --volumes --remove-orphans
 
+.PHONY: build/prod
+build/prod:  ## Build production environment
+	@echo "📦 Building project Docker image..."
+	@docker build --build-arg PORT=$(PORT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
+
+.PHONY: logs
+logs: ## Show logs for all or c=<name> containers
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env logs --tail=100 -f $(c)

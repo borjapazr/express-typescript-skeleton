@@ -46,6 +46,13 @@ The main goal of this project is to provide a base template for the generation o
   npm run start
   ```
 
+- Open the following URL to interact with the API using Swagger UI:
+
+  ```bash
+  http://localhost:5000/api/docs
+  # Sample username and password: janedoe / 123456
+  ```
+
 ## 📋 Features
 
 - Built using [Typescript](https://github.com/microsoft/TypeScript)
@@ -71,18 +78,22 @@ The main goal of this project is to provide a base template for the generation o
 
 The main actions on this project are managed using a [Makefile](Makefile) as an entrypoint.
 
-- `deps`: Validate if the project dependencies are installed
-- `build/dev`: Build the project image for the development environment
-- `build/prod`: Build the project image for the production environment
-- `start/dev`: Start the project in development mode using Docker
-- `start/prod`: Start the project in production mode using Docker
-- `start/db`: Start database container
-- `test/dev`: Run the project tests using Docker
-- `stop/dev`: Stop dev application container
-- `stop/prod`: Stop prod application container
-- `stop/db`: Stop database container
-- `clean/dev`: Removes dev application container and associated resources
-- `clean/prod`: Removes prod application container and associated resources
+```bash
+Usage: make TARGET [ARGUMENTS]
+
+Targets:
+  build/prod                Build production environment
+  clean/prod                Clean production environment
+  deps                      Check if the dependencies are installed
+  help                      Show this help
+  install                   Install the project
+  logs                      Show logs for all or c=<name> containers
+  start                     Start application in development mode
+  start/db                  Start database container
+  start/prod                Start application in production mode
+  stop/db                   Stop database container
+  stop/prod                 Stop production environment
+```
 
 ### ⚡ Scripts
 
