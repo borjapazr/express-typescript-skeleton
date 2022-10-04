@@ -77,7 +77,6 @@
     "@cspell/dict-software-terms": "^2.2.12",
     "@cspell/dict-typescript": "^2.0.2",
     "@tsed/cli-plugin-prisma": "^3.26.3",
-    "@types/argon2": "^0.15.0",
     "@types/body-parser": "^1.19.2",
     "@types/compression": "^1.7.2",
     "@types/cookie-parser": "^1.4.3",
