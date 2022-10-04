@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.1.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.0.2...v2.1.0) (2022-10-04)
+
+### Features
+
+- **improve:** add some improvements in order to simplify the makefile ([29f169d](https://github.com/borjapazr/express-typescript-skeleton/commit/29f169dfd8d684de0df83cfb1e02ec4a0988ae29))
+
 ### [2.0.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.0.1...v2.0.2) (2022-10-04)
 
 ### Bug Fixes
