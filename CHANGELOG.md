@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.0.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.0.1...v2.0.2) (2022-10-04)
+
+### Bug Fixes
+
+- **cd:** fix dockerfile ([66bc631](https://github.com/borjapazr/express-typescript-skeleton/commit/66bc6314e0f7bca177371cc043436b1d879c1498))
+
 ### [2.0.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.0.0...v2.0.1) (2022-10-04)
 
 ### Bug Fixes
