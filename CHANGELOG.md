@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.5.1...v2.0.0) (2022-10-04)
+
+### ⚠ BREAKING CHANGES
+
+- **tsed:** `Ts.ED` is now used as the base framework for the project
+
+### Features
+
+- **tsed:** migrate from routing-controllers to tsed.io ([#212](https://github.com/borjapazr/express-typescript-skeleton/issues/212)) ([a0e7131](https://github.com/borjapazr/express-typescript-skeleton/commit/a0e7131c08371c37850ded9e80f2411755cb9cd0))
+
+### Others
+
+- **deps:** update dependencies ([06356c2](https://github.com/borjapazr/express-typescript-skeleton/commit/06356c2a434eb8217a8ed34420d85aeecad390b0))
+
 ### [1.5.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v1.5.0...v1.5.1) (2022-08-06)
 
 ### Bug Fixes
