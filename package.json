@@ -84,7 +84,7 @@
     "@types/dotenv-defaults": "^2.0.1",
     "@types/express": "^4.17.14",
     "@types/figlet": "^1.5.5",
-    "@types/jest": "^29.1.1",
+    "@types/jest": "^29.1.2",
     "@types/jsonwebtoken": "^8.5.9",
     "@types/luxon": "^3.0.1",
     "@types/method-override": "^0.0.32",
