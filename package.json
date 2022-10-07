@@ -121,7 +121,7 @@
     "eslint-plugin-security": "^1.5.0",
     "eslint-plugin-simple-import-sort": "^8.0.0",
     "eslint-plugin-sonarjs": "^0.15.0",
-    "eslint-plugin-unicorn": "^44.0.0",
+    "eslint-plugin-unicorn": "^44.0.1",
     "eslint-plugin-unused-imports": "^2.0.0",
     "get-tsconfig": "^4.2.0",
     "http-server": "^14.1.1",
