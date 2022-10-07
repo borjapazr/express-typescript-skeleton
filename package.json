@@ -159,7 +159,7 @@
     "@tsed/schema": "^6.133.1",
     "@tsed/swagger": "^6.133.1",
     "argon2": "^0.29.1",
-    "body-parser": "^1.20.0",
+    "body-parser": "^1.20.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
