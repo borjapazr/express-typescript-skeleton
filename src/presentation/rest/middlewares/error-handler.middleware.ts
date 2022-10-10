@@ -1,4 +1,5 @@
 import { Err, Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
+import { Exception as TsEdException } from '@tsed/exceptions';
 import { NextFunction, Request, Response } from 'express';
 
 import {
@@ -40,8 +41,9 @@ class ErrorHandlerMiddleware implements MiddlewareMethods {
 
     const defaultHandler = (response: Response, error: Error): void => {
       if (error instanceof ApiException) {
-        const apiException = error as ApiException;
-        response.status(apiException.status).send(ExceptionResponse.fromApiException(apiException));
+        response.status(error.status).send(ExceptionResponse.fromApiException(error));
+      } else if (error instanceof TsEdException) {
+        response.status(error.status).send(ExceptionResponse.fromTsEdException(error));
       } else {
         const internalServerErrorException = new InternalServerErrorException();
         response
