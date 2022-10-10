@@ -1,7 +1,6 @@
 import '@tsed/platform-express';
 import '@tsed/swagger';
 import '@tsed/ajv';
-import '@tsed/async-hook-context';
 import './filters';
 
 import { PlatformApplication } from '@tsed/common';
