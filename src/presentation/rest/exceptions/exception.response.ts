@@ -1,5 +1,7 @@
+import { Exception as TsEdException } from '@tsed/exceptions';
 import { Default, Enum, Integer, Property } from '@tsed/schema';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
+import emoji from 'node-emoji';
 
 import { AppInfo } from '@presentation/rest/config';
 
@@ -30,7 +32,15 @@ class ExceptionResponse {
   }
 
   public static fromApiException(exception: ApiException): ExceptionResponse {
-    return new ExceptionResponse(exception.status, exception.code, exception.message);
+    return new ExceptionResponse(exception.status, exception.code.toLowerCase(), exception.message);
+  }
+
+  public static fromTsEdException(exception: TsEdException): ExceptionResponse {
+    return new ExceptionResponse(
+      exception.status,
+      exception.name.toLowerCase(),
+      `${emoji.get('warning')} ${exception.message}`
+    );
   }
 }
 
