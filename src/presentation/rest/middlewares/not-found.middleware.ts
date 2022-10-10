@@ -1,7 +1,7 @@
 import { Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { NextFunction, Request, Response } from 'express';
 
-import { PathNotFoundException } from '@presentation/exceptions';
+import { PathNotFoundException } from '@presentation/rest/exceptions';
 
 @Middleware()
 class NotFoundMiddleware implements MiddlewareMethods {

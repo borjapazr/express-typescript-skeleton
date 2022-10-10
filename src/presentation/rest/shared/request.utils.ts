@@ -1,7 +1,7 @@
 import { Req } from '@tsed/common';
 
 import { Nullable } from '@domain/shared';
-import { AppConfig } from '@presentation/config';
+import { AppConfig } from '@presentation/rest/config';
 
 const RequestUtils = {
   getAccessToken: (request: Req): Nullable<string> => {

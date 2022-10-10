@@ -14,9 +14,6 @@ const AppInfo = {
 const AppConfig = {
   PORT: getEnvironmentNumber('PORT', 3000),
   BASE_PATH: getEnvironmentString('BASE_PATH', '/api'),
-  JWT_SECRET: getEnvironmentString('JWT_SECRET', 'jwtSecretPassphrase'),
-  JWT_EXPIRATION: getEnvironmentNumber('JWT_EXPIRATION', 1),
-  JWT_REFRESH_EXPIRATION: getEnvironmentNumber('JWT_REFRESH_EXPIRATION', 6),
   AUTHORIZATION_ACCESS_TOKEN_HEADER_NAME: 'authorization',
   ACCESS_TOKEN_HEADER_NAME: 'access-token',
   ACCESS_TOKEN_COOKIE_NAME: 'access-token',

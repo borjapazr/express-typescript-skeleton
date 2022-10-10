@@ -1,7 +1,7 @@
 import { Default, Enum, Integer, Property } from '@tsed/schema';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
 
-import { AppInfo } from '@presentation/config/app.config';
+import { AppInfo } from '@presentation/rest/config';
 
 import { ApiException } from './api.exception';
 

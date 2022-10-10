@@ -8,7 +8,7 @@ import {
   InternalServerErrorException,
   ResourceNotFoundException,
   UnauthorizedException
-} from '@presentation/exceptions';
+} from '@presentation/rest/exceptions';
 
 @Catch(Exception)
 @Catch(Error)

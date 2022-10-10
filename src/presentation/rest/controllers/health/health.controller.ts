@@ -4,8 +4,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import { CheckHealthStatusRequest, CheckHealthStatusUseCase } from '@application/health';
 import { TriggeredBy } from '@domain/shared/entities/triggered-by';
-import { AppConfig, AppInfo } from '@presentation/config/app.config';
-import { RestController } from '@presentation/shared/rest-controller.decorator';
+import { AppConfig, AppInfo } from '@presentation/rest/config';
+import { RestController } from '@presentation/rest/shared/rest-controller.decorator';
 
 import { HealthApiResponse } from './health.api-response';
 

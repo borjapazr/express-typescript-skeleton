@@ -1,7 +1,7 @@
 import { Default, Property } from '@tsed/schema';
 
 import { HealthStatusResponse } from '@application/health';
-import { AppInfo } from '@presentation/config/app.config';
+import { AppInfo } from '@presentation/rest/config';
 
 class HealthApiResponse {
   @Property()

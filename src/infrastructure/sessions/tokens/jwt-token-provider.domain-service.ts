@@ -4,17 +4,17 @@ import { DateTime } from 'luxon';
 import { AccessToken, RefreshToken, TokenProviderDomainService } from '@domain/sessions/tokens';
 import { TokenType } from '@domain/sessions/tokens/token';
 import { DomainService, Nullable } from '@domain/shared';
-import { AppConfig } from '@presentation/config/app.config';
+import { GlobalConfig } from '@infrastructure/shared/config';
 
 @DomainService(TokenProviderDomainService)
 class JwtTokenProvider extends TokenProviderDomainService {
   private readonly jwtAlgorithm: any = 'HS512';
 
-  private readonly jwtSecret: string = AppConfig.JWT_SECRET;
+  private readonly jwtSecret: string = GlobalConfig.JWT_SECRET;
 
-  private readonly jwtExpiration: number = AppConfig.JWT_EXPIRATION;
+  private readonly jwtExpiration: number = GlobalConfig.JWT_EXPIRATION;
 
-  private readonly jwtRefreshExpiration: number = AppConfig.JWT_REFRESH_EXPIRATION;
+  private readonly jwtRefreshExpiration: number = GlobalConfig.JWT_REFRESH_EXPIRATION;
 
   public createAccessToken(
     uuid: string,

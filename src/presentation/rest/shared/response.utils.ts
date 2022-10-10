@@ -4,7 +4,7 @@ import { DateTime } from 'luxon';
 import { AccessToken, RefreshToken } from '@domain/sessions/tokens';
 import { Nullable } from '@domain/shared';
 import { GlobalConfig } from '@infrastructure/shared/config';
-import { AppConfig } from '@presentation/config';
+import { AppConfig } from '@presentation/rest/config';
 
 const ResponseUtils = {
   attachAccessAndRefreshTokens: (

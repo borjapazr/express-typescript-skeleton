@@ -13,12 +13,12 @@ import { LOGGER } from '@domain/shared';
 import { TriggeredBy, TriggeredByUser } from '@domain/shared/entities/triggered-by';
 import { Authentication } from '@infrastructure/shared/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
-import { AppConfig } from '@presentation/config';
-import { UnauthorizedException } from '@presentation/exceptions';
-import { RequestUtils } from '@presentation/shared/request.utils';
-import { ResponseUtils } from '@presentation/shared/response.utils';
-import { RestController } from '@presentation/shared/rest-controller.decorator';
-import { WithAuth } from '@presentation/shared/with-auth.decorator';
+import { AppConfig } from '@presentation/rest/config';
+import { UnauthorizedException } from '@presentation/rest/exceptions';
+import { RequestUtils } from '@presentation/rest/shared/request.utils';
+import { ResponseUtils } from '@presentation/rest/shared/response.utils';
+import { RestController } from '@presentation/rest/shared/rest-controller.decorator';
+import { WithAuth } from '@presentation/rest/shared/with-auth.decorator';
 
 import { AuthenticatedUserApiResponse } from './authenticated-user.api-response';
 import { UserSuccessfullyAuthenticatedApiResponse } from './user-successfully-authenticated.api-response';

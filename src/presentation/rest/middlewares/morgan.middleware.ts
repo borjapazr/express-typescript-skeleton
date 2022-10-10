@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import morgan, { StreamOptions } from 'morgan';
 
 import { LOGGER } from '@domain/shared';
-import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
+import { GlobalConfig } from '@infrastructure/shared/config';
 
 const stream: StreamOptions = {
   write: message => LOGGER.http(message.slice(0, Math.max(0, message.lastIndexOf('\n'))))
