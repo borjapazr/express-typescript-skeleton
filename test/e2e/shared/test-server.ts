@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { PlatformTest } from '@tsed/common';
 
-import { Server } from '@presentation/server';
+import { Server } from '@presentation/rest/server';
 
 const TestServer = {
   bootstrap: async (): Promise<void> => {

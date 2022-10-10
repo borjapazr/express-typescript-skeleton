@@ -1,6 +1,6 @@
 import { CheckHealthStatusRequest, CheckHealthStatusUseCase, HealthStatusResponse } from '@application/health';
 import { TriggeredByAnonymous } from '@domain/shared/entities/triggered-by';
-import { AppInfo } from '@presentation/config/app.config';
+import { AppInfo } from '@presentation/rest/config';
 
 describe('Testing health check use case', () => {
   it('should return ALIVE health status', () => {

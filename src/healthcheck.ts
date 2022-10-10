@@ -4,7 +4,7 @@
 
 import * as http from 'http';
 
-import { AppConfig } from '@presentation/config/app.config';
+import { AppConfig } from '@presentation/rest/config';
 
 const options = {
   host: 'localhost',

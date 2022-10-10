@@ -5,7 +5,10 @@ const GlobalConfig = {
   IS_TEST: getEnvironmentString('NODE_ENV', 'development') === 'test',
   IS_DEVELOPMENT: getEnvironmentString('NODE_ENV', 'development') === 'development',
   IS_PRODUCTION: getEnvironmentString('NODE_ENV', 'development') === 'production',
-  LOGS_FOLDER: getEnvironmentString('LOGS_FOLDER', 'logs')
+  LOGS_FOLDER: getEnvironmentString('LOGS_FOLDER', 'logs'),
+  JWT_SECRET: getEnvironmentString('JWT_SECRET', 'jwtSecretPassphrase'),
+  JWT_EXPIRATION: getEnvironmentNumber('JWT_EXPIRATION', 1),
+  JWT_REFRESH_EXPIRATION: getEnvironmentNumber('JWT_REFRESH_EXPIRATION', 6)
 };
 
 const DatabaseConfig = {

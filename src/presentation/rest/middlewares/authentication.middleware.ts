@@ -5,10 +5,10 @@ import { ValidatedSessionResponse } from '@application/sessions/validate/validat
 import { TriggeredByUser } from '@domain/shared/entities/triggered-by';
 import { Authentication } from '@infrastructure/shared/authentication/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
-import { AppConfig } from '@presentation/config';
-import { ForbiddenException } from '@presentation/exceptions';
-import { RequestUtils } from '@presentation/shared/request.utils';
-import { ResponseUtils } from '@presentation/shared/response.utils';
+import { AppConfig } from '@presentation/rest/config';
+import { ForbiddenException } from '@presentation/rest/exceptions';
+import { RequestUtils } from '@presentation/rest/shared/request.utils';
+import { ResponseUtils } from '@presentation/rest/shared/response.utils';
 
 @Middleware()
 class AuthenticationMiddleware implements MiddlewareMethods {

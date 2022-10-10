@@ -3,8 +3,8 @@ import { useDecorators } from '@tsed/core';
 import { Returns, Security } from '@tsed/schema';
 import { StatusCodes } from 'http-status-codes';
 
-import { ExceptionResponse } from '@presentation/exceptions';
-import { AuthenticationMiddleware } from '@presentation/middlewares';
+import { ExceptionResponse } from '@presentation/rest/exceptions';
+import { AuthenticationMiddleware } from '@presentation/rest/middlewares';
 
 interface AuthOptions extends Record<string, unknown> {
   roles?: string[];

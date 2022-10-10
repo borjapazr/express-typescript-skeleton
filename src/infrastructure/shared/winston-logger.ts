@@ -4,7 +4,7 @@ import emoji from 'node-emoji';
 import { addColors, createLogger, format, Logger as WinstonLoggerType, transports } from 'winston';
 
 import { Logger } from '@domain/shared/logger';
-import { GlobalConfig } from '@infrastructure/shared/config/infrastructure.config';
+import { GlobalConfig } from '@infrastructure/shared/config';
 
 enum LevelName {
   SILLY = 'silly',

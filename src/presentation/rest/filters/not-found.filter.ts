@@ -1,6 +1,6 @@
 import { Catch, ExceptionFilterMethods, PlatformContext, ResourceNotFound } from '@tsed/common';
 
-import { PathNotFoundException } from '@presentation/exceptions';
+import { PathNotFoundException } from '@presentation/rest/exceptions';
 
 @Catch(ResourceNotFound)
 class ResourceNotFoundFilter implements ExceptionFilterMethods {

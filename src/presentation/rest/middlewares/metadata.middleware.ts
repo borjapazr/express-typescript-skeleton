@@ -4,8 +4,8 @@ import { TokenProviderDomainService } from '@domain/sessions/tokens';
 import { TriggeredByAnonymous, TriggeredByUser } from '@domain/shared/entities/triggered-by';
 import { Authentication } from '@infrastructure/shared/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
-import { AppConfig } from '@presentation/config';
-import { RequestUtils } from '@presentation/shared/request.utils';
+import { AppConfig } from '@presentation/rest/config';
+import { RequestUtils } from '@presentation/rest/shared/request.utils';
 
 @Middleware()
 class MetadataMiddleware implements MiddlewareMethods, OnResponse {

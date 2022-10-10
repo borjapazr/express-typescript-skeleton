@@ -6,8 +6,8 @@ import {
   ExceptionResponse,
   ResourceNotFoundException,
   UnauthorizedException
-} from '@presentation/exceptions';
-import { InternalServerErrorException } from '@presentation/exceptions/internal-server-error.exception';
+} from '@presentation/rest/exceptions';
+import { InternalServerErrorException } from '@presentation/rest/exceptions/internal-server-error.exception';
 
 @Middleware()
 class ErrorHandlerMiddleware implements MiddlewareMethods {

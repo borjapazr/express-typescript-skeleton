@@ -17,7 +17,7 @@ import methodOverride from 'method-override';
 import { LOGGER } from '@domain/shared';
 import { GlobalConfig } from '@infrastructure/shared/config';
 
-import { AppConfig, AppInfo } from './config/app.config';
+import { AppConfig, AppInfo } from './config';
 import { ErrorHandlerMiddleware, MetadataMiddleware, MorganMiddleware, NotFoundMiddleware } from './middlewares';
 
 @Configuration({
@@ -81,8 +81,8 @@ class Server {
         [AppConfig.BASE_PATH]: [`${__dirname}/controllers/**/*.controller.ts`]
       },
       imports: [
-        `${__dirname}/../infrastructure/**/*domain-service.ts`,
-        `${__dirname}/../infrastructure/**/*repository.ts`
+        `${__dirname}/../../infrastructure/**/*.domain-service.ts`,
+        `${__dirname}/../../infrastructure/**/*.repository.ts`
       ]
     });
   }

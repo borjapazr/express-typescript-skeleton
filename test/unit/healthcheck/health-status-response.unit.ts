@@ -1,6 +1,6 @@
 import { HealthStatusResponse } from '@application/health';
 import { HealthStatus } from '@domain/health';
-import { AppInfo } from '@presentation/config/app.config';
+import { AppInfo } from '@presentation/rest/config';
 
 describe('Testing HealthStatusResponse generation', () => {
   it('should return a valid HealthStatusResponse from domain model', () => {

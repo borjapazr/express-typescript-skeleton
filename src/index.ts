@@ -5,7 +5,7 @@ import { PlatformExpress } from '@tsed/platform-express';
 
 import { LOGGER } from '@domain/shared';
 import { bootstrap } from '@infrastructure/shared';
-import { Server } from '@presentation/server';
+import { Server } from '@presentation/rest/server';
 
 const start = async (): Promise<void> => {
   await bootstrap();

@@ -6,9 +6,9 @@ import { StatusCodes } from 'http-status-codes';
 import { FindUserRequest, FindUserUseCase } from '@application/users/find';
 import { SearchAllUsersRequest, SearchAllUsersUseCase } from '@application/users/search-all';
 import { TriggeredBy } from '@domain/shared/entities/triggered-by';
-import { AppConfig } from '@presentation/config';
-import { RestController } from '@presentation/shared/rest-controller.decorator';
-import { WithAuth } from '@presentation/shared/with-auth.decorator';
+import { AppConfig } from '@presentation/rest/config';
+import { RestController } from '@presentation/rest/shared/rest-controller.decorator';
+import { WithAuth } from '@presentation/rest/shared/with-auth.decorator';
 
 import { UserApiResponse } from './user.api-response';
 
