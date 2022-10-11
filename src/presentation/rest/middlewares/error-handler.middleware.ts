@@ -1,7 +1,7 @@
 import { Err, Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { Exception as TsEdException } from '@tsed/exceptions';
-import { NextFunction, Request, Response } from 'express';
 
+import { LOGGER } from '@domain/shared';
 import {
   ApiException,
   ExceptionResponse,
@@ -12,39 +12,35 @@ import { InternalServerErrorException } from '@presentation/rest/exceptions/inte
 
 @Middleware()
 class ErrorHandlerMiddleware implements MiddlewareMethods {
-  public use(
-    @Err() error: Error,
-    @Req() _request: Request,
-    @Res() response: Response,
-    @Next() _next: NextFunction
-  ): void {
+  public use(@Err() error: Error, @Req() _request: Req, @Res() response: Res, @Next() _next: Next): void {
     return this.getExceptionHandler(error)(response, error);
   }
 
-  private getExceptionHandler = (exception: Error): ((response: Response, error: Error) => void) => {
-    const invalidCredentialsHandler = (response: Response, _error: Error): void => {
+  private getExceptionHandler = (exception: Error): ((response: Res, error: Error) => void) => {
+    const invalidCredentialsHandler = (response: Res, _error: Error): void => {
       const unauthorizedException = new UnauthorizedException();
       response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
     };
 
-    const userNotFoundHandler = (response: Response, error: Error): void => {
+    const userNotFoundHandler = (response: Res, error: Error): void => {
       const resourceNotFoundException = new ResourceNotFoundException(error.message);
       response
         .status(resourceNotFoundException.status)
         .send(ExceptionResponse.fromApiException(resourceNotFoundException));
     };
 
-    const invalidSessionHandler = (response: Response, _error: Error): void => {
+    const invalidSessionHandler = (response: Res, _error: Error): void => {
       const unauthorizedException = new UnauthorizedException();
       response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
     };
 
-    const defaultHandler = (response: Response, error: Error): void => {
+    const defaultHandler = (response: Res, error: Error): void => {
       if (error instanceof ApiException) {
         response.status(error.status).send(ExceptionResponse.fromApiException(error));
       } else if (error instanceof TsEdException) {
         response.status(error.status).send(ExceptionResponse.fromTsEdException(error));
       } else {
+        LOGGER.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
         const internalServerErrorException = new InternalServerErrorException();
         response
           .status(internalServerErrorException.status)
@@ -52,7 +48,7 @@ class ErrorHandlerMiddleware implements MiddlewareMethods {
       }
     };
 
-    const exceptionHandlers: { [exception: string]: (response: Response, error: Error) => void } = {
+    const exceptionHandlers: { [exception: string]: (response: Res, error: Error) => void } = {
       InvalidAuthenticationUsernameException: invalidCredentialsHandler,
       InvalidAuthenticationCredentialsException: invalidCredentialsHandler,
       UserNotExistsException: userNotFoundHandler,

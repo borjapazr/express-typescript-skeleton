@@ -1,4 +1,4 @@
-import { Catch, ExceptionFilterMethods, PlatformContext, PlatformResponse } from '@tsed/common';
+import { Catch, ExceptionFilterMethods, PlatformContext, Res } from '@tsed/common';
 import { Exception, Exception as TsEdException } from '@tsed/exceptions';
 
 import { LOGGER } from '@domain/shared';
@@ -16,42 +16,42 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
   public catch(error: Error, context: PlatformContext): void {
     const { response } = context;
 
-    return this.getExceptionHandler(error)(response, error);
+    return this.getExceptionHandler(error)(response.raw, error);
   }
 
-  private getExceptionHandler = (exception: Error): ((response: PlatformResponse, error: Error) => void) => {
-    const invalidCredentialsHandler = (response: PlatformResponse, _error: Error): void => {
+  private getExceptionHandler = (exception: Error): ((response: Res, error: Error) => void) => {
+    const invalidCredentialsHandler = (response: Res, _error: Error): void => {
       const unauthorizedException = new UnauthorizedException();
-      response.status(unauthorizedException.status).body(ExceptionResponse.fromApiException(unauthorizedException));
+      response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
     };
 
-    const userNotFoundHandler = (response: PlatformResponse, error: Error): void => {
+    const userNotFoundHandler = (response: Res, error: Error): void => {
       const resourceNotFoundException = new ResourceNotFoundException(error.message);
       response
         .status(resourceNotFoundException.status)
-        .body(ExceptionResponse.fromApiException(resourceNotFoundException));
+        .send(ExceptionResponse.fromApiException(resourceNotFoundException));
     };
 
-    const invalidSessionHandler = (response: PlatformResponse, _error: Error): void => {
+    const invalidSessionHandler = (response: Res, _error: Error): void => {
       const unauthorizedException = new UnauthorizedException();
-      response.status(unauthorizedException.status).body(ExceptionResponse.fromApiException(unauthorizedException));
+      response.status(unauthorizedException.status).send(ExceptionResponse.fromApiException(unauthorizedException));
     };
 
-    const defaultHandler = (response: PlatformResponse, error: Error): void => {
+    const defaultHandler = (response: Res, error: Error): void => {
       if (error instanceof ApiException) {
-        response.status(error.status).body(ExceptionResponse.fromApiException(error));
+        response.status(error.status).send(ExceptionResponse.fromApiException(error));
       } else if (error instanceof TsEdException) {
-        response.status(error.status).body(ExceptionResponse.fromTsEdException(error));
+        response.status(error.status).send(ExceptionResponse.fromTsEdException(error));
       } else {
         LOGGER.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
         const internalServerErrorException = new InternalServerErrorException();
         response
           .status(internalServerErrorException.status)
-          .body(ExceptionResponse.fromApiException(internalServerErrorException));
+          .send(ExceptionResponse.fromApiException(internalServerErrorException));
       }
     };
 
-    const exceptionHandlers: { [exception: string]: (response: PlatformResponse, error: Error) => void } = {
+    const exceptionHandlers: { [exception: string]: (response: Res, error: Error) => void } = {
       InvalidAuthenticationUsernameException: invalidCredentialsHandler,
       InvalidAuthenticationCredentialsException: invalidCredentialsHandler,
       UserNotExistsException: userNotFoundHandler,

@@ -1,5 +1,4 @@
 import { Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
-import { NextFunction, Request, Response } from 'express';
 import morgan, { StreamOptions } from 'morgan';
 
 import { LOGGER } from '@domain/shared';
@@ -19,7 +18,7 @@ const skip = (): boolean => GlobalConfig.IS_PRODUCTION;
 
 @Middleware()
 class MorganMiddleware implements MiddlewareMethods {
-  public use(@Req() request: Request, @Res() response: Response, @Next() next: NextFunction): void {
+  public use(@Req() request: Req, @Res() response: Res, @Next() next: Next): void {
     morgan(':method :url :status :res[content-length] - :response-time ms', {
       stream,
       skip
