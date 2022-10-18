@@ -3,7 +3,7 @@ import { Default, Property } from '@tsed/schema';
 import { HealthStatusResponse } from '@application/health';
 import { AppInfo } from '@presentation/rest/config';
 
-class HealthApiResponse {
+class HealthStatusApiResponse {
   @Property()
   readonly status: string;
 
@@ -19,9 +19,9 @@ class HealthApiResponse {
     this.message = message;
   }
 
-  public static fromHealthApiResponse(healthStatus: HealthStatusResponse): HealthStatusResponse {
-    return new HealthApiResponse(healthStatus.status, healthStatus.message);
+  public static fromHealthStatusResponse(healthStatus: HealthStatusResponse): HealthStatusResponse {
+    return new HealthStatusApiResponse(healthStatus.status, healthStatus.message);
   }
 }
 
-export { HealthApiResponse };
+export { HealthStatusApiResponse };

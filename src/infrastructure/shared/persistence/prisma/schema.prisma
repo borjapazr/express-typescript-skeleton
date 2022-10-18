@@ -1,5 +1,5 @@
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DB_URL")
 }
 
@@ -28,7 +28,7 @@ enum Role {
 }
 
 model User {
-  id            Int       @id @default(autoincrement()) @db.UnsignedInt
+  id            Int       @id @default(autoincrement())
   uuid          String    @unique @db.VarChar(1000)
   gender        Gender    @default(UNDEFINED)
   firstName     String    @db.VarChar(255)
@@ -42,29 +42,29 @@ model User {
   passwordHash  String    @db.VarChar(100)
   verified      Boolean   @default(false)
   enabled       Boolean   @default(true)
-  role          Role      @default(USER)
-  createdAt     DateTime? @default(now()) @db.DateTime(6)
+  roles         Role[]    @default([USER])
+  createdAt     DateTime? @default(now())
   createdBy     String?   @db.VarChar(255)
-  updatedAt     DateTime? @default(now()) @updatedAt @db.DateTime(6)
+  updatedAt     DateTime? @default(now()) @updatedAt
   updatedBy     String?   @db.VarChar(255)
-  deletedAt     DateTime? @db.DateTime(6)
+  deletedAt     DateTime?
   deletedBy     String?   @db.VarChar(255)
 }
 
 model Session {
-  id               Int       @id @default(autoincrement()) @db.UnsignedInt
+  id               Int       @id @default(autoincrement())
   uuid             String    @unique @db.VarChar(1000)
   userUuid         String    @db.VarChar(1000)
-  userData         String    @db.Text
+  userData         Json
   refreshTokenHash String    @db.VarChar(5000)
-  revokedAt        DateTime? @db.DateTime(6)
+  revokedAt        DateTime?
   revokedBy        String?   @db.VarChar(255)
   revocationReason String?   @db.VarChar(1000)
-  expiresAt        DateTime  @db.DateTime(6)
-  createdAt        DateTime? @default(now()) @db.DateTime(6)
+  expiresAt        DateTime
+  createdAt        DateTime? @default(now())
   createdBy        String?   @db.VarChar(255)
-  updatedAt        DateTime? @default(now()) @updatedAt @db.DateTime(6)
+  updatedAt        DateTime? @default(now()) @updatedAt
   updatedBy        String?   @db.VarChar(255)
-  deletedAt        DateTime? @db.DateTime(6)
+  deletedAt        DateTime?
   deletedBy        String?   @db.VarChar(255)
 }

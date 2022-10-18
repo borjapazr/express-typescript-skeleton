@@ -44,19 +44,21 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
 
     const user = await this.getAndValidateUser(refreshToken.userUuid);
 
+    const userRoles = user.roles.map(role => role.value);
+
     const newAccessToken = this.tokenProviderDomainService.createAccessToken(
       session.uuid.value,
       user.uuid.value,
       user.username.value,
       user.email.value,
-      Array.of(user.role.value)
+      userRoles
     );
 
     const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid.value, user.uuid.value);
 
     session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.token);
     session.expiresAt = new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate());
-    session.userData = new SessionUserData(user.username.value, user.email.value, [user.role.value]);
+    session.userData = new SessionUserData(user.username.value, user.email.value, userRoles);
 
     this.sessionRepository.update(session);
 

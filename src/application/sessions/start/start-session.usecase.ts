@@ -40,8 +40,10 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
     const {
       username: { value: username },
       email: { value: email },
-      role: { value: role }
+      roles
     } = await this.getAndValidateUser(userUuid);
+
+    const userRoles = roles.map(role => role.value);
 
     const sessionUuid = Uuid.random().value;
 
@@ -50,7 +52,7 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
       userUuid,
       username,
       email,
-      Array.of(role)
+      userRoles
     );
 
     const refreshToken = this.tokenProviderDomainService.createRefreshToken(sessionUuid, userUuid);
@@ -59,7 +61,7 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
       new SessionUuid(sessionUuid),
       new SessionUserUuid(userUuid),
       await SessionRefreshTokenHash.createFromPlainRefreshToken(refreshToken.token),
-      new SessionUserData(username, email, Array.of(role)),
+      new SessionUserData(username, email, userRoles),
       new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate())
     );
 

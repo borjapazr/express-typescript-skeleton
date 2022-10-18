@@ -30,7 +30,7 @@ class UserMapper {
       new UserAddress(userPersistenceModel.address),
       new UserProfilePicture(userPersistenceModel.profilePicUrl),
       new UserPasswordHash(userPersistenceModel.passwordHash),
-      UserRole.fromValue(userPersistenceModel.role.toLowerCase()),
+      userPersistenceModel.roles.map(role => UserRole.fromValue(role.toLowerCase())),
       userPersistenceModel.verified,
       userPersistenceModel.enabled
     );
@@ -52,7 +52,7 @@ class UserMapper {
     userPersistenceModel.address = user.address.value;
     userPersistenceModel.profilePicUrl = user.profilePicUrl.value;
     userPersistenceModel.passwordHash = user.passwordHash.value;
-    userPersistenceModel.role = <Role>user.role.value.toUpperCase();
+    userPersistenceModel.roles = user.roles.map(role => <Role>role.value.toUpperCase());
     userPersistenceModel.verified = user.verified;
     userPersistenceModel.enabled = user.enabled;
     return userPersistenceModel;

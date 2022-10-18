@@ -35,7 +35,7 @@ class UserController {
     @Context(AppConfig.TRIGGERED_BY_CONTEXT_KEY) triggeredBy: TriggeredBy
   ): Promise<UserApiResponse[]> {
     const userResponses = await this.searchAllUsersUseCase.execute(SearchAllUsersRequest.create(triggeredBy));
-    return userResponses.map(UserApiResponse.fromUserApiResponse);
+    return userResponses.map(UserApiResponse.fromUserResponse);
   }
 
   @Get('/:uuid')
@@ -50,7 +50,7 @@ class UserController {
     @PathParams('uuid') uuid: string
   ): Promise<UserApiResponse> {
     const userResponse = await this.findUserUseCase.execute(FindUserRequest.create(triggeredBy, uuid));
-    return UserApiResponse.fromUserApiResponse(userResponse);
+    return UserApiResponse.fromUserResponse(userResponse);
   }
 }
 

@@ -12,12 +12,12 @@ const GlobalConfig = {
 };
 
 const DatabaseConfig = {
-  DB_TYPE: getEnvironmentString('DB_TYPE', 'mysql') as any,
+  DB_TYPE: getEnvironmentString('DB_TYPE', 'postgresql') as any,
   DB_HOST: getEnvironmentString('DB_HOST', 'localhost'),
-  DB_PORT: getEnvironmentNumber('DB_PORT', 5306),
+  DB_PORT: getEnvironmentNumber('DB_PORT', 5432),
   DB_USER: getEnvironmentString('DB_USER', 'mars-user'),
   DB_PASSWORD: getEnvironmentString('DB_PASSWORD', 'mars-password'),
-  DB_NAME: getEnvironmentString('DB_NAME', 'base-app')
+  DB_NAME: getEnvironmentString('DB_NAME', 'express-typescript-skeleton-db')
 };
 
 export { DatabaseConfig, GlobalConfig };

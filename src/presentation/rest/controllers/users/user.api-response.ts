@@ -40,7 +40,7 @@ class UserApiResponse {
 
   @Enum(UserRoles)
   @Default(UserRoles.USER)
-  readonly role: string;
+  readonly roles: string[];
 
   @Property()
   readonly verified: boolean;
@@ -60,7 +60,7 @@ class UserApiResponse {
     address: string,
     profilePicUrl: string,
     passwordHash: string,
-    role: string,
+    roles: string[],
     verified: boolean,
     enabled: boolean
   ) {
@@ -75,12 +75,12 @@ class UserApiResponse {
     this.address = address;
     this.profilePicUrl = profilePicUrl;
     this.passwordHash = passwordHash;
-    this.role = role;
+    this.roles = roles;
     this.verified = verified;
     this.enabled = enabled;
   }
 
-  public static fromUserApiResponse(user: UserResponse): UserApiResponse {
+  public static fromUserResponse(user: UserResponse): UserApiResponse {
     return new UserApiResponse(
       user.uuid,
       user.gender,
@@ -93,7 +93,7 @@ class UserApiResponse {
       user.address,
       user.profilePicUrl,
       user.passwordHash,
-      user.role,
+      user.roles,
       user.verified,
       user.enabled
     );

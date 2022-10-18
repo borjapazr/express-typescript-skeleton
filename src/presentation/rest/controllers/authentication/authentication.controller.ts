@@ -141,7 +141,7 @@ class AuthenticationController {
   ): Promise<AuthenticatedUserApiResponse | Record<string, unknown>> {
     const authenticatedUser = await this.findUserUseCase.execute(FindUserRequest.create(triggeredBy, uuid as string));
 
-    return AuthenticatedUserApiResponse.fromAuthenticatedUserApiResponse(authenticatedUser);
+    return AuthenticatedUserApiResponse.fromUserResponse(authenticatedUser);
   }
 
   private getAndValidateRefreshToken(request: Req): string {
@@ -163,18 +163,16 @@ class AuthenticationController {
   }
 
   private attachMetadataToContext(context: Context, userResponse: UserResponse): void {
-    const userRoles = Array.of(userResponse.role);
-
     const authentication = Authentication.create(
       userResponse.uuid,
       userResponse.username,
       userResponse.email,
-      userRoles
+      userResponse.roles
     );
     context.set(AppConfig.AUTHENTICATION_CONTEXT_KEY, authentication);
     AuthenticationUtils.setAuthentication(authentication);
 
-    const triggeredBy = new TriggeredByUser(userResponse.username, userRoles);
+    const triggeredBy = new TriggeredByUser(userResponse.username, userResponse.roles);
     context.set(AppConfig.TRIGGERED_BY_CONTEXT_KEY, triggeredBy);
   }
 }

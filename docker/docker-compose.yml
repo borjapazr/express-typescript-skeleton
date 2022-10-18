@@ -17,25 +17,24 @@ services:
       - ../.env
     environment:
       - TZ=${TZ}
-      - WAIT_HOSTS=express-typescript-skeleton-db:3306
+      - WAIT_HOSTS=express-typescript-skeleton-db:5432
     volumes:
       - ${LOGS_VOLUME}:/home/node/app/logs
     ports:
       - ${EXTERNAL_PORT}:${PORT}
 
   express-typescript-skeleton-db:
-    image: mariadb
+    image: postgres:15
     container_name: express-typescript-skeleton-db
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_ROOT_PWD}
-      - MYSQL_USER=${DB_USER}
-      - MYSQL_PASSWORD=${DB_PWD}
-      - MYSQL_DATABASE=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     volumes:
-      - ${DB_VOLUME}:/var/lib/mysql
+      - ${DB_VOLUME}:/var/lib/postgresql/data
     ports:
-      - ${DB_PORT}:3306
+      - ${DB_PORT}:5432
 
   express-typescript-skeleton-adminer:
     image: adminer

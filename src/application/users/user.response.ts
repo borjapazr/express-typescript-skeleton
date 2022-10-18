@@ -23,7 +23,7 @@ class UserResponse {
 
   readonly passwordHash: string;
 
-  readonly role: string;
+  readonly roles: string[];
 
   readonly verified: boolean;
 
@@ -41,7 +41,7 @@ class UserResponse {
     address: string,
     profilePicUrl: string,
     passwordHash: string,
-    role: string,
+    roles: string[],
     verified: boolean,
     enabled: boolean
   ) {
@@ -56,7 +56,7 @@ class UserResponse {
     this.address = address;
     this.profilePicUrl = profilePicUrl;
     this.passwordHash = passwordHash;
-    this.role = role;
+    this.roles = roles;
     this.verified = verified;
     this.enabled = enabled;
   }
@@ -74,7 +74,7 @@ class UserResponse {
       user.address.value,
       user.profilePicUrl.value,
       user.passwordHash.value,
-      user.role.value,
+      user.roles.map(role => role.value),
       user.verified,
       user.enabled
     );

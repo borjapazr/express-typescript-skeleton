@@ -37,7 +37,7 @@ class User extends DomainEntity {
 
   passwordHash: UserPasswordHash;
 
-  role: UserRole;
+  roles: UserRole[];
 
   verified: boolean;
 
@@ -55,7 +55,7 @@ class User extends DomainEntity {
     address: UserAddress,
     profilePicUrl: UserProfilePicture,
     passwordHash: UserPasswordHash,
-    role: UserRole,
+    roles: UserRole[],
     verified: boolean,
     enabled: boolean
   ) {
@@ -71,7 +71,7 @@ class User extends DomainEntity {
     this.address = address;
     this.profilePicUrl = profilePicUrl;
     this.passwordHash = passwordHash;
-    this.role = role;
+    this.roles = roles;
     this.verified = verified;
     this.enabled = enabled;
   }
@@ -87,7 +87,7 @@ class User extends DomainEntity {
     address: UserAddress,
     profilePicUrl: UserProfilePicture,
     passwordHash: UserPasswordHash,
-    role: UserRole,
+    roles: UserRole[],
     verified: boolean,
     enabled: boolean
   ): User {
@@ -103,7 +103,7 @@ class User extends DomainEntity {
       address,
       profilePicUrl,
       passwordHash,
-      role,
+      roles,
       verified,
       enabled
     );

@@ -37,7 +37,7 @@ class AuthenticatedUserApiResponse {
 
   @Enum(UserRoles)
   @Default(UserRoles.USER)
-  readonly role: string;
+  readonly roles: string[];
 
   constructor(
     uuid: string,
@@ -50,7 +50,7 @@ class AuthenticatedUserApiResponse {
     phoneNumber: string,
     address: string,
     profilePicUrl: string,
-    role: string
+    roles: string[]
   ) {
     this.uuid = uuid;
     this.gender = gender;
@@ -62,10 +62,10 @@ class AuthenticatedUserApiResponse {
     this.phoneNumber = phoneNumber;
     this.address = address;
     this.profilePicUrl = profilePicUrl;
-    this.role = role;
+    this.roles = roles;
   }
 
-  public static fromAuthenticatedUserApiResponse(user: UserResponse): AuthenticatedUserApiResponse {
+  public static fromUserResponse(user: UserResponse): AuthenticatedUserApiResponse {
     return new AuthenticatedUserApiResponse(
       user.uuid,
       user.gender,
@@ -77,7 +77,7 @@ class AuthenticatedUserApiResponse {
       user.phoneNumber,
       user.address,
       user.profilePicUrl,
-      user.role
+      user.roles
     );
   }
 }

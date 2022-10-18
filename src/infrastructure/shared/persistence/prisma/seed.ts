@@ -24,7 +24,7 @@ const USERS: Prisma.UserCreateInput[] = [
     passwordHash: '$argon2id$v=19$m=4096,t=3,p=1$SnlvMThQRzN5cWhoWnkySQ$YOsVi7+r5v8ngtUmfBNCJpv3Nx/Om6s2nvfEOgSqgKs',
     verified: true,
     enabled: true,
-    role: Role.ADMIN,
+    roles: Array.of(Role.ADMIN),
     createdAt: CURRENT_DATE,
     createdBy: SEED_USER,
     updatedAt: CURRENT_DATE,
