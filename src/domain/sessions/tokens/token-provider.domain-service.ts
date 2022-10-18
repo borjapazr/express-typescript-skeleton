@@ -1,18 +1,20 @@
+import { SessionUuid } from '@domain/sessions/session-uuid';
 import { Nullable } from '@domain/shared';
+import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
 
 import { AccessToken } from './access-token';
 import { RefreshToken } from './refresh-token';
 
 abstract class TokenProviderDomainService {
   public abstract createAccessToken(
-    uuid: string,
-    userUuid: string,
-    username: string,
-    email: string,
-    roles: string[]
+    sessionUuid: SessionUuid,
+    userUuid: UserUuid,
+    username: UserUsername,
+    email: UserEmail,
+    roles: UserRole[]
   ): AccessToken;
 
-  public abstract createRefreshToken(uuid: string, userUuid: string): RefreshToken;
+  public abstract createRefreshToken(sessionUuid: SessionUuid, userUuid: UserUuid): RefreshToken;
 
   public abstract parseAccessToken(token: string): Nullable<AccessToken>;
 

@@ -7,9 +7,7 @@ import {
   SessionExpiresAt,
   SessionRefreshTokenHash,
   SessionRepository,
-  SessionUserData,
-  SessionUserUuid,
-  SessionUuid
+  SessionUserData
 } from '@domain/sessions';
 import { TokenProviderDomainService } from '@domain/sessions/tokens';
 import { Uuid } from '@domain/shared/value-object';
@@ -36,32 +34,30 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
     this.sessionRepository = sessionRepository;
   }
 
-  protected async performOperation({ userUuid }: StartSessionRequest): Promise<SessionResponse> {
-    const {
-      username: { value: username },
-      email: { value: email },
-      roles
-    } = await this.getAndValidateUser(userUuid);
+  protected async performOperation({ userUuid: userUuidString }: StartSessionRequest): Promise<SessionResponse> {
+    const { uuid: userUuid, username, email, roles } = await this.getAndValidateUser(userUuidString);
 
-    const userRoles = roles.map(role => role.value);
-
-    const sessionUuid = Uuid.random().value;
+    const sessionUuid = Uuid.random();
 
     const accessToken = this.tokenProviderDomainService.createAccessToken(
       sessionUuid,
       userUuid,
       username,
       email,
-      userRoles
+      roles
     );
 
     const refreshToken = this.tokenProviderDomainService.createRefreshToken(sessionUuid, userUuid);
 
     const session = Session.create(
-      new SessionUuid(sessionUuid),
-      new SessionUserUuid(userUuid),
+      sessionUuid,
+      userUuid,
       await SessionRefreshTokenHash.createFromPlainRefreshToken(refreshToken.token),
-      new SessionUserData(username, email, userRoles),
+      new SessionUserData(
+        username.value,
+        email.value,
+        roles.map(role => role.value)
+      ),
       new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate())
     );
 

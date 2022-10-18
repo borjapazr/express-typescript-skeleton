@@ -1,8 +1,11 @@
+import { SessionUuid } from '@domain/sessions/session-uuid';
+import { UserUuid } from '@domain/users';
+
 import { Token, TokenType } from './token';
 
 class RefreshToken extends Token {
-  constructor(uuid: string, token: string, expiration: number, userUuid: string) {
-    super(TokenType.REFRESH_TOKEN, uuid, token, expiration, userUuid);
+  constructor(sessionUuid: SessionUuid, token: string, expiration: number, userUuid: UserUuid) {
+    super(TokenType.REFRESH_TOKEN, sessionUuid, token, expiration, userUuid);
   }
 }
 

@@ -1,22 +1,25 @@
+import { SessionUuid } from '@domain/sessions/session-uuid';
+import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
+
 import { Token, TokenType } from './token';
 
 class AccessToken extends Token {
-  readonly username: string;
+  readonly username: UserUsername;
 
-  readonly email: string;
+  readonly email: UserEmail;
 
-  readonly roles: string[];
+  readonly roles: UserRole[];
 
   constructor(
-    uuid: string,
+    sessionUuid: SessionUuid,
     token: string,
     expiration: number,
-    userUuid: string,
-    username: string,
-    email: string,
-    roles: string[]
+    userUuid: UserUuid,
+    username: UserUsername,
+    email: UserEmail,
+    roles: UserRole[]
   ) {
-    super(TokenType.ACCESS_TOKEN, uuid, token, expiration, userUuid);
+    super(TokenType.ACCESS_TOKEN, sessionUuid, token, expiration, userUuid);
     this.username = username;
     this.email = email;
     this.roles = roles;

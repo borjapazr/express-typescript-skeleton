@@ -3,6 +3,7 @@ import { Context, Middleware, MiddlewareMethods, Req, Res } from '@tsed/common';
 import { ValidateSessionRequest, ValidateSessionUseCase } from '@application/sessions/validate';
 import { ValidatedSessionResponse } from '@application/sessions/validate/validated-session.response';
 import { TriggeredByUser } from '@domain/shared/entities/triggered-by';
+import { UserRoles } from '@domain/users';
 import { Authentication } from '@infrastructure/shared/authentication/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
 import { AppConfig } from '@presentation/rest/config';
@@ -37,11 +38,11 @@ class AuthenticationMiddleware implements MiddlewareMethods {
   }
 
   private ensureUserHasPrivileges(context: Context, validatedSessionResponse: ValidatedSessionResponse): void {
-    const userRoles = validatedSessionResponse?.accessToken?.roles ?? [];
+    const userRoles = validatedSessionResponse.accessToken?.roles.map(role => role.value) ?? [];
     const { allowedRoles = [] } = context.endpoint.get(AuthenticationMiddleware) || {};
 
     const userHasPrivileges =
-      allowedRoles.length === 0 || allowedRoles.some((role: string) => userRoles.includes(role));
+      allowedRoles.length === 0 || allowedRoles.some((role: UserRoles) => userRoles.includes(role));
 
     if (!userHasPrivileges) {
       throw new ForbiddenException();
@@ -63,16 +64,18 @@ class AuthenticationMiddleware implements MiddlewareMethods {
     const { accessToken } = validatedSessionResponse;
 
     if (accessToken != null) {
+      const userRoles = accessToken.roles.map(role => role.value);
+
       const authentication = Authentication.create(
-        accessToken.userUuid,
-        accessToken.username,
-        accessToken.email,
-        accessToken.roles ?? []
+        accessToken.userUuid.value,
+        accessToken.username.value,
+        accessToken.email.value,
+        userRoles
       );
       context.set(AppConfig.AUTHENTICATION_CONTEXT_KEY, authentication);
       AuthenticationUtils.setAuthentication(authentication);
 
-      const triggeredBy = new TriggeredByUser(accessToken.username, accessToken.roles);
+      const triggeredBy = new TriggeredByUser(accessToken.username.value, userRoles);
       context.set(AppConfig.TRIGGERED_BY_CONTEXT_KEY, triggeredBy);
     }
   }

@@ -23,13 +23,16 @@ class MetadataMiddleware implements MiddlewareMethods, OnResponse {
 
     if (accessTokenString != null) {
       const accessToken = this.tokenProviderDomainService.parseAccessToken(accessTokenString);
+
       if (accessToken != null) {
-        triggeredBy = new TriggeredByUser(accessToken.username, accessToken.roles);
+        const userRoles = accessToken.roles.map(role => role.value);
+
+        triggeredBy = new TriggeredByUser(accessToken.username.value, userRoles);
         authentication = Authentication.create(
-          accessToken.userUuid,
-          accessToken.username,
-          accessToken.email,
-          accessToken.roles ?? []
+          accessToken.userUuid.value,
+          accessToken.username.value,
+          accessToken.email.value,
+          userRoles
         );
       }
     }

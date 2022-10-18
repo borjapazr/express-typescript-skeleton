@@ -1,24 +1,27 @@
 import { DateTime } from 'luxon';
 
+import { SessionUuid } from '@domain/sessions/session-uuid';
+import { UserUuid } from '@domain/users';
+
 enum TokenType {
   ACCESS_TOKEN = 'access_token',
   REFRESH_TOKEN = 'refresh_token'
 }
 
 class Token {
-  readonly type: string;
+  readonly type: TokenType;
 
-  readonly uuid: string;
+  readonly sessionUuid: SessionUuid;
 
   readonly token: string;
 
   readonly expiration: number;
 
-  readonly userUuid: string;
+  readonly userUuid: UserUuid;
 
-  constructor(type: string, uuid: string, token: string, expiration: number, userUuid: string) {
+  constructor(type: TokenType, sessionUuid: SessionUuid, token: string, expiration: number, userUuid: UserUuid) {
     this.type = type;
-    this.uuid = uuid;
+    this.sessionUuid = sessionUuid;
     this.token = token;
     this.expiration = expiration;
     this.userUuid = userUuid;

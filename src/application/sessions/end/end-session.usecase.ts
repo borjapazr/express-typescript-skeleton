@@ -4,8 +4,7 @@ import {
   Session,
   SessionRepository,
   SessionRevocationReason,
-  SessionRevokedBy,
-  SessionUuid
+  SessionRevokedBy
 } from '@domain/sessions';
 import { TokenProviderDomainService } from '@domain/sessions/tokens';
 import { Nullable } from '@domain/shared';
@@ -42,15 +41,15 @@ class EndSessionUseCase extends BaseUseCase<EndSessionRequest, void> {
     let sessionUuid = null;
 
     if (accessTokenString) {
-      sessionUuid = this.tokenProviderDomainService.parseAccessToken(accessTokenString)?.uuid;
+      sessionUuid = this.tokenProviderDomainService.parseAccessToken(accessTokenString)?.sessionUuid;
     }
 
     if (refreshTokenString) {
-      sessionUuid = this.tokenProviderDomainService.parseRefreshToken(refreshTokenString)?.uuid;
+      sessionUuid = this.tokenProviderDomainService.parseRefreshToken(refreshTokenString)?.sessionUuid;
     }
 
     if (sessionUuid != null) {
-      const session = await this.sessionRepository.findByUuid(new SessionUuid(sessionUuid));
+      const session = await this.sessionRepository.findByUuid(sessionUuid);
 
       if (session != null) {
         return session;

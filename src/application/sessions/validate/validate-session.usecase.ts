@@ -6,11 +6,10 @@ import {
   SessionExpiresAt,
   SessionRefreshTokenHash,
   SessionRepository,
-  SessionUserData,
-  SessionUuid
+  SessionUserData
 } from '@domain/sessions';
 import { TokenProviderDomainService } from '@domain/sessions/tokens';
-import { UserRepository, UserUuid } from '@domain/users';
+import { UserRepository } from '@domain/users';
 
 import { ValidateSessionRequest } from './validate-session.request';
 import { ValidatedSessionResponse } from './validated-session.response';
@@ -41,7 +40,7 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
     const accessToken = accessTokenString ? this.tokenProviderDomainService.parseAccessToken(accessTokenString) : null;
 
     if (accessToken != null && !accessToken.isExpired()) {
-      const session = await this.sessionRepository.findByUuid(new SessionUuid(accessToken.uuid));
+      const session = await this.sessionRepository.findByUuid(accessToken.sessionUuid);
 
       if (session != null) {
         return ValidatedSessionResponse.createValidatedSession(session, accessToken, accessToken);
@@ -53,26 +52,28 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
       : null;
 
     if (refreshToken != null && !refreshToken.isExpired()) {
-      const session = await this.sessionRepository.findByUuid(new SessionUuid(refreshToken.uuid));
+      const session = await this.sessionRepository.findByUuid(refreshToken.sessionUuid);
 
-      const user = await this.userRepository.findByUuid(new UserUuid(refreshToken.userUuid));
+      const user = await this.userRepository.findByUuid(refreshToken.userUuid);
 
       if (session != null && user != null) {
-        const userRoles = user.roles.map(role => role.value);
-
         const newAccessToken = this.tokenProviderDomainService.createAccessToken(
-          session.uuid.value,
-          user.uuid.value,
-          user.username.value,
-          user.email.value,
-          userRoles
+          session.uuid,
+          user.uuid,
+          user.username,
+          user.email,
+          user.roles
         );
 
-        const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid.value, user.uuid.value);
+        const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid, user.uuid);
 
         session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.token);
         session.expiresAt = new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate());
-        session.userData = new SessionUserData(user.username.value, user.email.value, userRoles);
+        session.userData = new SessionUserData(
+          user.username.value,
+          user.email.value,
+          user.roles.map(role => role.value)
+        );
 
         this.sessionRepository.update(session);
 

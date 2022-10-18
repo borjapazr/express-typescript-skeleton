@@ -55,7 +55,7 @@ model Session {
   id               Int       @id @default(autoincrement())
   uuid             String    @unique @db.VarChar(1000)
   userUuid         String    @db.VarChar(1000)
-  userData         Json
+  userData         Json      @db.JsonB
   refreshTokenHash String    @db.VarChar(5000)
   revokedAt        DateTime?
   revokedBy        String?   @db.VarChar(255)

@@ -8,8 +8,7 @@ import {
   SessionExpiresAt,
   SessionRefreshTokenHash,
   SessionRepository,
-  SessionUserData,
-  SessionUuid
+  SessionUserData
 } from '@domain/sessions';
 import { RefreshToken, TokenProviderDomainService } from '@domain/sessions/tokens';
 import { User, UserRepository, UserUuid } from '@domain/users';
@@ -44,21 +43,23 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
 
     const user = await this.getAndValidateUser(refreshToken.userUuid);
 
-    const userRoles = user.roles.map(role => role.value);
-
     const newAccessToken = this.tokenProviderDomainService.createAccessToken(
-      session.uuid.value,
-      user.uuid.value,
-      user.username.value,
-      user.email.value,
-      userRoles
+      session.uuid,
+      user.uuid,
+      user.username,
+      user.email,
+      user.roles
     );
 
-    const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid.value, user.uuid.value);
+    const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid, user.uuid);
 
     session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.token);
     session.expiresAt = new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate());
-    session.userData = new SessionUserData(user.username.value, user.email.value, userRoles);
+    session.userData = new SessionUserData(
+      user.username.value,
+      user.email.value,
+      user.roles.map(role => role.value)
+    );
 
     this.sessionRepository.update(session);
 
@@ -76,7 +77,7 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
   }
 
   private async getAndValidateSession(refreshToken: RefreshToken): Promise<Session> {
-    const session = await this.sessionRepository.findByUuid(new SessionUuid(refreshToken.uuid));
+    const session = await this.sessionRepository.findByUuid(refreshToken.sessionUuid);
 
     if (session == null || !(await session.refreshTokenMatches(refreshToken.token)) || session.isExpired()) {
       throw new InvalidSessionException();
@@ -85,8 +86,8 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
     return session;
   }
 
-  private async getAndValidateUser(uuid: string): Promise<User> {
-    const user = await this.userRepository.findByUuid(new UserUuid(uuid));
+  private async getAndValidateUser(uuid: UserUuid): Promise<User> {
+    const user = await this.userRepository.findByUuid(uuid);
 
     if (user == null) {
       throw new InvalidSessionException();
