@@ -43,11 +43,11 @@ model User {
   verified      Boolean   @default(false)
   enabled       Boolean   @default(true)
   roles         Role[]    @default([USER])
-  createdAt     DateTime? @default(now())
+  createdAt     DateTime? @default(now()) @db.Timestamptz(3)
   createdBy     String?   @db.VarChar(255)
-  updatedAt     DateTime? @default(now()) @updatedAt
+  updatedAt     DateTime? @default(now()) @updatedAt @db.Timestamptz(3)
   updatedBy     String?   @db.VarChar(255)
-  deletedAt     DateTime?
+  deletedAt     DateTime? @db.Timestamptz(3)
   deletedBy     String?   @db.VarChar(255)
 }
 
@@ -57,14 +57,14 @@ model Session {
   userUuid         String    @db.VarChar(1000)
   userData         Json      @db.JsonB
   refreshTokenHash String    @db.VarChar(5000)
-  revokedAt        DateTime?
+  revokedAt        DateTime? @db.Timestamptz(3)
   revokedBy        String?   @db.VarChar(255)
   revocationReason String?   @db.VarChar(1000)
-  expiresAt        DateTime
-  createdAt        DateTime? @default(now())
+  expiresAt        DateTime  @db.Timestamptz(3)
+  createdAt        DateTime? @default(now()) @db.Timestamptz(3)
   createdBy        String?   @db.VarChar(255)
-  updatedAt        DateTime? @default(now()) @updatedAt
+  updatedAt        DateTime? @default(now()) @updatedAt @db.Timestamptz(3)
   updatedBy        String?   @db.VarChar(255)
-  deletedAt        DateTime?
+  deletedAt        DateTime? @db.Timestamptz(3)
   deletedBy        String?   @db.VarChar(255)
 }

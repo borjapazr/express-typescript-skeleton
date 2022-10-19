@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon';
-
 import { SessionResponse } from '@application/sessions';
 import { BaseUseCase, UseCase } from '@application/shared';
 import {
@@ -52,13 +50,13 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
     const session = Session.create(
       sessionUuid,
       userUuid,
-      await SessionRefreshTokenHash.createFromPlainRefreshToken(refreshToken.token),
+      await SessionRefreshTokenHash.createFromPlainRefreshToken(refreshToken.value),
       new SessionUserData(
         username.value,
         email.value,
         roles.map(role => role.value)
       ),
-      new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate())
+      new SessionExpiresAt(refreshToken.expiresAt.value)
     );
 
     const createdSession = await this.sessionRepository.create(session);

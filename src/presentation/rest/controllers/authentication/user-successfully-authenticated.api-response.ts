@@ -56,8 +56,8 @@ class UserSuccessfullyAuthenticatedApiResponse {
       sessionInformationHolder.session.userData.username,
       sessionInformationHolder.session.userData.email,
       sessionInformationHolder.session.userData.roles,
-      sessionInformationHolder.accessToken.token,
-      sessionInformationHolder.refreshToken.token
+      sessionInformationHolder.accessToken.value,
+      sessionInformationHolder.refreshToken.value
     );
   }
 }

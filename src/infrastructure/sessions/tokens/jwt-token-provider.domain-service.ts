@@ -4,6 +4,7 @@ import { DateTime } from 'luxon';
 import { SessionUuid } from '@domain/sessions/session-uuid';
 import { AccessToken, RefreshToken, TokenProviderDomainService } from '@domain/sessions/tokens';
 import { TokenType } from '@domain/sessions/tokens/token';
+import { TokenExpiresAt } from '@domain/sessions/tokens/token-expires-at';
 import { DomainService, Nullable } from '@domain/shared';
 import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
 import { GlobalConfig } from '@infrastructure/shared/config';
@@ -26,7 +27,7 @@ class JwtTokenProvider extends TokenProviderDomainService {
     roles: UserRole[]
   ): AccessToken {
     const userRoles = roles.map(role => role.value);
-    const expiration = this.getAccessTokenExpiration();
+    const expiresAt = this.getAccessTokenExpiration();
     const jwtToken = jwt.sign(
       {
         type: TokenType.ACCESS_TOKEN,
@@ -35,27 +36,32 @@ class JwtTokenProvider extends TokenProviderDomainService {
         username: username.value,
         email: email.value,
         roles: userRoles,
-        exp: expiration
+        exp: Math.floor(DateTime.fromJSDate(expiresAt.value).toSeconds())
       },
       this.jwtSecret,
       {
         algorithm: this.jwtAlgorithm
       }
     );
-    return new AccessToken(sessionUuid, jwtToken, expiration, userUuid, username, email, roles);
+    return AccessToken.create(sessionUuid, jwtToken, expiresAt, userUuid, username, email, roles);
   }
 
   public createRefreshToken(sessionUuid: SessionUuid, userUuid: UserUuid): RefreshToken {
-    const expiration = this.getRefreshTokenExpiration();
+    const expiresAt = this.getRefreshTokenExpiration();
     const jwtToken = jwt.sign(
-      { type: TokenType.REFRESH_TOKEN, sessionUuid: sessionUuid.value, userUuid: userUuid.value, exp: expiration },
+      {
+        type: TokenType.REFRESH_TOKEN,
+        sessionUuid: sessionUuid.value,
+        userUuid: userUuid.value,
+        exp: Math.floor(DateTime.fromJSDate(expiresAt.value).toSeconds())
+      },
       this.jwtSecret,
       {
         algorithm: this.jwtAlgorithm
       }
     );
 
-    return new RefreshToken(sessionUuid, jwtToken, expiration, userUuid);
+    return RefreshToken.create(sessionUuid, jwtToken, expiresAt, userUuid);
   }
 
   public parseAccessToken(token: string): Nullable<AccessToken> {
@@ -64,10 +70,10 @@ class JwtTokenProvider extends TokenProviderDomainService {
         algorithms: [this.jwtAlgorithm]
       });
       return type === TokenType.ACCESS_TOKEN
-        ? new AccessToken(
+        ? AccessToken.create(
             new SessionUuid(sessionUuid),
             token,
-            exp,
+            new TokenExpiresAt(DateTime.fromSeconds(exp).toJSDate()),
             new UserUuid(userUuid),
             new UserUsername(username),
             new UserEmail(email),
@@ -85,26 +91,31 @@ class JwtTokenProvider extends TokenProviderDomainService {
         algorithms: [this.jwtAlgorithm]
       });
       return type === TokenType.REFRESH_TOKEN
-        ? new RefreshToken(new SessionUuid(sessionUuid), token, exp, new UserUuid(userUuid))
+        ? RefreshToken.create(
+            new SessionUuid(sessionUuid),
+            token,
+            new TokenExpiresAt(DateTime.fromSeconds(exp).toJSDate()),
+            new UserUuid(userUuid)
+          )
         : null;
     } catch {
       return null;
     }
   }
 
-  private getAccessTokenExpiration(): number {
-    return Math.floor(
+  private getAccessTokenExpiration(): TokenExpiresAt {
+    return new TokenExpiresAt(
       DateTime.utc()
         .plus({ millisecond: this.jwtExpiration * 3_600_000 })
-        .toSeconds()
+        .toJSDate()
     );
   }
 
-  private getRefreshTokenExpiration(): number {
-    return Math.floor(
+  private getRefreshTokenExpiration(): TokenExpiresAt {
+    return new TokenExpiresAt(
       DateTime.utc()
         .plus({ millisecond: this.jwtRefreshExpiration * 3_600_000 })
-        .toSeconds()
+        .toJSDate()
     );
   }
 }

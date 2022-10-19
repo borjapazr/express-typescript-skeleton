@@ -14,6 +14,24 @@ import { UserRole } from './user-role';
 import { UserUsername } from './user-username';
 import { UserUuid } from './user-uuid';
 
+interface UserFlattened {
+  id: Nullable<number>;
+  uuid: string;
+  gender: string;
+  firstName: string;
+  lastName: string;
+  birthDate: Date;
+  username: string;
+  email: string;
+  phoneNumber: string;
+  address: string;
+  profilePicUrl: string;
+  passwordHash: string;
+  roles: string[];
+  verified: boolean;
+  enabled: boolean;
+}
+
 class User extends DomainEntity {
   id: Nullable<UserId>;
 
@@ -109,9 +127,29 @@ class User extends DomainEntity {
     );
   }
 
+  public flat(): UserFlattened {
+    return {
+      id: this.id?.value,
+      uuid: this.uuid.value,
+      gender: this.gender.value,
+      firstName: this.name.firstName,
+      lastName: this.name.lastName,
+      birthDate: this.birthDate.value,
+      username: this.username.value,
+      email: this.email.value,
+      phoneNumber: this.phoneNumber.value,
+      address: this.address.value,
+      profilePicUrl: this.profilePicUrl.value,
+      passwordHash: this.passwordHash.value,
+      roles: this.roles.map(role => role.value),
+      verified: this.verified,
+      enabled: this.enabled
+    };
+  }
+
   public async passwordMatches(plainUserPassword: string): Promise<boolean> {
     return this.passwordHash.checkIfMatchesWithPlainPassword(plainUserPassword);
   }
 }
 
-export { User };
+export { User, UserFlattened };

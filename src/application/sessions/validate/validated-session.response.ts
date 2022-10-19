@@ -26,7 +26,7 @@ class ValidatedSessionResponse {
   public static createValidatedSession(
     session: Session,
     accessToken: AccessToken,
-    refreshToken: RefreshToken
+    refreshToken: Nullable<RefreshToken>
   ): ValidatedSessionResponse {
     return new ValidatedSessionResponse(session, accessToken, refreshToken, false);
   }

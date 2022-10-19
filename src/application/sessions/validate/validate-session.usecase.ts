@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon';
-
 import { BaseUseCase, UseCase } from '@application/shared';
 import {
   InvalidSessionException,
@@ -39,24 +37,24 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
   }: ValidateSessionRequest): Promise<ValidatedSessionResponse> {
     const accessToken = accessTokenString ? this.tokenProviderDomainService.parseAccessToken(accessTokenString) : null;
 
-    if (accessToken != null && !accessToken.isExpired()) {
-      const session = await this.sessionRepository.findByUuid(accessToken.sessionUuid);
-
-      if (session != null) {
-        return ValidatedSessionResponse.createValidatedSession(session, accessToken, accessToken);
-      }
-    }
-
     const refreshToken = refreshTokenString
       ? this.tokenProviderDomainService.parseRefreshToken(refreshTokenString)
       : null;
+
+    if (accessToken != null && !accessToken.isExpired()) {
+      const session = await this.sessionRepository.findByUuid(accessToken.sessionUuid);
+
+      if (session != null && !session.isExpired()) {
+        return ValidatedSessionResponse.createValidatedSession(session, accessToken, refreshToken);
+      }
+    }
 
     if (refreshToken != null && !refreshToken.isExpired()) {
       const session = await this.sessionRepository.findByUuid(refreshToken.sessionUuid);
 
       const user = await this.userRepository.findByUuid(refreshToken.userUuid);
 
-      if (session != null && user != null) {
+      if (session != null && !session.isExpired() && user != null) {
         const newAccessToken = this.tokenProviderDomainService.createAccessToken(
           session.uuid,
           user.uuid,
@@ -67,8 +65,8 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
 
         const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid, user.uuid);
 
-        session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.token);
-        session.expiresAt = new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate());
+        session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.value);
+        session.expiresAt = new SessionExpiresAt(refreshToken.expiresAt.value);
         session.userData = new SessionUserData(
           user.username.value,
           user.email.value,

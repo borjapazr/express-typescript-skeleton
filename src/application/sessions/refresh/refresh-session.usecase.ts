@@ -1,5 +1,3 @@
-import { DateTime } from 'luxon';
-
 import { SessionResponse } from '@application/sessions';
 import { BaseUseCase, UseCase } from '@application/shared';
 import {
@@ -53,8 +51,8 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
 
     const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid, user.uuid);
 
-    session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.token);
-    session.expiresAt = new SessionExpiresAt(DateTime.fromSeconds(refreshToken.expiration).toJSDate());
+    session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.value);
+    session.expiresAt = new SessionExpiresAt(refreshToken.expiresAt.value);
     session.userData = new SessionUserData(
       user.username.value,
       user.email.value,
@@ -79,7 +77,7 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
   private async getAndValidateSession(refreshToken: RefreshToken): Promise<Session> {
     const session = await this.sessionRepository.findByUuid(refreshToken.sessionUuid);
 
-    if (session == null || !(await session.refreshTokenMatches(refreshToken.token)) || session.isExpired()) {
+    if (session == null || !(await session.refreshTokenMatches(refreshToken.value)) || session.isExpired()) {
       throw new InvalidSessionException();
     }
 

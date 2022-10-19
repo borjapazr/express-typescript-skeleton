@@ -13,6 +13,20 @@ import { SessionUserData } from './session-user-data';
 import { SessionUserUuid } from './session-user-uuid';
 import { SessionUuid } from './session-uuid';
 
+interface SessionFlattened {
+  id: Nullable<number>;
+  uuid: string;
+  userUuid: string;
+  username: string;
+  email: string;
+  roles: string[];
+  refreshTokenHash: string;
+  expiresAt: Date;
+  revokedAt: Nullable<Date>;
+  revokedBy: Nullable<string>;
+  revocationReason: Nullable<string>;
+}
+
 class Session extends DomainEntity {
   id: Nullable<SessionId>;
 
@@ -81,6 +95,22 @@ class Session extends DomainEntity {
     this.revocationReason = revocationReason;
   }
 
+  public flat(): SessionFlattened {
+    return {
+      id: this.id?.value,
+      uuid: this.uuid.value,
+      userUuid: this.userUuid.value,
+      username: this.userData.username,
+      email: this.userData.email,
+      roles: this.userData.roles,
+      refreshTokenHash: this.refreshTokenHash.value,
+      expiresAt: this.expiresAt.value,
+      revokedAt: this.revokedAt?.value,
+      revokedBy: this.revokedBy?.value,
+      revocationReason: this.revocationReason?.value
+    };
+  }
+
   public isExpired(): boolean {
     return this.expiresAt.value < DateTime.utc().toJSDate();
   }
@@ -90,4 +120,4 @@ class Session extends DomainEntity {
   }
 }
 
-export { Session };
+export { Session, SessionFlattened };
