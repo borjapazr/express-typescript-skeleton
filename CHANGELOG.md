@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.2.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.1.0...v2.2.0) (2022-10-19)
+
+### Features
+
+- **ci:** upgrade setup node action version ([dc1d262](https://github.com/borjapazr/express-typescript-skeleton/commit/dc1d2625887788492a8bede68430b7b4e38b8101))
+- **db:** change from mariadb to postgresql ([4c305ea](https://github.com/borjapazr/express-typescript-skeleton/commit/4c305ea0fc3b429b67a8aaa69c8673bd2f5a62cc))
+- **prettier:** add prisma prettier plugin ([3bb461c](https://github.com/borjapazr/express-typescript-skeleton/commit/3bb461c8d562893e5e4a06afb55f97ae561e1f43))
+
+### Others
+
+- **deps:** update dependencies ([60d011c](https://github.com/borjapazr/express-typescript-skeleton/commit/60d011c58eb1a439d83169b3e4de8e13c2bc3e8b))
+- **deps:** update dependencies ([#218](https://github.com/borjapazr/express-typescript-skeleton/issues/218)) ([148a397](https://github.com/borjapazr/express-typescript-skeleton/commit/148a3979ba7e3e079c72a1d8155f2af0a474d10b))
+- **tsed:** upgrade Ts.ED to latest major version (v7.0.0) ([058aa15](https://github.com/borjapazr/express-typescript-skeleton/commit/058aa15b1135923135a97ffa167eb58f823c6ddd))
+
+### Code Refactoring
+
+- **middleware:** catch tsed exceptions in error handlers ([#220](https://github.com/borjapazr/express-typescript-skeleton/issues/220)) ([7c8d241](https://github.com/borjapazr/express-typescript-skeleton/commit/7c8d241dcdcf125f414a569c97113fb8ea79b7f8))
+- **presentation:** improve folder structure ([#219](https://github.com/borjapazr/express-typescript-skeleton/issues/219)) ([c257c4b](https://github.com/borjapazr/express-typescript-skeleton/commit/c257c4b87d5e77b14b75e884233145573c16fe7e))
+- **session:** improve validate session workflow ([1979cee](https://github.com/borjapazr/express-typescript-skeleton/commit/1979cee00045c10e3888fb578b43ea8bfd1811d6))
+- **token:** improve tokens definition ([8799154](https://github.com/borjapazr/express-typescript-skeleton/commit/8799154fe80b61ecdfef99a14b62f1117f7639b3))
+- **tsed:** improve error middleware and filter ([cf3d385](https://github.com/borjapazr/express-typescript-skeleton/commit/cf3d385a57b1c20a7b9536a2e4cf1fc495b832ea))
+
 ## [2.1.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.0.2...v2.1.0) (2022-10-04)
 
 ### Features
