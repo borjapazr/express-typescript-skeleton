@@ -1,5 +1,5 @@
 # Base image stage
-FROM node:18 as node
+FROM node:18-slim as node
 
 LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
 
@@ -7,8 +7,9 @@ ARG PORT=5000
 ENV PORT $PORT
 EXPOSE $PORT
 
-RUN apt update -y
-RUN apt upgrade -y
+RUN apt-get update
+RUN apt-get install -y openssl
+
 RUN npm i npm@latest -g
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
