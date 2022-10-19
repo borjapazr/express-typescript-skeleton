@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.2.0...v2.2.1) (2022-10-19)
+
+### Code Refactoring
+
+- **ci:** add prisma migrate to ci jobs ([029bcfd](https://github.com/borjapazr/express-typescript-skeleton/commit/029bcfd8e72103f9ba20db19ce1899388da1f12b))
+
 ## [2.2.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.1.0...v2.2.0) (2022-10-19)
 
 ### Features
