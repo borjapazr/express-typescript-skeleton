@@ -112,7 +112,7 @@
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-hexagonal-architecture": "^1.0.3",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jest": "^27.1.2",
+    "eslint-plugin-jest": "^27.1.3",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-optimize-regex": "^1.2.1",
     "eslint-plugin-prefer-arrow": "^1.2.3",
