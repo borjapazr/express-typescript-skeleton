@@ -75,7 +75,7 @@
     "@cspell/dict-node": "^4.0.0",
     "@cspell/dict-npm": "^4.0.0",
     "@cspell/dict-software-terms": "^3.0.0",
-    "@cspell/dict-typescript": "^3.0.0",
+    "@cspell/dict-typescript": "^3.0.1",
     "@tsed/cli-plugin-prisma": "^4.1.0",
     "@types/body-parser": "^1.19.2",
     "@types/compression": "^1.7.2",
