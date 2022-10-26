@@ -12,7 +12,7 @@ import { WithAuth } from '@presentation/rest/shared/with-auth.decorator';
 
 import { UserApiResponse } from './user.api-response';
 
-@RestController('/user')
+@RestController('/users')
 @Tags({ name: 'User', description: 'User management' })
 class UserController {
   private findUserUseCase: FindUserUseCase;
