@@ -86,7 +86,7 @@
     "@types/figlet": "^1.5.5",
     "@types/jest": "^29.2.1",
     "@types/jsonwebtoken": "^8.5.9",
-    "@types/luxon": "^3.0.2",
+    "@types/luxon": "^3.0.3",
     "@types/method-override": "^0.0.32",
     "@types/morgan": "^1.9.3",
     "@types/multer": "^1.4.7",
