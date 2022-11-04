@@ -74,7 +74,7 @@
     "@cspell/dict-lorem-ipsum": "^3.0.0",
     "@cspell/dict-node": "^4.0.1",
     "@cspell/dict-npm": "^4.0.1",
-    "@cspell/dict-software-terms": "^3.0.2",
+    "@cspell/dict-software-terms": "^3.0.3",
     "@cspell/dict-typescript": "^3.0.1",
     "@tsed/cli-plugin-prisma": "^4.2.2",
     "@types/body-parser": "^1.19.2",
