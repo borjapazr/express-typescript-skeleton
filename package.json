@@ -150,7 +150,7 @@
     "@tsed/ajv": "^7.4.3",
     "@tsed/common": "^7.4.3",
     "@tsed/components-scan": "^7.4.3",
-    "@tsed/core": "^7.4.3",
+    "@tsed/core": "^7.5.0",
     "@tsed/di": "^7.4.3",
     "@tsed/exceptions": "^7.4.3",
     "@tsed/json-mapper": "^7.4.3",
