@@ -157,7 +157,7 @@
     "@tsed/platform-express": "^7.5.0",
     "@tsed/prisma": "^7.5.0",
     "@tsed/schema": "^7.5.0",
-    "@tsed/swagger": "^7.5.0",
+    "@tsed/swagger": "^7.6.0",
     "argon2": "^0.30.2",
     "body-parser": "^1.20.1",
     "compression": "^1.7.4",
