@@ -40,6 +40,7 @@ TAG ?= prod
 install: ## Install the project
 	@echo "🍿 Installing dependencies..."
 	@npm install
+	@npm run prisma:generate
 
 .PHONY: start
 start: install ## Start application in development mode

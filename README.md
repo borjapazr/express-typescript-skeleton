@@ -34,6 +34,12 @@ The main goal of this project is to provide a base template for the generation o
 
 ### 🚀 Quick start
 
+- Generate Prisma Client:
+
+  ```bash
+  npm run prisma:generate
+  ```
+
 - Start project in development mode:
 
   ```bash
