@@ -138,7 +138,7 @@
     "prisma": "^4.7.1",
     "rimraf": "^3.0.2",
     "standard-version": "^9.5.0",
-    "supertest": "^6.3.2",
+    "supertest": "^6.3.3",
     "ts-jest": "^29.0.3",
     "tsc-alias": "^1.8.1",
     "tsconfig-paths": "^4.1.1",
