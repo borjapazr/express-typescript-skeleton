@@ -13,5 +13,8 @@ module.exports = {
     { type: 'test', section: 'Tests', hidden: false },
     { type: 'build', section: 'Build System', hidden: false },
     { type: 'ci', section: 'CI', hidden: false }
-  ]
+  ],
+  scripts: {
+    postchangelog: 'prettier -w CHANGELOG.md'
+  }
 };
