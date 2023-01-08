@@ -34,6 +34,20 @@ The main goal of this project is to provide a base template for the generation o
 
 ### 🚀 Quick start
 
+- Install dependencies:
+
+  ```bash
+  npm install
+  # or
+  make install
+  ```
+
+- Start database container:
+
+  ```bash
+  make start/db
+  ```
+
 - Generate Prisma Client:
 
   ```bash
