@@ -53,8 +53,7 @@ USER node
 COPY --chown=node:node package*.json ./docker/pm2/process.json ./
 COPY --chown=node:node ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
 
-RUN npm set-script prepare ""
-RUN npm ci --omit=dev && npm cache clean --force
+RUN npm ci --omit=dev --ignore-scripts && npm cache clean --force
 RUN npx -y prisma generate --schema ./prisma/schema.prisma
 
 ENV PATH /home/node/app/node_modules/.bin:$PATH
