@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.0...v2.3.1) (2023-01-08)
+
+### Bug Fixes
+
+- **cd:** adapt dockerfile to avoid problems with argon2 ([4ca2164](https://github.com/borjapazr/express-typescript-skeleton/commit/4ca2164e981be89fbea1ae4617aca1a5c4691cba))
+
 ## [2.3.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.2.3...v2.3.0) (2023-01-08)
 
 ### Features
