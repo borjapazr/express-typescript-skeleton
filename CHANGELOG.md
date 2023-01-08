@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.2.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.2.2...v2.2.3) (2023-01-08)
+
+### Bug Fixes
+
+- **badge:** fix shieldsio badge ([b37e38a](https://github.com/borjapazr/express-typescript-skeleton/commit/b37e38af95ca4e0b28c96bcb4e4b1cb8b6fd0c89))
+
+### Others
+
+- **deps:** update and add missing dependencies ([68f2bfc](https://github.com/borjapazr/express-typescript-skeleton/commit/68f2bfc5fe77224f6e1b2d955147e0eaab8f29c6))
+- **deps:** update dependencies ([c9a58b0](https://github.com/borjapazr/express-typescript-skeleton/commit/c9a58b012b3d8232527dcf6e1e7adc0d450e3ba0))
+- **deps:** update dependencies ([55cd88a](https://github.com/borjapazr/express-typescript-skeleton/commit/55cd88af81a7ec6378651afc68b9bb67068f38cf))
+- **deps:** update dependencies ([45c0b55](https://github.com/borjapazr/express-typescript-skeleton/commit/45c0b55a4ac94ea8a43440928a994e91cc90ec12))
+- **deps:** update dependencies ([221e912](https://github.com/borjapazr/express-typescript-skeleton/commit/221e91241fd6dd06d6a75892cb44e66a84560b90))
+- **deps:** update dependencies ([4b2582a](https://github.com/borjapazr/express-typescript-skeleton/commit/4b2582a307a693389b71c0aad5a9cbdb96777194))
+- **deps:** update dependencies ([0acb7c0](https://github.com/borjapazr/express-typescript-skeleton/commit/0acb7c05da7a6a51ba878f9cc16534ebf1fd277a))
+- **deps:** update dependencies ([d6fc2d1](https://github.com/borjapazr/express-typescript-skeleton/commit/d6fc2d1d40f48cc4730eaa560502c7ff716c3715))
+- **deps:** update dependencies ([1f2b9dc](https://github.com/borjapazr/express-typescript-skeleton/commit/1f2b9dcd22fab84628b11f5c9bfd00d25afea2dc))
+- **deps:** update dependencies ([60f530e](https://github.com/borjapazr/express-typescript-skeleton/commit/60f530efa19602b9c0a0e068119a2beb978fd8cf))
+- **deps:** update dependencies ([480f701](https://github.com/borjapazr/express-typescript-skeleton/commit/480f701f989c32d6d74de0c36af8c322d372886d))
+
+### Docs
+
+- **readme:** improve quick start section ([c53e775](https://github.com/borjapazr/express-typescript-skeleton/commit/c53e775a3424fdb161f307fe4a79a5498a1f8a14))
+
 ### [2.2.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.2.1...v2.2.2) (2022-10-26)
 
 ### Others
