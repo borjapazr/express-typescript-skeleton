@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.3.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.1...v2.3.2) (2023-01-09)
+
+### Others
+
+- **deps:** update and add peer dependencies explicitly ([a6b6d03](https://github.com/borjapazr/express-typescript-skeleton/commit/a6b6d03280bf3fdafd3d547b4d65e02b559cab68))
+
 ### [2.3.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.0...v2.3.1) (2023-01-08)
 
 ### Bug Fixes
