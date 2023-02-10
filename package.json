@@ -151,7 +151,7 @@
     "@tsed/common": "^7.10.0",
     "@tsed/components-scan": "^7.10.0",
     "@tsed/core": "^7.10.0",
-    "@tsed/di": "^7.10.0",
+    "@tsed/di": "^7.14.0",
     "@tsed/exceptions": "^7.10.0",
     "@tsed/json-mapper": "^7.10.0",
     "@tsed/logger": "^6.3.3",
