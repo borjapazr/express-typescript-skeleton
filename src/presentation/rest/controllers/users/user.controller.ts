@@ -1,11 +1,11 @@
 import { Context, Get, PathParams } from '@tsed/common';
-import { Role } from '@tsed/prisma';
 import { Description, Returns, Status, Summary, Tags, Title } from '@tsed/schema';
 import { StatusCodes } from 'http-status-codes';
 
 import { FindUserRequest, FindUserUseCase } from '@application/users/find';
 import { SearchAllUsersRequest, SearchAllUsersUseCase } from '@application/users/search-all';
 import { TriggeredBy } from '@domain/shared/entities/triggered-by';
+import { UserRoles } from '@domain/users';
 import { AppConfig } from '@presentation/rest/config';
 import { RestController } from '@presentation/rest/shared/rest-controller.decorator';
 import { WithAuth } from '@presentation/rest/shared/with-auth.decorator';
@@ -25,7 +25,7 @@ class UserController {
   }
 
   @Get()
-  @WithAuth({ roles: [Role.ADMIN] })
+  @WithAuth({ roles: [UserRoles.ADMIN] })
   @Title('Get all users')
   @Summary('Obtain all users')
   @Description('Endpoint to obtain all users')
@@ -39,7 +39,7 @@ class UserController {
   }
 
   @Get('/:uuid')
-  @WithAuth({ roles: [Role.ADMIN] })
+  @WithAuth({ roles: [UserRoles.ADMIN] })
   @Title('Get user by UUID')
   @Summary('Obtain user by UUID')
   @Description('Endpoint to obtain a user by UUID')

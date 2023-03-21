@@ -38,11 +38,11 @@ class AuthenticationMiddleware implements MiddlewareMethods {
   }
 
   private ensureUserHasPrivileges(context: Context, validatedSessionResponse: ValidatedSessionResponse): void {
-    const userRoles = validatedSessionResponse.accessToken?.roles.map(role => role.value) ?? [];
-    const { allowedRoles = [] } = context.endpoint.get(AuthenticationMiddleware) || {};
+    const userRoles = validatedSessionResponse.accessToken?.roles.map(role => role.value.toLowerCase()) ?? [];
+    const { roles: allowedRoles = [] } = context.endpoint.get(AuthenticationMiddleware) || {};
 
     const userHasPrivileges =
-      allowedRoles.length === 0 || allowedRoles.some((role: UserRoles) => userRoles.includes(role));
+      allowedRoles.length === 0 || allowedRoles.some((role: UserRoles) => userRoles.includes(role.toLowerCase()));
 
     if (!userHasPrivileges) {
       throw new ForbiddenException();
