@@ -136,7 +136,7 @@
     "prettier": "^2.8.6",
     "prettier-plugin-prisma": "^4.10.0",
     "prisma": "^4.11.0",
-    "rimraf": "^4.4.0",
+    "rimraf": "^5.0.0",
     "standard-version": "^9.5.0",
     "supertest": "^6.3.3",
     "ts-jest": "^29.0.5",
