@@ -1,7 +1,7 @@
 import { Err, Middleware, MiddlewareMethods, Next, Req, Res } from '@tsed/common';
 import { Exception as TsEdException } from '@tsed/exceptions';
 
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 import {
   ApiException,
   ExceptionResponse,
@@ -40,7 +40,7 @@ class ErrorHandlerMiddleware implements MiddlewareMethods {
       } else if (error instanceof TsEdException) {
         response.status(error.status).send(ExceptionResponse.fromTsEdException(error));
       } else {
-        LOGGER.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
+        Logger.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
         const internalServerErrorException = new InternalServerErrorException();
         response
           .status(internalServerErrorException.status)

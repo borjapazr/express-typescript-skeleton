@@ -9,7 +9,7 @@ import { StartSessionRequest, StartSessionUseCase } from '@application/sessions/
 import { UserResponse } from '@application/users';
 import { AuthenticateUserRequest, AuthenticateUserUseCase } from '@application/users/authentication';
 import { FindUserRequest, FindUserUseCase } from '@application/users/find';
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 import { TriggeredBy, TriggeredByUser } from '@domain/shared/entities/triggered-by';
 import { Authentication } from '@infrastructure/shared/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
@@ -122,7 +122,7 @@ class AuthenticationController {
     try {
       await this.endSessionUseCase.execute(endSessionRequest);
     } catch {
-      LOGGER.warn('An attempt was made to revoke a session without a valid access or refresh token');
+      Logger.warn('An attempt was made to revoke a session without a valid access or refresh token');
     } finally {
       ResponseUtils.clearAccessAndRefreshTokens(response);
     }

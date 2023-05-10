@@ -1,6 +1,6 @@
 import { registerProvider } from '@tsed/di';
 
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 
 class DependencyInjection {
   public static initialize = async (): Promise<void> => {
@@ -13,7 +13,7 @@ class DependencyInjection {
         }
       ]);
     } catch (error) {
-      LOGGER.error(`[@Bootstrap] ${this.constructor.name}.initialize() threw the following error! --- ${error}`);
+      Logger.error(`[@Bootstrap] ${this.constructor.name}.initialize() threw the following error! --- ${error}`);
       process.exit(1);
     }
   };

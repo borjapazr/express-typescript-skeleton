@@ -14,11 +14,11 @@ import express from 'express';
 import figlet from 'figlet';
 import methodOverride from 'method-override';
 
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 import { GlobalConfig } from '@infrastructure/shared/config';
 
 import { AppConfig, AppInfo } from './config';
-import { ErrorHandlerMiddleware, MetadataMiddleware, MorganMiddleware, NotFoundMiddleware } from './middlewares';
+import { ErrorHandlerMiddleware, LoggerMiddleware, MetadataMiddleware, NotFoundMiddleware } from './middlewares';
 
 @Configuration({
   rootDir: __dirname,
@@ -95,8 +95,8 @@ class Server {
       .use(cookieParser())
       .use(compression({}))
       .use(methodOverride())
-      .use(MorganMiddleware)
-      .use(MetadataMiddleware);
+      .use(MetadataMiddleware)
+      .use(LoggerMiddleware);
   }
 
   public $afterRoutesInit(): void {
@@ -124,7 +124,7 @@ class Server {
        Website: ${AppInfo.AUTHOR_WEBSITE}
        Copyright © ${new Date().getFullYear()} ${AppInfo.AUTHOR_EMAIL}. All rights reserved.
     `;
-    LOGGER.info(banner);
+    Logger.info(banner);
   }
 }
 

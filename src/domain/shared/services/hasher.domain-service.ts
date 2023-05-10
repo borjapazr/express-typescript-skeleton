@@ -1,6 +1,6 @@
 import * as argon2 from 'argon2';
 
-import { DomainService } from '@domain/shared';
+import { DomainService } from './domain-service.decorator';
 
 @DomainService()
 class HasherDomainService {
