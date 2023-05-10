@@ -5,6 +5,7 @@ const GlobalConfig = Object.freeze({
   IS_TEST: getEnvironmentString('NODE_ENV', 'development') === 'test',
   IS_DEVELOPMENT: getEnvironmentString('NODE_ENV', 'development') === 'development',
   IS_PRODUCTION: getEnvironmentString('NODE_ENV', 'development') === 'production',
+  LOGS_ENABLED: getEnvironmentString('LOGS_ENABLED', 'true') === 'true',
   LOGS_FOLDER: getEnvironmentString('LOGS_FOLDER', 'logs'),
   JWT_SECRET: getEnvironmentString('JWT_SECRET', 'jwtSecretPassphrase'),
   JWT_EXPIRATION: getEnvironmentNumber('JWT_EXPIRATION', 1),

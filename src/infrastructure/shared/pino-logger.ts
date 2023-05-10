@@ -140,6 +140,7 @@ class PinoLogger implements LoggerDomainService {
 
     return pino(
       {
+        enabled: GlobalConfig.LOGS_ENABLED,
         level: PinoLoggerConfig.LOG_LEVEL,
         formatters: {
           level: label => {
