@@ -78,7 +78,7 @@ class PinoLogger implements LoggerDomainService {
     let parameters: any[] = [];
 
     if (optionalParameters.length > 0) {
-      objectArgument[PinoLoggerConfig.CONTEXT_NAME] = optionalParameters[optionalParameters.length - 1];
+      objectArgument[PinoLoggerConfig.CONTEXT_NAME] = optionalParameters.at(-1);
       parameters = optionalParameters.slice(0, -1);
     }
 
