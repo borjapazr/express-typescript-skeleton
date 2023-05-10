@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
 
+concurrency:
+  group: ci-${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   validate:
     name: ✅ Validate project

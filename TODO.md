@@ -3,7 +3,6 @@
 ### Todo
 
 - [ ] 👋 Improve project onboarding by configuring all steps in Codetour
-- [ ] https://infosecwriteups.com/api-security-for-developers-58f971bcc2c1
 
 ### In Progress
 
