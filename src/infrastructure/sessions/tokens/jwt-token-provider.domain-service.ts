@@ -5,7 +5,8 @@ import { SessionUuid } from '@domain/sessions/session-uuid';
 import { AccessToken, RefreshToken, TokenProviderDomainService } from '@domain/sessions/tokens';
 import { TokenType } from '@domain/sessions/tokens/token';
 import { TokenExpiresAt } from '@domain/sessions/tokens/token-expires-at';
-import { DomainService, Nullable } from '@domain/shared';
+import { Nullable } from '@domain/shared';
+import { DomainService } from '@domain/shared/services';
 import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
 import { GlobalConfig } from '@infrastructure/shared/config';
 

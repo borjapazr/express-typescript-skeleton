@@ -1,7 +1,7 @@
 import { Catch, ExceptionFilterMethods, PlatformContext, Res } from '@tsed/common';
 import { Exception, Exception as TsEdException } from '@tsed/exceptions';
 
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 import {
   ApiException,
   ExceptionResponse,
@@ -43,7 +43,7 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
       } else if (error instanceof TsEdException) {
         response.status(error.status).send(ExceptionResponse.fromTsEdException(error));
       } else {
-        LOGGER.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
+        Logger.error(`[@ErrorHandler] ${this.constructor.name}.catch() threw the following error! --- ${error}`);
         const internalServerErrorException = new InternalServerErrorException();
         response
           .status(internalServerErrorException.status)

@@ -1,6 +1,6 @@
 import { performance } from 'perf_hooks';
 
-import { LOGGER } from '@domain/shared';
+import { Logger } from '@domain/shared';
 
 import { UseCaseRequest } from './usecase.request';
 
@@ -17,11 +17,11 @@ abstract class BaseUseCase<IRequest extends UseCaseRequest, IResponse> {
 
       const useCaseExecutionTime = endTime - startTime;
 
-      LOGGER.info(`${this.constructor.name}.execute(${request}) took +${useCaseExecutionTime} ms to execute!`);
+      Logger.info(`${this.constructor.name}.execute(${request}) took +${useCaseExecutionTime} ms to execute!`);
 
       return response;
     } catch (error) {
-      LOGGER.error(`[@UseCase] ${this.constructor.name}.execute(${request}) threw the following error! --- ${error}`);
+      Logger.error(`[@UseCase] ${this.constructor.name}.execute(${request}) threw the following error! --- ${error}`);
       throw error;
     }
   }
