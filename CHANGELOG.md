@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.4.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.2...v2.4.0) (2023-05-10)
+
+### Features
+
+- **logger:** add pino logger ([#326](https://github.com/borjapazr/express-typescript-skeleton/issues/326)) ([9626721](https://github.com/borjapazr/express-typescript-skeleton/commit/9626721e9a3a419fc7c941d6255661d354dc9735))
+
+### Bug Fixes
+
+- **auth:** rename roles key of withAuth middleware ([2d2b5bf](https://github.com/borjapazr/express-typescript-skeleton/commit/2d2b5bf079804a5df0cb2018c423f905eda1ab05))
+
+### Others
+
+- **deps:** update dependencies ([0465ee4](https://github.com/borjapazr/express-typescript-skeleton/commit/0465ee406066a9e8cb1616d7c052045b33134525))
+
 ### [2.3.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.1...v2.3.2) (2023-01-09)
 
 ### Others
