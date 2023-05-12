@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.5.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.4.0...v2.5.0) (2023-05-12)
+
+### Features
+
+- **logger:** add env variable to disable logs ([bb0b097](https://github.com/borjapazr/express-typescript-skeleton/commit/bb0b097cbd27f80c7b5c9ca4cf62f3b194ea661f))
+
+### Performance Improvements
+
+- **logger:** migrate from pino streams to pino transports ([44495f2](https://github.com/borjapazr/express-typescript-skeleton/commit/44495f2b52d66ff3e917d79dd3634f8506fcb157))
+
+### Others
+
+- **ci:** add concurrency settings to ci workflow ([52bd15e](https://github.com/borjapazr/express-typescript-skeleton/commit/52bd15e42ae357dda9ffe832893d561b62f34166))
+- **deps:** update dependencies ([b5b45e1](https://github.com/borjapazr/express-typescript-skeleton/commit/b5b45e15e3d8fdc9de6a87d8465a2c01bed73eb0))
+
 ## [2.4.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.3.2...v2.4.0) (2023-05-10)
 
 ### Features
