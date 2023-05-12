@@ -1,7 +1,7 @@
 import { Context, Middleware, MiddlewareMethods, Req, Res } from '@tsed/common';
 
-import { PINO_LOGGER } from '@infrastructure/shared';
 import { GlobalConfig } from '@infrastructure/shared/config';
+import { PINO_LOGGER } from '@infrastructure/shared/logger/pino-logger';
 
 @Middleware()
 class LoggerMiddleware implements MiddlewareMethods {

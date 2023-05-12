@@ -1,6 +1,6 @@
 import { LoggerDomainService } from '@domain/shared/services';
 // eslint-disable-next-line hexagonal-architecture/enforce
-import { PINO_LOGGER } from '@infrastructure/shared/pino-logger';
+import { PINO_LOGGER } from '@infrastructure/shared/logger/pino-logger';
 
 import { Nullable } from './types';
 

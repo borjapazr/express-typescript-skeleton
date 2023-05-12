@@ -1,13 +1,10 @@
 import { getContext } from '@tsed/di';
 import { NextFunction, Request, Response } from 'express';
-import * as FileStreamRotator from 'file-stream-rotator';
-import pino, { Level, Logger as PinoLoggerType, StreamEntry } from 'pino';
+import pino, { Level, Logger as PinoLoggerType, TransportTargetOptions } from 'pino';
 import pinoHttp from 'pino-http';
-import pinoPretty from 'pino-pretty';
 
 import { LoggerDomainService } from '@domain/shared/services/logger.domain-service';
-
-import { GlobalConfig } from './config';
+import { GlobalConfig } from '@infrastructure/shared/config';
 
 enum LogLevel {
   DEBUG = 'debug',
@@ -22,7 +19,8 @@ const PinoLoggerConfig = Object.freeze({
   LOGS_FOLDER: GlobalConfig.LOGS_FOLDER,
   LOG_HTTP: true,
   LOG_HTTP_IN_ALL_MESSAGES: false,
-  LOG_ROTATION_AUDIT_FILE: 'log-audit.json'
+  LOG_ROTATION_AUDIT_FILE: 'log-audit.json',
+  ROTATE_FILE_TRANSPORT_PATH: `${__dirname}/pino-rotate-file.transport`
 });
 
 class PinoLogger implements LoggerDomainService {
@@ -113,43 +111,51 @@ class PinoLogger implements LoggerDomainService {
   }
 
   private configureAndGetDefaultLogger = (): PinoLoggerType => {
-    const createDestinationWithRotation = (destination: string): any =>
-      FileStreamRotator.getStream({
-        filename: `${destination}.%DATE%`,
-        frequency: 'date',
-        extension: '.log',
-        utc: true,
-        verbose: false,
-        date_format: 'YYYYMM',
-        audit_file: `${PinoLoggerConfig.LOGS_FOLDER}/${PinoLoggerConfig.LOG_ROTATION_AUDIT_FILE}`
-      });
+    const rotateFileTransport = {
+      level: LogLevel.DEBUG,
+      target: PinoLoggerConfig.ROTATE_FILE_TRANSPORT_PATH,
+      options: {
+        folder: PinoLoggerConfig.LOGS_FOLDER,
+        filename: 'all',
+        extension: 'log'
+      }
+    };
 
-    const streams: StreamEntry[] = [
-      {
-        level: LogLevel.DEBUG,
-        stream: GlobalConfig.IS_DEVELOPMENT
-          ? pinoPretty({
-              colorize: true,
-              messageKey: 'message'
-            })
-          : process.stdout
-      },
-      { level: LogLevel.DEBUG, stream: createDestinationWithRotation(`${PinoLoggerConfig.LOGS_FOLDER}/all`) },
-      { level: LogLevel.ERROR, stream: createDestinationWithRotation(`${PinoLoggerConfig.LOGS_FOLDER}/error`) }
+    const errorRotateFileTransport = {
+      level: LogLevel.ERROR,
+      target: PinoLoggerConfig.ROTATE_FILE_TRANSPORT_PATH,
+      options: {
+        folder: PinoLoggerConfig.LOGS_FOLDER,
+        filename: 'error',
+        extension: 'log'
+      }
+    };
+
+    const pinoPrettyTransport = {
+      level: LogLevel.DEBUG,
+      target: 'pino-pretty',
+      options: { colorize: true, messageKey: 'message' }
+    };
+
+    const standardOutputTransport = {
+      level: LogLevel.DEBUG,
+      target: 'pino/file',
+      options: { destination: 1, append: true }
+    };
+
+    const targets: TransportTargetOptions[] = [
+      errorRotateFileTransport,
+      rotateFileTransport,
+      GlobalConfig.IS_DEVELOPMENT ? pinoPrettyTransport : standardOutputTransport
     ];
 
     return pino(
       {
         enabled: GlobalConfig.LOGS_ENABLED,
         level: PinoLoggerConfig.LOG_LEVEL,
-        formatters: {
-          level: label => {
-            return { level: label };
-          }
-        },
         messageKey: 'message'
       },
-      pino.multistream(streams, { dedupe: false })
+      pino.transport({ targets, dedupe: false })
     );
   };
 }
