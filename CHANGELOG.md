@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.5.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.0...v2.5.1) (2023-05-13)
+
+### Bug Fixes
+
+- **logger:** disable logs during test execution ([ba71b7f](https://github.com/borjapazr/express-typescript-skeleton/commit/ba71b7f30322f5aa9242446f0797e9bdd8f0018d))
+
 ## [2.5.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.4.0...v2.5.0) (2023-05-12)
 
 ### Features
