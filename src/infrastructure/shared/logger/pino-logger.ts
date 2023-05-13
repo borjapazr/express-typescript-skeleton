@@ -111,7 +111,7 @@ class PinoLogger implements LoggerDomainService {
   }
 
   private configureAndGetDefaultLogger = (): PinoLoggerType => {
-    const rotateFileTransport = {
+    const rotateFileTarget = {
       level: LogLevel.DEBUG,
       target: PinoLoggerConfig.ROTATE_FILE_TRANSPORT_PATH,
       options: {
@@ -121,7 +121,7 @@ class PinoLogger implements LoggerDomainService {
       }
     };
 
-    const errorRotateFileTransport = {
+    const errorRotateFileTarget = {
       level: LogLevel.ERROR,
       target: PinoLoggerConfig.ROTATE_FILE_TRANSPORT_PATH,
       options: {
@@ -131,27 +131,26 @@ class PinoLogger implements LoggerDomainService {
       }
     };
 
-    const pinoPrettyTransport = {
+    const pinoPrettyTarget = {
       level: LogLevel.DEBUG,
       target: 'pino-pretty',
       options: { colorize: true, messageKey: 'message' }
     };
 
-    const standardOutputTransport = {
+    const standardOutputTarget = {
       level: LogLevel.DEBUG,
       target: 'pino/file',
       options: { destination: 1, append: true }
     };
 
     const targets: TransportTargetOptions[] = [
-      errorRotateFileTransport,
-      rotateFileTransport,
-      GlobalConfig.IS_DEVELOPMENT ? pinoPrettyTransport : standardOutputTransport
+      ...(GlobalConfig.IS_TEST ? [] : [errorRotateFileTarget, rotateFileTarget]),
+      GlobalConfig.IS_DEVELOPMENT ? pinoPrettyTarget : standardOutputTarget
     ];
 
     return pino(
       {
-        enabled: GlobalConfig.LOGS_ENABLED,
+        enabled: !GlobalConfig.IS_TEST && GlobalConfig.LOGS_ENABLED,
         level: PinoLoggerConfig.LOG_LEVEL,
         messageKey: 'message'
       },
