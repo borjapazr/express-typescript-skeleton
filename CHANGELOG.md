@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.5.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.1...v2.5.2) (2023-05-13)
+
+### Tests
+
+- **logger:** add pino and pino-http mocks ([a49b956](https://github.com/borjapazr/express-typescript-skeleton/commit/a49b956bf1d579e421fdb52d2d7a5af594d27c11))
+
 ### [2.5.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.0...v2.5.1) (2023-05-13)
 
 ### Bug Fixes
