@@ -149,7 +149,7 @@
     "@tsed/ajv": "^7.28.0",
     "@tsed/common": "^7.28.0",
     "@tsed/components-scan": "^7.28.0",
-    "@tsed/core": "^7.28.0",
+    "@tsed/core": "^7.29.0",
     "@tsed/di": "^7.28.0",
     "@tsed/exceptions": "^7.28.0",
     "@tsed/json-mapper": "^7.28.0",
