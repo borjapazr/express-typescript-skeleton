@@ -178,7 +178,7 @@
     "luxon": "^3.3.0",
     "method-override": "^3.0.0",
     "multer": "1.4.5-lts.1",
-    "node-emoji": "^1.11.0",
+    "node-emoji": "^2.0.2",
     "pino": "^8.14.1",
     "pino-http": "^8.3.3",
     "pino-pretty": "^10.0.0",
