@@ -1,1 +1,1 @@
-{ "apps": [{ "name": "base-app", "script": "./dist/index.js", "exec_mode": "cluster", "instances": "max" }] }
+{ "apps": [{ "exec_mode": "cluster", "instances": "max", "name": "base-app", "script": "./dist/index.js" }] }

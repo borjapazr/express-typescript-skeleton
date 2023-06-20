@@ -33,7 +33,10 @@
     "**/fixtures/**",
     "**/public/**",
     "CHANGELOG.md",
-    "**/changelog.mdx"
+    "**/changelog.mdx",
+    "**/*.prisma",
+    "docker/",
+    "Makefile"
   ],
   "dictionaries": [
     "typescript",

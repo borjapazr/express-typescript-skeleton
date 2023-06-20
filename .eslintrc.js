@@ -42,7 +42,7 @@ if ('paths' in compilerOptions) {
 module.exports = {
   root: true,
   env: {
-    es2020: true,
+    es2022: true,
     node: true,
     jest: true,
     'jest/globals': true
@@ -51,10 +51,38 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  extends: ['eslint:recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:eslint-comments/recommended',
+    'plugin:n/recommended',
+    'plugin:prettier/recommended'
+  ],
+  plugins: ['eslint-comments', 'n', 'prettier'],
+  rules: {
+    'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }]
+  },
   overrides: [
     {
-      files: ['*.ts'],
+      files: ['*.json', '*.jsonc'],
+      excludedFiles: ['package.json', 'tsconfig*.json'],
+      parser: 'jsonc-eslint-parser',
+      extends: ['plugin:jsonc/recommended-with-json'],
+      plugins: ['jsonc'],
+      rules: {
+        'jsonc/sort-keys': 'error'
+      }
+    },
+    {
+      files: ['**/*.{yml,yaml}'],
+      parser: 'yaml-eslint-parser',
+      extends: ['plugin:yml/standard', 'plugin:yml/prettier'],
+      plugins: ['yml'],
+      rules: {
+        'yml/file-extension': ['error', { extension: 'yml' }]
+      }
+    },
+    {
+      files: ['**/*.ts'],
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: './tsconfig.json',
@@ -63,10 +91,8 @@ module.exports = {
       },
       extends: [
         'plugin:@typescript-eslint/recommended',
-        'plugin:node/recommended',
         'airbnb-base',
         'airbnb-typescript/base',
-        'plugin:eslint-comments/recommended',
         'plugin:unicorn/recommended',
         'plugin:sonarjs/recommended',
         'plugin:import/recommended',
@@ -81,14 +107,11 @@ module.exports = {
       plugins: [
         '@typescript-eslint',
         'prefer-arrow',
-        'node',
-        'eslint-comments',
         'unicorn',
         'sonarjs',
         'import',
         'promise',
         'optimize-regex',
-        'prettier',
         'security',
         'simple-import-sort',
         'unused-imports',
@@ -189,11 +212,11 @@ module.exports = {
         'deprecation/deprecation': 'warn',
         // Disallow unsupported ECMAScript syntax on the specified version
         // Ignore ES6 modules because people might be using babel
-        'node/no-unsupported-features/es-syntax': ['error', { ignores: ['modules'] }],
+        'n/no-unsupported-features/es-syntax': ['error', { ignores: ['modules'] }],
         // node plugin cannot resolve TypeScript's path aliases. See https://github.com/mysticatea/eslint-plugin-node/issues/233
-        'node/no-missing-import': 'off',
+        'n/no-missing-import': 'off',
+        'n/no-process-exit': 'off',
         'promise/no-callback-in-promise': 'off',
-        'eslint-comments/disable-enable-pair': ['error', { allowWholeFile: true }],
         '@typescript-eslint/explicit-member-accessibility': [
           'error',
           {
@@ -224,7 +247,7 @@ module.exports = {
           }
         },
         {
-          files: ['*.unit.ts', '*.int.ts', '*.e2e.ts', '*.spec.ts', '*.test.ts'],
+          files: ['**/*.unit.ts', '**/*.int.ts', '**/*.e2e.ts', '**/*.spec.ts', '**/*.test.ts'],
           env: {
             jest: true,
             'jest/globals': true

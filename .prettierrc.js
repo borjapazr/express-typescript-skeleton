@@ -6,6 +6,7 @@ module.exports = {
   semi: true,
   quoteProps: 'as-needed',
   arrowParens: 'avoid',
+  plugins: ['prettier-plugin-packagejson', 'prettier-plugin-prisma'],
   overrides: [
     {
       files: '*.ts',

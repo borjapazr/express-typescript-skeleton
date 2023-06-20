@@ -43,6 +43,12 @@ jobs:
       - name: 📑 Check lint
         run: npm run check:lint
 
+      - name: 📦 Check package.json
+        run: npm run check:packagejson
+
+      - name: 📝 Check markdown
+        run: npm run check:markdown
+
       - name: 🔤 Check spelling
         run: npm run check:spelling
 
