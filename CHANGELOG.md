@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.5.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.2...v2.5.3) (2023-06-20)
+
+### Others
+
+- **cspell:** fix lint-staged ([a6eb43a](https://github.com/borjapazr/express-typescript-skeleton/commit/a6eb43a089d9f18acc1f49b802df828ffda5d600))
+- **deps:** update dependencies ([be4ad1d](https://github.com/borjapazr/express-typescript-skeleton/commit/be4ad1da93bbc76cf550809fdd651857b219ee1b))
+- **deps:** update dependencies ([0656bbb](https://github.com/borjapazr/express-typescript-skeleton/commit/0656bbb366c33fd296295220c71959183bd96572))
+- **deps:** update dependencies ([d38c88c](https://github.com/borjapazr/express-typescript-skeleton/commit/d38c88c87c74339b0cdf70205a681b1ac62a4ed8))
+- **tools:** improve tooling ([914be8c](https://github.com/borjapazr/express-typescript-skeleton/commit/914be8cbd89120fc625a2e2d001d15bd808c3e40))
+
 ### [2.5.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.1...v2.5.2) (2023-05-13)
 
 ### Tests
