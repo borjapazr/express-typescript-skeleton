@@ -3,8 +3,6 @@
 ## Todo
 
 - [ ] 👋 Improve project onboarding by configuring all steps in Codetour
-      usar tabs
-      comparalo coa template online
 
 ## In Progress
 
