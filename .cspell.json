@@ -36,7 +36,9 @@
     "**/changelog.mdx",
     "**/*.prisma",
     "docker/",
-    "Makefile"
+    "Makefile",
+    "logs/",
+    "coverage/"
   ],
   "dictionaries": [
     "typescript",
