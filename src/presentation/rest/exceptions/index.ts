@@ -1,5 +1,5 @@
 export * from './api.exception';
-export * from './exception.response';
+export * from './exception.api-response';
 export * from './forbidden.exception';
 export * from './internal-server-error.exception';
 export * from './path-not-found.exception';

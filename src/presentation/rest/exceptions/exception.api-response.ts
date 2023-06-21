@@ -7,7 +7,7 @@ import { AppInfo } from '@presentation/rest/config';
 
 import { ApiException } from './api.exception';
 
-class ExceptionResponse {
+class ExceptionApiResponse {
   @Integer()
   @Enum(StatusCodes)
   @Default(StatusCodes.IM_A_TEAPOT)
@@ -31,12 +31,12 @@ class ExceptionResponse {
     this.message = message;
   }
 
-  public static fromApiException(exception: ApiException): ExceptionResponse {
-    return new ExceptionResponse(exception.status, exception.code.toLowerCase(), exception.message);
+  public static fromApiException(exception: ApiException): ExceptionApiResponse {
+    return new ExceptionApiResponse(exception.status, exception.code.toLowerCase(), exception.message);
   }
 
-  public static fromTsEdException(exception: TsEdException): ExceptionResponse {
-    return new ExceptionResponse(
+  public static fromTsEdException(exception: TsEdException): ExceptionApiResponse {
+    return new ExceptionApiResponse(
       exception.status,
       exception.name.toLowerCase(),
       `${emoji.get('warning')} ${exception.message}`
@@ -44,4 +44,4 @@ class ExceptionResponse {
   }
 }
 
-export { ExceptionResponse };
+export { ExceptionApiResponse };
