@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.5.4](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.3...v2.5.4) (2023-06-21)
+
+### Code Refactoring
+
+- **dto:** rename rest exception response ([e452909](https://github.com/borjapazr/express-typescript-skeleton/commit/e4529096d26673cf1c3bb5fef5172ebb589b04bf))
+
 ### [2.5.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.2...v2.5.3) (2023-06-20)
 
 ### Others
