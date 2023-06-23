@@ -157,7 +157,7 @@
   },
   "dependencies": {
     "@ngneat/falso": "^6.4.0",
-    "@prisma/client": "^4.16.0",
+    "@prisma/client": "^4.16.1",
     "@tsed/ajv": "^7.30.0",
     "@tsed/common": "^7.30.0",
     "@tsed/components-scan": "^7.30.0",
