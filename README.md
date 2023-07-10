@@ -81,7 +81,7 @@ The main goal of this project is to provide a base template for the generation o
 - Built using [Ts.ED](https://tsed.io/): Ts.ED is a Node.js Framework on top of Express/Koa.js. Written in Typescript, it helps you build your server-side application easily and quickly. If you want to start a complete out-of-the-box project or fully customize it yourself, Ts.ED will guide you there!
 - JWT authentication and role based authorization using custom middleware
 - OpenAPI definition
-- Fully configured logger with [Winston](https://github.com/winstonjs/winston) and [Morgan](https://github.com/expressjs/morgan)
+- Fully configured logger with [Pino](https://github.com/pinojs/pino)
 - Unit, Integration and E2E tests using [Jest](https://github.com/facebook/jest) and [Supertest](https://github.com/visionmedia/supertest)
 - Linting with [ESLint](https://github.com/eslint/eslint)
 - Formatting with [Prettier](https://github.com/prettier/prettier)
