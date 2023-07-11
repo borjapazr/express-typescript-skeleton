@@ -50,12 +50,22 @@ start: install ## Start application in development mode
 .PHONY: start/db
 start/db: ## Start database container
 	@echo "▶️ Starting database (Docker)..."
-	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-db express-typescript-skeleton-adminer
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-db express-typescript-skeleton-pgweb
 
 .PHONY: stop/db
 stop/db: ## Stop database container
 	@echo "🛑 Stopping database (Docker)..."
-	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-db express-typescript-skeleton-adminer
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-db express-typescript-skeleton-pgweb
+
+.PHONY: start/cache
+start/cache: ## Start cache container
+	@echo "▶️ Starting cache (Docker)..."
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-redis express-typescript-skeleton-redis-commander
+
+.PHONY: stop/cache
+stop/cache: ## Stop cache container
+	@echo "🛑 Stopping cache (Docker)..."
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-redis express-typescript-skeleton-redis-commander
 
 .PHONY: start/prod
 start/prod: ## Start application in production mode
