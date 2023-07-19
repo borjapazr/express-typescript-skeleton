@@ -44,7 +44,7 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
     if (accessToken != null && !accessToken.isExpired()) {
       const session = await this.sessionRepository.findByUuid(accessToken.sessionUuid);
 
-      if (session != null && !session.isExpired()) {
+      if (session != null && session.isActive()) {
         return ValidatedSessionResponse.createValidatedSession(session, accessToken, refreshToken);
       }
     }
@@ -54,7 +54,7 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
 
       const user = await this.userRepository.findByUuid(refreshToken.userUuid);
 
-      if (session != null && !session.isExpired() && user != null) {
+      if (session != null && session.isActive() && user != null) {
         const newAccessToken = this.tokenProviderDomainService.createAccessToken(
           session.uuid,
           user.uuid,
@@ -63,7 +63,13 @@ class ValidateSessionUseCase extends BaseUseCase<ValidateSessionRequest, Validat
           user.roles
         );
 
-        const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(session.uuid, user.uuid);
+        const newRefreshToken = this.tokenProviderDomainService.createRefreshToken(
+          session.uuid,
+          user.uuid,
+          user.username,
+          user.email,
+          user.roles
+        );
 
         session.refreshTokenHash = await SessionRefreshTokenHash.createFromPlainRefreshToken(newRefreshToken.value);
         session.expiresAt = new SessionExpiresAt(refreshToken.expiresAt.value);

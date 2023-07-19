@@ -4,13 +4,13 @@ import { Nullable } from '@domain/shared';
 import { UserEmail, UserRepository, UserUuid } from '@domain/users';
 import { User } from '@domain/users/user';
 import { UserUsername } from '@domain/users/user-username';
-import { BasePrismaRepository, RepositoryAction } from '@infrastructure/shared/persistence/base-prisma-repository';
+import { BaseRepository, RepositoryAction } from '@infrastructure/shared/persistence/base-repository';
 import { Repository } from '@infrastructure/shared/persistence/repository.decorator';
 
-import { UserMapper } from './user.mapper';
+import { PrismaUserMapper } from './prisma-user.mapper';
 
-@Repository(UserRepository)
-class PrismaUserRepository extends BasePrismaRepository<UserModel> implements UserRepository {
+@Repository({ enabled: true, type: UserRepository })
+class PrismaUserRepository extends BaseRepository<UserModel> implements UserRepository {
   private usersRepository: UsersRepository;
 
   constructor(usersRepository: UsersRepository) {
@@ -23,7 +23,7 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
       where: { uuid: uuid.value, deletedAt: null }
     });
 
-    return user ? UserMapper.toDomainModel(user) : null;
+    return user ? PrismaUserMapper.toDomainModel(user) : null;
   }
 
   public async findByUsername(username: UserUsername): Promise<Nullable<User>> {
@@ -31,7 +31,7 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
       where: { username: username.value, deletedAt: null }
     });
 
-    return user ? UserMapper.toDomainModel(user) : null;
+    return user ? PrismaUserMapper.toDomainModel(user) : null;
   }
 
   public async findByEmail(email: UserEmail): Promise<Nullable<User>> {
@@ -39,7 +39,7 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
       where: { email: email.value, deletedAt: null }
     });
 
-    return user ? UserMapper.toDomainModel(user) : null;
+    return user ? PrismaUserMapper.toDomainModel(user) : null;
   }
 
   public async findAll(): Promise<User[]> {
@@ -47,22 +47,22 @@ class PrismaUserRepository extends BasePrismaRepository<UserModel> implements Us
       where: { deletedAt: null }
     });
 
-    return users.map(UserMapper.toDomainModel);
+    return users.map(PrismaUserMapper.toDomainModel);
   }
 
   public async create(user: User): Promise<User> {
     const createdUser = await this.usersRepository.create({
-      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, UserMapper.toPersistenceModel(user))
+      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, PrismaUserMapper.toPersistenceModel(user))
     });
-    return UserMapper.toDomainModel(createdUser);
+    return PrismaUserMapper.toDomainModel(createdUser);
   }
 
   public async update(user: User): Promise<User> {
     const updatedUser = await this.usersRepository.update({
       where: { uuid: user.uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, UserMapper.toPersistenceModel(user))
+      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, PrismaUserMapper.toPersistenceModel(user))
     });
-    return UserMapper.toDomainModel(updatedUser);
+    return PrismaUserMapper.toDomainModel(updatedUser);
   }
 
   public async delete(uuid: UserUuid): Promise<void> {

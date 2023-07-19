@@ -45,7 +45,13 @@ class StartSessionUseCase extends BaseUseCase<StartSessionRequest, SessionRespon
       roles
     );
 
-    const refreshToken = this.tokenProviderDomainService.createRefreshToken(sessionUuid, userUuid);
+    const refreshToken = this.tokenProviderDomainService.createRefreshToken(
+      sessionUuid,
+      userUuid,
+      username,
+      email,
+      roles
+    );
 
     const session = Session.create(
       sessionUuid,

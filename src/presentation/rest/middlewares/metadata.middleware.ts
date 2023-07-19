@@ -1,6 +1,7 @@
 import { Context, Middleware, MiddlewareMethods, OnResponse, Req } from '@tsed/common';
 
-import { TokenProviderDomainService } from '@domain/sessions/tokens';
+import { Token, TokenProviderDomainService } from '@domain/sessions/tokens';
+import { Nullable } from '@domain/shared';
 import { TriggeredByAnonymous, TriggeredByUser } from '@domain/shared/entities/triggered-by';
 import { Authentication } from '@infrastructure/shared/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
@@ -20,21 +21,17 @@ class MetadataMiddleware implements MiddlewareMethods, OnResponse {
     let authentication = Authentication.createEmpty();
 
     const accessTokenString = RequestUtils.getAccessToken(request);
+    const refreshTokenString = RequestUtils.getRefreshToken(request);
+    const accessToken = accessTokenString ? this.tokenProviderDomainService.parseAccessToken(accessTokenString) : null;
+    const refreshToken = refreshTokenString
+      ? this.tokenProviderDomainService.parseRefreshToken(refreshTokenString)
+      : null;
+    const token: Nullable<Token> = accessToken || refreshToken;
 
-    if (accessTokenString != null) {
-      const accessToken = this.tokenProviderDomainService.parseAccessToken(accessTokenString);
-
-      if (accessToken != null) {
-        const userRoles = accessToken.roles.map(role => role.value);
-
-        triggeredBy = new TriggeredByUser(accessToken.username.value, userRoles);
-        authentication = Authentication.create(
-          accessToken.userUuid.value,
-          accessToken.username.value,
-          accessToken.email.value,
-          userRoles
-        );
-      }
+    if (token) {
+      const userRoles = token.roles.map(role => role.value);
+      triggeredBy = new TriggeredByUser(token.username.value, userRoles);
+      authentication = Authentication.create(token.userUuid.value, token.username.value, token.email.value, userRoles);
     }
 
     AuthenticationUtils.setAuthentication(authentication);

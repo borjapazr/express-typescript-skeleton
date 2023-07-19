@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
 import { SessionUuid } from '@domain/sessions/session-uuid';
-import { UserUuid } from '@domain/users';
+import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
 
 import { TokenExpiresAt } from './token-expires-at';
 
@@ -16,6 +16,9 @@ interface TokenFlattened {
   value: string;
   expiresAt: Date;
   userUuid: string;
+  username: string;
+  email: string;
+  roles: string[];
 }
 
 abstract class Token {
@@ -29,12 +32,30 @@ abstract class Token {
 
   readonly userUuid: UserUuid;
 
-  constructor(type: TokenType, sessionUuid: SessionUuid, value: string, expiresAt: TokenExpiresAt, userUuid: UserUuid) {
+  readonly username: UserUsername;
+
+  readonly email: UserEmail;
+
+  readonly roles: UserRole[];
+
+  constructor(
+    type: TokenType,
+    sessionUuid: SessionUuid,
+    value: string,
+    expiresAt: TokenExpiresAt,
+    userUuid: UserUuid,
+    username: UserUsername,
+    email: UserEmail,
+    roles: UserRole[]
+  ) {
     this.type = type;
     this.sessionUuid = sessionUuid;
     this.value = value;
     this.expiresAt = expiresAt;
     this.userUuid = userUuid;
+    this.username = username;
+    this.email = email;
+    this.roles = roles;
   }
 
   public isExpired(): boolean {
@@ -51,7 +72,10 @@ abstract class Token {
       sessionUuid: this.sessionUuid.value,
       value: this.value,
       expiresAt: this.expiresAt.value,
-      userUuid: this.userUuid.value
+      userUuid: this.userUuid.value,
+      username: this.username.value,
+      email: this.email.value,
+      roles: this.roles.map(role => role.value)
     };
   }
 }

@@ -4,13 +4,15 @@ import { Session } from '@domain/sessions/session';
 import { SessionRepository } from '@domain/sessions/session.repository';
 import { SessionUuid } from '@domain/sessions/session-uuid';
 import { Nullable } from '@domain/shared';
-import { BasePrismaRepository, RepositoryAction } from '@infrastructure/shared/persistence/base-prisma-repository';
-import { Repository } from '@infrastructure/shared/persistence/repository.decorator';
+import { GlobalConfig } from '@infrastructure/shared/config';
+import { Repository } from '@infrastructure/shared/persistence';
+import { RepositoryAction } from '@infrastructure/shared/persistence/base-repository';
+import { PrismaBaseRepository } from '@infrastructure/shared/persistence/prisma/prisma-base-repository';
 
-import { SessionMapper } from './session.mapper';
+import { PrismaSessionMapper } from './prisma-session.mapper';
 
-@Repository(SessionRepository)
-class PrismaSessionRepository extends BasePrismaRepository<SessionModel> implements SessionRepository {
+@Repository({ enabled: GlobalConfig.STORE_SESSIONS_IN_DB, type: SessionRepository })
+class PrismaSessionRepository extends PrismaBaseRepository<SessionModel> implements SessionRepository {
   private sessionRepository: SessionsRepository;
 
   constructor(sessionRepository: SessionsRepository) {
@@ -23,22 +25,22 @@ class PrismaSessionRepository extends BasePrismaRepository<SessionModel> impleme
       where: { uuid: uuid.value, deletedAt: null, revokedAt: null }
     });
 
-    return session ? SessionMapper.toDomainModel(session) : null;
+    return session ? PrismaSessionMapper.toDomainModel(session) : null;
   }
 
   public async create(session: Session): Promise<Session> {
     const createdSession = await this.sessionRepository.create({
-      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, SessionMapper.toPersistenceModel(session))
+      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, PrismaSessionMapper.toPersistenceModel(session))
     });
-    return SessionMapper.toDomainModel(createdSession);
+    return PrismaSessionMapper.toDomainModel(createdSession);
   }
 
   public async update(session: Session): Promise<Session> {
     const updatedSession = await this.sessionRepository.update({
       where: { uuid: session.uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, SessionMapper.toPersistenceModel(session))
+      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, PrismaSessionMapper.toPersistenceModel(session))
     });
-    return SessionMapper.toDomainModel(updatedSession);
+    return PrismaSessionMapper.toDomainModel(updatedSession);
   }
 
   public async delete(uuid: SessionUuid): Promise<void> {

@@ -111,8 +111,9 @@ class Session extends DomainEntity {
     };
   }
 
-  public isExpired(): boolean {
-    return this.expiresAt.value < DateTime.utc().toJSDate();
+  public isActive(): boolean {
+    const currentDate = DateTime.utc().toJSDate();
+    return this.expiresAt.value > currentDate && (this.revokedAt == null || this.revokedAt.value > currentDate);
   }
 
   public async refreshTokenMatches(plainRefreshToken: string): Promise<boolean> {

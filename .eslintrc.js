@@ -179,6 +179,7 @@ module.exports = {
         'import/no-deprecated': 'error',
         'import/group-exports': 'error',
         'import/exports-last': 'error',
+        'import/no-cycle': ['error', { maxDepth: 1 }],
         'padding-line-between-statements': [
           'error',
           { blankLine: 'always', prev: '*', next: 'export' },

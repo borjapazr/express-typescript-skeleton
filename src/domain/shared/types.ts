@@ -1,3 +1,7 @@
 type Nullable<T> = T | null | undefined;
 
-export { Nullable };
+type Primitive = bigint | boolean | null | number | string | symbol | undefined;
+
+type PlainObject = Record<string, Primitive>;
+
+export { Nullable, PlainObject, Primitive };

@@ -14,7 +14,13 @@ abstract class TokenProviderDomainService {
     roles: UserRole[]
   ): AccessToken;
 
-  public abstract createRefreshToken(sessionUuid: SessionUuid, userUuid: UserUuid): RefreshToken;
+  public abstract createRefreshToken(
+    sessionUuid: SessionUuid,
+    userUuid: UserUuid,
+    username: UserUsername,
+    email: UserEmail,
+    roles: UserRole[]
+  ): RefreshToken;
 
   public abstract parseAccessToken(token: string): Nullable<AccessToken>;
 

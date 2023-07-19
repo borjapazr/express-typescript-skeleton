@@ -8,7 +8,7 @@ class InternalServerErrorException extends ApiException {
     super(
       StatusCodes.INTERNAL_SERVER_ERROR,
       'unexpected_error',
-      `${emoji.get('female-technologist')} An unexpected error has occurred. Please contact the administrator.`
+      `${emoji.get('fire')} An unexpected error has occurred. Please contact the administrator.`
     );
   }
 }

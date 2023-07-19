@@ -10,6 +10,8 @@ const GlobalConfig = Object.freeze({
   JWT_SECRET: getEnvironmentString('JWT_SECRET', 'jwtSecretPassphrase'),
   JWT_EXPIRATION: getEnvironmentNumber('JWT_EXPIRATION', 1),
   JWT_REFRESH_EXPIRATION: getEnvironmentNumber('JWT_REFRESH_EXPIRATION', 6),
+  STORE_SESSIONS_IN_CACHE: getEnvironmentString('SESSIONS_STORAGE', 'cache') !== 'db',
+  STORE_SESSIONS_IN_DB: getEnvironmentString('SESSIONS_STORAGE', 'cache') === 'db',
   PINO_LOGGER_KEY: 'pino-logger'
 });
 
@@ -22,4 +24,11 @@ const DatabaseConfig = Object.freeze({
   DB_NAME: getEnvironmentString('DB_NAME', 'express-typescript-skeleton-db')
 });
 
-export { DatabaseConfig, GlobalConfig };
+const CacheConfig = Object.freeze({
+  CACHE_HOST: getEnvironmentString('CACHE_HOST', 'localhost'),
+  CACHE_PORT: getEnvironmentNumber('CACHE_PORT', 6379),
+  CACHE_PASSWORD: getEnvironmentString('CACHE_PASSWORD', 'mars-password'),
+  CACHE_DB: getEnvironmentNumber('CACHE_DB', 0)
+});
+
+export { CacheConfig, DatabaseConfig, GlobalConfig };

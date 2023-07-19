@@ -1,8 +1,8 @@
-import { LoggerDomainService } from '@domain/shared/services';
-// eslint-disable-next-line hexagonal-architecture/enforce
+/* eslint-disable hexagonal-architecture/enforce */
+import { Nullable } from '@domain/shared/types';
 import { PINO_LOGGER } from '@infrastructure/shared/logger/pino-logger';
 
-import { Nullable } from './types';
+import { LoggerDomainService } from './services';
 
 class Logger implements LoggerDomainService {
   private static loggerInstance: LoggerDomainService = PINO_LOGGER;

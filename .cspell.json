@@ -81,6 +81,8 @@
     "globby",
     "healthcheck",
     "healthz",
+    "hgetall",
+    "hset",
     "inversify",
     "joelwmale",
     "libauth",
