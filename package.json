@@ -160,7 +160,7 @@
     "@ngneat/falso": "^6.4.0",
     "@prisma/client": "^5.0.0",
     "@tsed/ajv": "^7.33.0",
-    "@tsed/common": "^7.33.0",
+    "@tsed/common": "^7.33.4",
     "@tsed/components-scan": "^7.33.0",
     "@tsed/core": "^7.33.0",
     "@tsed/di": "^7.33.0",
