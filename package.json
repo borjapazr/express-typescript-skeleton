@@ -1,6 +1,6 @@
 {
   "name": "express-typescript-skeleton",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "🔰🦸 Template to start developing a REST API with Node.js (Express), TypeScript, ESLint, Prettier, Husky, Prisma, etc.",
   "author": {
     "name": "Borja Paz Rodríguez",

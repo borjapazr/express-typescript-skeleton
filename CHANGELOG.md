@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.6.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.6.0...v2.6.1) (2023-07-19)
+
+### Code Refactoring
+
+- **env:** move SESSIONS_STORAGE to app configuration section ([54cb0aa](https://github.com/borjapazr/express-typescript-skeleton/commit/54cb0aabc968dfb8785dfc6be2f1fad92fc4a07a))
+
 ## [2.6.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.4...v2.6.0) (2023-07-19)
 
 ### Features
