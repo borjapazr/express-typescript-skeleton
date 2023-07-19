@@ -3,7 +3,10 @@ import { ValueObject } from './value-object';
 abstract class EnumValueObject<T> extends ValueObject {
   readonly value: T;
 
-  constructor(value: T, public readonly validValues: T[]) {
+  constructor(
+    value: T,
+    public readonly validValues: T[]
+  ) {
     super();
     this.checkIfValueIsValid(value);
     this.value = value;
