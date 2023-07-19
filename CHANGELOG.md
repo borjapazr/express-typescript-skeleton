@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.6.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.4...v2.6.0) (2023-07-19)
+
+### Features
+
+- **cache:** add redis cache to store user sessions ([#355](https://github.com/borjapazr/express-typescript-skeleton/issues/355)) ([fae0fd0](https://github.com/borjapazr/express-typescript-skeleton/commit/fae0fd0242504c458c73c4bb5c62cfe119b1d2c4))
+
+### Others
+
+- **deps:** update dependencies ([c36c63c](https://github.com/borjapazr/express-typescript-skeleton/commit/c36c63c0f6b9425886cdcf6335e00c5575ae6694))
+- **deps:** update dependencies ([0547dde](https://github.com/borjapazr/express-typescript-skeleton/commit/0547dde7ff091d6b82120f909f5d1b91dbf16ad9))
+- **deps:** update dependencies ([389d527](https://github.com/borjapazr/express-typescript-skeleton/commit/389d5273928ddc8c0a8a43dc264c18629e9f8d86))
+
 ### [2.5.4](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.5.3...v2.5.4) (2023-06-21)
 
 ### Code Refactoring
