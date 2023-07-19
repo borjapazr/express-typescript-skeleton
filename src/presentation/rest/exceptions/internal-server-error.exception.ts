@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import emoji from 'node-emoji';
+import * as emoji from 'node-emoji';
 
 import { ApiException } from './api.exception';
 
@@ -8,7 +8,7 @@ class InternalServerErrorException extends ApiException {
     super(
       StatusCodes.INTERNAL_SERVER_ERROR,
       'unexpected_error',
-      `${emoji.get('female-technologist')} An unexpected error has occurred. Please contact the administrator.`
+      `${emoji.get('fire')} An unexpected error has occurred. Please contact the administrator.`
     );
   }
 }

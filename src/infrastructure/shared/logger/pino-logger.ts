@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import pino, { Level, Logger as PinoLoggerType, TransportTargetOptions } from 'pino';
 import pinoHttp from 'pino-http';
 
-import { LoggerDomainService } from '@domain/shared/services/logger.domain-service';
+import { LoggerDomainService } from '@domain/shared/services';
 import { GlobalConfig } from '@infrastructure/shared/config';
 
 enum LogLevel {

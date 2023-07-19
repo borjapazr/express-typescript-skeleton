@@ -10,7 +10,7 @@ import { DomainService } from '@domain/shared/services';
 import { UserEmail, UserRole, UserUsername, UserUuid } from '@domain/users';
 import { GlobalConfig } from '@infrastructure/shared/config';
 
-@DomainService(TokenProviderDomainService)
+@DomainService({ type: TokenProviderDomainService })
 class JwtTokenProvider extends TokenProviderDomainService {
   private readonly jwtAlgorithm: any = 'HS512';
 
@@ -47,13 +47,23 @@ class JwtTokenProvider extends TokenProviderDomainService {
     return AccessToken.create(sessionUuid, jwtToken, expiresAt, userUuid, username, email, roles);
   }
 
-  public createRefreshToken(sessionUuid: SessionUuid, userUuid: UserUuid): RefreshToken {
+  public createRefreshToken(
+    sessionUuid: SessionUuid,
+    userUuid: UserUuid,
+    username: UserUsername,
+    email: UserEmail,
+    roles: UserRole[]
+  ): RefreshToken {
+    const userRoles = roles.map(role => role.value);
     const expiresAt = this.getRefreshTokenExpiration();
     const jwtToken = jwt.sign(
       {
         type: TokenType.REFRESH_TOKEN,
         sessionUuid: sessionUuid.value,
         userUuid: userUuid.value,
+        username: username.value,
+        email: email.value,
+        roles: userRoles,
         exp: Math.floor(DateTime.fromJSDate(expiresAt.value).toSeconds())
       },
       this.jwtSecret,
@@ -62,7 +72,7 @@ class JwtTokenProvider extends TokenProviderDomainService {
       }
     );
 
-    return RefreshToken.create(sessionUuid, jwtToken, expiresAt, userUuid);
+    return RefreshToken.create(sessionUuid, jwtToken, expiresAt, userUuid, username, email, roles);
   }
 
   public parseAccessToken(token: string): Nullable<AccessToken> {
@@ -88,7 +98,7 @@ class JwtTokenProvider extends TokenProviderDomainService {
 
   public parseRefreshToken(token: string): Nullable<RefreshToken> {
     try {
-      const { type, sessionUuid, userUuid, exp } = <any>jwt.verify(token, this.jwtSecret, {
+      const { type, sessionUuid, userUuid, username, email, roles, exp } = <any>jwt.verify(token, this.jwtSecret, {
         algorithms: [this.jwtAlgorithm]
       });
       return type === TokenType.REFRESH_TOKEN
@@ -96,7 +106,10 @@ class JwtTokenProvider extends TokenProviderDomainService {
             new SessionUuid(sessionUuid),
             token,
             new TokenExpiresAt(DateTime.fromSeconds(exp).toJSDate()),
-            new UserUuid(userUuid)
+            new UserUuid(userUuid),
+            new UserUsername(username),
+            new UserEmail(email),
+            roles.map(UserRole.fromValue)
           )
         : null;
     } catch {

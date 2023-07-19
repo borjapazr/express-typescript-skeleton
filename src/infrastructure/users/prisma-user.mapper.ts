@@ -16,7 +16,7 @@ import {
 } from '@domain/users';
 import { UserUsername } from '@domain/users/user-username';
 
-class UserMapper {
+class PrismaUserMapper {
   public static toDomainModel(userPersistenceModel: UserModel): User {
     return new User(
       new UserId(userPersistenceModel.id),
@@ -59,4 +59,4 @@ class UserMapper {
   }
 }
 
-export { UserMapper };
+export { PrismaUserMapper };

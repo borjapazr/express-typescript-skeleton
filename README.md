@@ -48,6 +48,12 @@ The main goal of this project is to provide a base template for the generation o
   make start/db
   ```
 
+- Start cache container:
+
+  ```bash
+  make start/cache
+  ```
+
 - Generate Prisma Client:
 
   ```bash
@@ -92,6 +98,8 @@ The main goal of this project is to provide a base template for the generation o
 - Commit messages must meet conventional commits format
 - GitHub Actions
 - Makefile as project entrypoint
+- [PostgreSQL](https://www.postgresql.org/) as database
+- [Redis](https://redis.io/) as cache engine
 - A lot of emojis 🛸
 
 ### 🐐 Makefile rules
@@ -109,8 +117,10 @@ Targets:
   install                   Install the project
   logs                      Show logs for all or c=<name> containers
   start                     Start application in development mode
+  start/cache               Start cache container
   start/db                  Start database container
   start/prod                Start application in production mode
+  stop/cache                Stop cache container
   stop/db                   Stop database container
   stop/prod                 Stop production environment
 ```
@@ -125,6 +135,8 @@ Targets:
 - `check:types`: Check if project types are correct
 - `check:format`: Check if project is formatted correctly
 - `check:lint`: Check if project is linted correctly
+- `check:packagejson`: Check if project package.json is correct
+- `check:markdown`: Check if markdown files are correct
 - `check:spelling`: Check if project is spelled correctly
 - `fix:format`: Fix project format issues
 - `fix:lint`: Fix project lint issues

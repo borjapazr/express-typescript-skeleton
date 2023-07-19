@@ -12,7 +12,7 @@ import { SessionId } from '@domain/sessions/session-id';
 import { SessionUserData } from '@domain/sessions/session-user-data';
 import { SessionUuid } from '@domain/sessions/session-uuid';
 
-class SessionMapper {
+class PrismaSessionMapper {
   public static toDomainModel(sessionPersistenceModel: SessionModel): Session {
     const { username, email, roles } = JSON.parse(sessionPersistenceModel.userData);
     return new Session(
@@ -47,4 +47,4 @@ class SessionMapper {
   }
 }
 
-export { SessionMapper };
+export { PrismaSessionMapper };

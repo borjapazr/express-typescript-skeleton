@@ -1,7 +1,7 @@
 import { Exception as TsEdException } from '@tsed/exceptions';
 import { Default, Enum, Integer, Property } from '@tsed/schema';
 import { ReasonPhrases, StatusCodes } from 'http-status-codes';
-import emoji from 'node-emoji';
+import * as emoji from 'node-emoji';
 
 import { AppInfo } from '@presentation/rest/config';
 

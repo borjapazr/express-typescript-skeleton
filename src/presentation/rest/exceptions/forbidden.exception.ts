@@ -1,5 +1,5 @@
 import { StatusCodes } from 'http-status-codes';
-import emoji from 'node-emoji';
+import * as emoji from 'node-emoji';
 
 import { ApiException } from './api.exception';
 

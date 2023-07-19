@@ -1,7 +1,9 @@
+import * as emoji from 'node-emoji';
 import { performance } from 'perf_hooks';
 
 import { Logger } from '@domain/shared';
 
+import { Cache } from './cache/cache';
 import { DependencyInjection } from './di/dependency-injection';
 
 interface BootstrapResult {
@@ -9,21 +11,31 @@ interface BootstrapResult {
 }
 
 const bootstrap = async (): Promise<BootstrapResult> => {
+  const decorateLoggerMessage = (message: string): string => {
+    return `${emoji.get('zap')} ${message}`;
+  };
+
   const bootstrapStartTime = performance.now();
 
-  Logger.info('Bootstrapping infrastructure...');
+  Logger.info(decorateLoggerMessage('Bootstrapping infrastructure...'));
 
-  Logger.info('Initializing DI container...');
+  Logger.info(decorateLoggerMessage('Initializing DI container...'));
 
   await DependencyInjection.initialize();
 
-  Logger.info('DI container initialized!');
+  Logger.info(decorateLoggerMessage('DI container initialized!'));
+
+  Logger.info(decorateLoggerMessage('Initializing cache...'));
+
+  await Cache.initialize();
+
+  Logger.info(decorateLoggerMessage('Cache initialized!'));
 
   const bootstrapEndTime = performance.now();
 
   const bootstrapDuration = bootstrapEndTime - bootstrapStartTime;
 
-  Logger.info(`Infrastructure bootstrap took +${bootstrapDuration} ms to execute!`);
+  Logger.info(decorateLoggerMessage(`Infrastructure bootstrap took +${bootstrapDuration} ms to execute!`));
 
   return { bootstrapDuration };
 };
