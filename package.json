@@ -161,7 +161,7 @@
     "@prisma/client": "^5.0.0",
     "@tsed/ajv": "^7.33.4",
     "@tsed/common": "^7.33.4",
-    "@tsed/components-scan": "^7.33.4",
+    "@tsed/components-scan": "^7.34.0",
     "@tsed/core": "^7.33.4",
     "@tsed/di": "^7.33.4",
     "@tsed/exceptions": "^7.33.4",
