@@ -172,7 +172,7 @@
     "@tsed/platform-express": "^7.33.4",
     "@tsed/prisma": "^7.33.4",
     "@tsed/schema": "^7.33.4",
-    "@tsed/swagger": "^7.33.4",
+    "@tsed/swagger": "^7.34.0",
     "@types/pino": "^7.0.5",
     "ajv": "^8.12.0",
     "argon2": "^0.30.3",
