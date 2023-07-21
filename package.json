@@ -168,7 +168,7 @@
     "@tsed/ioredis": "^7.33.4",
     "@tsed/json-mapper": "^7.33.4",
     "@tsed/logger": "^6.6.2",
-    "@tsed/openspec": "^7.33.4",
+    "@tsed/openspec": "^7.34.0",
     "@tsed/platform-express": "^7.33.4",
     "@tsed/prisma": "^7.33.4",
     "@tsed/schema": "^7.33.4",
