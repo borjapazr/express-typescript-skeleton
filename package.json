@@ -170,7 +170,7 @@
     "@tsed/logger": "^6.6.2",
     "@tsed/openspec": "^7.33.4",
     "@tsed/platform-express": "^7.33.4",
-    "@tsed/prisma": "^7.33.4",
+    "@tsed/prisma": "^7.34.0",
     "@tsed/schema": "^7.33.4",
     "@tsed/swagger": "^7.33.4",
     "@types/pino": "^7.0.5",
