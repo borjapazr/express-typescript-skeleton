@@ -14,7 +14,7 @@ import { TriggeredBy, TriggeredByUser } from '@domain/shared/entities/triggered-
 import { Authentication } from '@infrastructure/shared/authentication';
 import { AuthenticationUtils } from '@infrastructure/shared/authentication/authentication-utils';
 import { AppConfig } from '@presentation/rest/config';
-import { UnauthorizedException } from '@presentation/rest/exceptions';
+import { NoCredentialsProvidedException } from '@presentation/rest/exceptions';
 import { RequestUtils } from '@presentation/rest/shared/request.utils';
 import { ResponseUtils } from '@presentation/rest/shared/response.utils';
 import { RestController } from '@presentation/rest/shared/rest-controller.decorator';
@@ -92,7 +92,7 @@ class AuthenticationController {
     @Res() response: Res,
     @Context(AppConfig.TRIGGERED_BY_CONTEXT_KEY) triggeredBy: TriggeredBy
   ): Promise<UserSuccessfullyAuthenticatedApiResponse> {
-    const refreshTokenString = this.getAndValidateRefreshToken(request);
+    const refreshTokenString = this.getRefreshTokenOrThrowNoCredentialsException(request);
 
     const refreshSessionRequest = RefreshSessionRequest.create(triggeredBy, refreshTokenString);
 
@@ -144,11 +144,11 @@ class AuthenticationController {
     return AuthenticatedUserApiResponse.fromUserResponse(authenticatedUser);
   }
 
-  private getAndValidateRefreshToken(request: Req): string {
+  private getRefreshTokenOrThrowNoCredentialsException(request: Req): string {
     const refreshToken = RequestUtils.getRefreshToken(request);
 
     if (refreshToken == null) {
-      throw new UnauthorizedException();
+      throw new NoCredentialsProvidedException();
     }
 
     return refreshToken;

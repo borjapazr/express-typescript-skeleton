@@ -16,7 +16,7 @@ class StartSessionRequest extends UseCaseRequest {
 
   protected validatePayload(): void {
     if (this.userUuid == null) {
-      throw new InvalidParameterException('<userUuid> can not be null');
+      throw new InvalidParameterException('User UUID must be provided');
     }
   }
 }

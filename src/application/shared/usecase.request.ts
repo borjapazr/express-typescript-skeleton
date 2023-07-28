@@ -12,7 +12,7 @@ abstract class UseCaseRequest {
 
   public validate(): void {
     if (this.triggeredBy == null) {
-      throw new InvalidParameterException('<triggeredBy> can not be null');
+      throw new InvalidParameterException('Triggered By must be provided');
     }
 
     this.validatePayload();

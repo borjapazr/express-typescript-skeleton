@@ -74,7 +74,7 @@ class RefreshSessionUseCase extends BaseUseCase<RefreshSessionRequest, SessionRe
     const refreshToken = this.tokenProviderDomainService.parseRefreshToken(refreshTokenString);
 
     if (refreshToken == null) {
-      throw new Error('Invalid refresh token');
+      throw new InvalidSessionException();
     }
 
     return refreshToken;

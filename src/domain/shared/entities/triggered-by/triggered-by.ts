@@ -5,7 +5,7 @@ abstract class TriggeredBy {
 
   protected constructor(who: string) {
     if (who == null) {
-      throw new InvalidParameterException('Who identifier can not be null');
+      throw new InvalidParameterException('Who identifier must be provided');
     }
 
     this.who = who;

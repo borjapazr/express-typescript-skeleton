@@ -19,11 +19,11 @@ class AuthenticateUserRequest extends UseCaseRequest {
 
   protected validatePayload(): void {
     if (this.username == null) {
-      throw new InvalidParameterException('<username> can not be null');
+      throw new InvalidParameterException('Username must be provided');
     }
 
     if (this.password == null) {
-      throw new InvalidParameterException('<password> can not be null');
+      throw new InvalidParameterException('Password must be provided');
     }
   }
 }

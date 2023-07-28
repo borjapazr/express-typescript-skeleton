@@ -16,7 +16,7 @@ class RefreshSessionRequest extends UseCaseRequest {
 
   protected validatePayload(): void {
     if (this.refreshToken == null) {
-      throw new InvalidParameterException('<refreshToken> can not be null');
+      throw new InvalidParameterException('Refresh Token must be provided');
     }
   }
 }

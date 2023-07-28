@@ -16,7 +16,7 @@ class FindUserRequest extends UseCaseRequest {
 
   protected validatePayload(): void {
     if (this.uuid == null) {
-      throw new InvalidParameterException('<uuid> can not be null');
+      throw new InvalidParameterException('User UUID must be provided');
     }
   }
 }

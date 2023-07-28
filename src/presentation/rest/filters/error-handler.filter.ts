@@ -4,6 +4,7 @@ import { Exception, Exception as TsEdException } from '@tsed/exceptions';
 import { Logger } from '@domain/shared';
 import {
   ApiException,
+  BadRequestException,
   ExceptionApiResponse,
   InternalServerErrorException,
   ResourceNotFoundException,
@@ -20,6 +21,11 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
   }
 
   private getExceptionHandler = (exception: Error): ((response: Res, error: Error) => void) => {
+    const invalidParameterHandler = (response: Res, error: Error): void => {
+      const badRequestException = new BadRequestException(error.message);
+      response.status(badRequestException.status).send(ExceptionApiResponse.fromApiException(badRequestException));
+    };
+
     const invalidCredentialsHandler = (response: Res, _error: Error): void => {
       const unauthorizedException = new UnauthorizedException();
       response.status(unauthorizedException.status).send(ExceptionApiResponse.fromApiException(unauthorizedException));
@@ -52,6 +58,7 @@ class HttpExceptionFilter implements ExceptionFilterMethods {
     };
 
     const exceptionHandlers: { [exception: string]: (response: Res, error: Error) => void } = {
+      InvalidParameterException: invalidParameterHandler,
       InvalidAuthenticationUsernameException: invalidCredentialsHandler,
       InvalidAuthenticationCredentialsException: invalidCredentialsHandler,
       UserNotExistsException: userNotFoundHandler,
