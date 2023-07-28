@@ -1,5 +1,6 @@
+import { performance } from 'node:perf_hooks';
+
 import * as emoji from 'node-emoji';
-import { performance } from 'perf_hooks';
 
 import { Logger } from '@domain/shared';
 

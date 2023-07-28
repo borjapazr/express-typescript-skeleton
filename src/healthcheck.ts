@@ -2,7 +2,7 @@
  * Health check to verify if the service is alive.
  */
 
-import * as http from 'http';
+import * as http from 'node:http';
 
 import { AppConfig } from '@presentation/rest/config';
 

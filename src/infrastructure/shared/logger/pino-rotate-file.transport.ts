@@ -1,4 +1,5 @@
-import EventEmitter, { once } from 'events';
+import EventEmitter, { once } from 'node:events';
+
 import * as FileStreamRotator from 'file-stream-rotator';
 
 interface PinoRotateFileOptions {

@@ -5,6 +5,8 @@
 const importGroups = [
   // Side effect imports.
   ['^\\u0000'],
+  // Node.js builtins prefixed with `node:`.
+  ['^node:'],
   // Packages.
   // Things that start with a letter (or digit or underscore), or `@` followed by a letter.
   ['^@?\\w'],
@@ -29,7 +31,7 @@ if ('paths' in compilerOptions) {
   if (namespaces && namespaces.length > 0) {
     // Anything that is defined in tsconfig.json with a little trick in order to resolve paths
     const pathAliasRegex = [`^(${namespaces.join('|')})(/.*|$)`];
-    importGroups.splice(2, 0, pathAliasRegex);
+    importGroups.splice(3, 0, pathAliasRegex);
   }
 }
 
@@ -151,6 +153,7 @@ module.exports = {
         'security/detect-object-injection': 'off',
 
         // Import and order style
+        'import/order': 'off',
         'simple-import-sort/imports': [
           'error',
           {
@@ -209,7 +212,7 @@ module.exports = {
           }
         ],
         // This is disabled because of this issue: https://github.com/DefinitelyTyped/DefinitelyTyped/pull/52595
-        'unicorn/prefer-node-protocol': 'off',
+        'unicorn/prefer-node-protocol': 'error',
         'deprecation/deprecation': 'warn',
         // Disallow unsupported ECMAScript syntax on the specified version
         // Ignore ES6 modules because people might be using babel

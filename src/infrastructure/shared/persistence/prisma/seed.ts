@@ -1,7 +1,8 @@
 /* spell-checker: disable */
+import { randomUUID } from 'node:crypto';
+
 import { randAvatar, randFullAddress, randPastDate, randPhoneNumber } from '@ngneat/falso';
 import { Gender, Prisma, PrismaClient, Role } from '@prisma/client';
-import { randomUUID } from 'crypto';
 import { DateTime } from 'luxon';
 
 const prisma = new PrismaClient();
