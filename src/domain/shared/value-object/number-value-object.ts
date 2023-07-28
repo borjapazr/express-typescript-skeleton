@@ -1,13 +1,6 @@
 import { ValueObject } from './value-object';
 
-abstract class NumberValueObject extends ValueObject {
-  readonly value: number;
-
-  constructor(value: number) {
-    super();
-    this.value = value;
-  }
-
+abstract class NumberValueObject extends ValueObject<number> {
   public isBiggerThan(other: NumberValueObject): boolean {
     return this.value > other.value;
   }

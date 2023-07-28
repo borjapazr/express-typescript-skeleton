@@ -1,15 +1,12 @@
-import { ValueObject } from './value-object';
-
-abstract class EnumValueObject<T> extends ValueObject {
+abstract class EnumValueObject<T> {
   readonly value: T;
 
   constructor(
     value: T,
     public readonly validValues: T[]
   ) {
-    super();
-    this.checkIfValueIsValid(value);
     this.value = value;
+    this.checkIfValueIsValid(value);
   }
 
   public checkIfValueIsValid(value: T): void {

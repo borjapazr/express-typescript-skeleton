@@ -1,6 +1,6 @@
-import { ValueObject } from '@domain/shared/value-object';
+import { CompositeValueObject } from '@domain/shared/value-object';
 
-class UserName extends ValueObject {
+class UserName extends CompositeValueObject {
   readonly firstName: string;
 
   readonly lastName: string;

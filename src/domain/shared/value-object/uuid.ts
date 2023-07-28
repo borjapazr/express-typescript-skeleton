@@ -7,14 +7,14 @@ import { StringValueObject } from './string-value-object';
 class Uuid extends StringValueObject {
   constructor(value: string) {
     super(value);
-    this.checkIfValueIsValid(value);
+    this.ensureValueIsValid(value);
   }
 
   public static random(): Uuid {
     return new Uuid(v4());
   }
 
-  private checkIfValueIsValid(value: string): void {
+  private ensureValueIsValid(value: string): void {
     if (!validate(value)) {
       throw new InvalidParameterException(`<${this.constructor.name}> does not allow the value <${value}>`);
     }
