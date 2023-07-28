@@ -163,7 +163,7 @@
     "@tsed/common": "^7.34.0",
     "@tsed/components-scan": "^7.34.0",
     "@tsed/core": "^7.34.0",
-    "@tsed/di": "^7.34.0",
+    "@tsed/di": "^7.34.1",
     "@tsed/exceptions": "^7.34.0",
     "@tsed/ioredis": "^7.34.0",
     "@tsed/json-mapper": "^7.34.0",
