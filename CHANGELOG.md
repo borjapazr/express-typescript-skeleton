@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.7.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.6.1...v2.7.0) (2023-07-29)
+
+### Features
+
+- add renovate.json ([#371](https://github.com/borjapazr/express-typescript-skeleton/issues/371)) ([d2dc8ee](https://github.com/borjapazr/express-typescript-skeleton/commit/d2dc8eed747fbab3de846f99284238953ad886a0))
+
+### Code Refactoring
+
+- improve error types and api rest responses ([ff661f7](https://github.com/borjapazr/express-typescript-skeleton/commit/ff661f722db44b7eee92cd5555819acb89f17e16))
+- improve value objects definition ([ee7dd93](https://github.com/borjapazr/express-typescript-skeleton/commit/ee7dd9352c50b6deebfb5a0f892801ceb965791f))
+
+### Others
+
+- **deps:** update dependencies ([6afc60f](https://github.com/borjapazr/express-typescript-skeleton/commit/6afc60fddaddfbb3fc5618108082916586a21752))
+- **deps:** update dependencies ([bc030b6](https://github.com/borjapazr/express-typescript-skeleton/commit/bc030b61048a1924991ad85280a7478ca3497987))
+- **deps:** update dependencies ([6e8f7c8](https://github.com/borjapazr/express-typescript-skeleton/commit/6e8f7c8594ecfbb18cc59f11db94730ee85b76b0))
+- **format:** add endOfLine rule to prettier configuration ([10a2930](https://github.com/borjapazr/express-typescript-skeleton/commit/10a2930ebde01ffc3dc8f77d33796147628b874f))
+
 ### [2.6.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.6.0...v2.6.1) (2023-07-19)
 
 ### Code Refactoring
