@@ -1,5 +1,5 @@
 {
-  "exec": "node --inspect=0.0.0.0:9229 -r ts-node/register -r tsconfig-paths/register ./src/index.ts",
+  "exec": "node --inspect=0.0.0.0:9229 -r @swc/register ./src/index.ts",
   "ext": "ts,json,yml",
   "ignore": ["dist", "node_modules"],
   "watch": ["src"]

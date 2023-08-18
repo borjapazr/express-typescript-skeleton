@@ -1,0 +1,42 @@
+{
+  "exclude": [".(unit|int|e2e|spec|test).(t|j)sx?$"],
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": true,
+      "dynamicImport": true
+    },
+    "transform": {
+      "legacyDecorator": true,
+      "decoratorMetadata": true
+    },
+    "baseUrl": "./",
+    "target": "es2019",
+    "externalHelpers": true,
+    "keepClassNames": true,
+    "loose": true,
+    "minify": {
+      "compress": false,
+      "mangle": false
+    },
+    "paths": {
+      "@application/*": ["src/application/*"],
+      "@domain/*": ["src/domain/*"],
+      "@infrastructure/*": ["src/infrastructure/*"],
+      "@presentation/*": ["src/presentation/*"],
+      "@test/*": ["test/*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": false,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": false
+  },
+  "minify": false,
+  "sourceMaps": true,
+  "inlineSourcesContent": true
+}
