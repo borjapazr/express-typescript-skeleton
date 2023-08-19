@@ -7,7 +7,6 @@
     "module": "commonjs", // Sets the module system for the program. "CommonJS" for node projects.
     "noEmit": false, // Do not emit compiler output files like JavaScript source code, source-maps or declarations.
     "outDir": "./dist", // .js (as well as .d.ts, .js.map, etc.) files will be emitted into this directory
-    "rootDir": "./", // The longest common path of all non-declaration input files
     "sourceMap": true, // Enables the generation of sourcemap files
     "target": "es2019", // Target environment
 

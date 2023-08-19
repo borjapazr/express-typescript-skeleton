@@ -2,9 +2,21 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "sourceMap": false,
-    "inlineSourceMap": true,
-    "rootDir": "./src"
+    "inlineSourceMap": true
   },
   "include": ["src/**/*"],
-  "exclude": ["src/**/*.test.ts", "src/**/*.spec.ts", "test/**/*.test.ts", "test/**/*.spec.ts", "node_modules", "dist"]
+  "exclude": [
+    "src/**/*.unit.ts",
+    "src/**/*.int.ts",
+    "src/**/*.e2e.ts",
+    "src/**/*.spec.ts",
+    "src/**/*.test.ts",
+    "test/**/*.unit.ts",
+    "test/**/*.int.ts",
+    "test/**/*.e2e.ts",
+    "test/**/*.spec.ts",
+    "test/**/*.test.ts",
+    "node_modules",
+    "dist"
+  ]
 }
