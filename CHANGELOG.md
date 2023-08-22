@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.7.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.0...v2.7.1) (2023-08-22)
+
+### Code Refactoring
+
+- **tsc:** improve tsconfig configuration ([761e90e](https://github.com/borjapazr/express-typescript-skeleton/commit/761e90e723226b5a3a69e70e14c2d79c7140e866))
+
+### Others
+
+- **deps:** update dependencies ([8132a28](https://github.com/borjapazr/express-typescript-skeleton/commit/8132a28ef7b4468ccac7b9ee844dd762e3523ebc))
+- **deps:** update dependencies ([c35cc4e](https://github.com/borjapazr/express-typescript-skeleton/commit/c35cc4ee2b6b6cb17251db5dab30887504ad3cde))
+
 ## [2.7.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.6.1...v2.7.0) (2023-07-29)
 
 ### Features
