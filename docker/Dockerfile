@@ -1,5 +1,5 @@
 # Base image stage
-FROM node:18-slim as node
+FROM node:20-slim as node
 
 LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
 
