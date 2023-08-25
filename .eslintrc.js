@@ -256,8 +256,8 @@ module.exports = {
             jest: true,
             'jest/globals': true
           },
-          extends: ['plugin:jest/recommended', 'plugin:jest/style'],
-          plugins: ['jest'],
+          extends: ['plugin:jest/recommended', 'plugin:jest/style', 'plugin:jest-extended/all'],
+          plugins: ['jest', 'jest-extended'],
           rules: {
             'jest/expect-expect': ['error', { assertFunctionNames: ['expect', 'request.**.expect'] }]
           }
