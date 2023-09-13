@@ -20,7 +20,8 @@ NPM := $(shell command -v npm)
 help: ## Show this help
 	@egrep -h '^[a-zA-Z0-9_\/-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort -d | awk 'BEGIN {FS = ":.*?## "; printf "Usage: make \033[0;34mTARGET\033[0m \033[0;35m[ARGUMENTS]\033[0m\n\n"; printf "Targets:\n"}; {printf "  \033[33m%-25s\033[0m \033[0;32m%s\033[0m\n", $$1, $$2}'
 
-deps: ## Check if the dependencies are installed
+.PHONY: requirements
+requirements: ## Check if the requirements are satisfied
 ifndef DOCKER
 	@echo "🐳 Docker is not available. Please install docker."
 	@exit 1
@@ -31,13 +32,14 @@ ifndef DOCKER_COMPOSE
 endif
 ifndef NPM
 	@echo "📦🧩 npm is not available. Please install npm."
+	@exit 1
 endif
 	@echo "🆗 The necessary dependencies are already installed!"
 
 TAG ?= prod
 
 .PHONY: install
-install: ## Install the project
+install: requirements ## Install the project
 	@echo "🍿 Installing dependencies..."
 	@npm install
 	@npm run prisma:generate
