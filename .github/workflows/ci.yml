@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -62,7 +62,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v3
@@ -89,7 +89,7 @@ jobs:
 
     steps:
       - name: ⬇️ Checkout project
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 🟢 Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v3

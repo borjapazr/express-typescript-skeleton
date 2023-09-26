@@ -24,7 +24,7 @@ services:
       - ${EXTERNAL_PORT}:${PORT}
 
   express-typescript-skeleton-db:
-    image: postgres:15
+    image: postgres:16
     container_name: express-typescript-skeleton-db
     restart: always
     environment:
