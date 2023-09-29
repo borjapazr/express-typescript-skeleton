@@ -94,6 +94,7 @@
     "http-status-codes": "^2.3.0",
     "ioredis": "^5.3.2",
     "jsonwebtoken": "^9.0.2",
+    "just-is-empty": "^3.4.1",
     "luxon": "^3.4.3",
     "method-override": "^3.0.0",
     "multer": "1.4.5-lts.1",

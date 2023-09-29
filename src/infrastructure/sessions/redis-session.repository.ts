@@ -1,4 +1,5 @@
 import { Inject } from '@tsed/di';
+import isEmpty from 'just-is-empty';
 
 import { Session } from '@domain/sessions/session';
 import { SessionRepository } from '@domain/sessions/session.repository';
@@ -27,7 +28,7 @@ class RedisSessionRepository extends RedisBaseRepository<RedisSession> implement
   public async findByUuid(uuid: SessionUuid): Promise<Nullable<Session>> {
     const cachedSession = await this.connection.hgetall(this.getKeyPrefix(uuid.value));
 
-    return cachedSession == null || cachedSession.deletedAt ? null : RedisSessionMapper.toDomainModel(cachedSession);
+    return isEmpty(cachedSession) || cachedSession.deletedAt ? null : RedisSessionMapper.toDomainModel(cachedSession);
   }
 
   public async create(session: Session): Promise<Session> {
