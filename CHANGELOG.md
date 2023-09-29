@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.7.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.1...v2.7.2) (2023-09-29)
+
+### Code Refactoring
+
+- **ci:** improve prettier configuration ([1961856](https://github.com/borjapazr/express-typescript-skeleton/commit/1961856c1a34d2d872bf8196ad0993a4ce34d4bc))
+- **oci:** improve dockerfile ([fd2dce8](https://github.com/borjapazr/express-typescript-skeleton/commit/fd2dce8252277c7dbb3e94360d7aa1590587c5cc))
+
+### Others
+
+- **deps:** update dependencies ([3e0f4c0](https://github.com/borjapazr/express-typescript-skeleton/commit/3e0f4c0819ff1f3ec274f2a9a5aa68f340b2ecd4))
+- **deps:** update dependencies ([1473413](https://github.com/borjapazr/express-typescript-skeleton/commit/14734137041bc1f49dac3891b6f79aa6157f5a15))
+- **deps:** update dependencies ([a369573](https://github.com/borjapazr/express-typescript-skeleton/commit/a3695738fe451c7752f97a9148471d305a336188))
+- **deps:** update dependencies ([c37e001](https://github.com/borjapazr/express-typescript-skeleton/commit/c37e001029eeaa9bf650b51521136e1efe1e461b))
+- **deps:** update dependencies ([1f63550](https://github.com/borjapazr/express-typescript-skeleton/commit/1f6355084e926c200703e0df9ba8c49216260cbc))
+- **lint:** add tsconfig root dir to eslint config ([2e71e2d](https://github.com/borjapazr/express-typescript-skeleton/commit/2e71e2ddfb67cd4ceb114be16e404e87bf636de5))
+
 ### [2.7.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.0...v2.7.1) (2023-08-22)
 
 ### Code Refactoring
