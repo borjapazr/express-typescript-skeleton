@@ -7,25 +7,24 @@ services:
       args:
         - PORT=${PORT}
       dockerfile: ./docker/Dockerfile
-      target: prod
     image: ${IMAGE_NAME}:prod
     container_name: express-typescript-skeleton
     restart: always
     depends_on:
-      - express-typescript-skeleton-db
+      - express-typescript-skeleton-postgres
     env_file:
       - ../.env
     environment:
       - TZ=${TZ}
-      - WAIT_HOSTS=express-typescript-skeleton-db:5432
+      - WAIT_HOSTS=express-typescript-skeleton-postgres:5432
     volumes:
       - ${LOGS_VOLUME}:/home/node/app/logs
     ports:
       - ${EXTERNAL_PORT}:${PORT}
 
-  express-typescript-skeleton-db:
+  express-typescript-skeleton-postgres:
     image: postgres:16
-    container_name: express-typescript-skeleton-db
+    container_name: express-typescript-skeleton-postgres
     restart: always
     environment:
       - POSTGRES_USER=${DB_USER}
@@ -42,9 +41,9 @@ services:
     container_name: express-typescript-skeleton-pgweb
     restart: always
     depends_on:
-      - express-typescript-skeleton-db
+      - express-typescript-skeleton-postgres
     environment:
-      - PGWEB_DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@express-typescript-skeleton-db:5432/${DB_NAME}?sslmode=disable
+      - PGWEB_DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@express-typescript-skeleton-postgres:5432/${DB_NAME}?sslmode=disable
       - TZ=${TZ}
     ports:
       - ${DB_MANAGER_PORT}:8081

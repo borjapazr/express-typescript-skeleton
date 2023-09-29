@@ -1,68 +1,73 @@
-# Base image stage
-FROM node:18-slim as node
+# syntax=docker/dockerfile:1.6-labs
 
-LABEL maintainer "Borja Paz Rodríguez (@borjapazr)"
+FROM node:18-buster-slim as base
+
+LABEL maintainer="Borja Paz Rodríguez <borjapazr@gmail.com>" \
+  version="2.7.1" \
+  description="🔰🦸 Template to start developing a REST API with Node.js (Express), TypeScript, ESLint, Prettier, Husky, Prisma, etc." \
+  license="MIT" \
+  org.label-schema.name="express-typescript-skeleton" \
+  org.label-schema.description="🔰🦸 Template to start developing a REST API with Node.js (Express), TypeScript, ESLint, Prettier, Husky, Prisma, etc." \
+  org.label-schema.url="https://bpaz.dev" \
+  org.label-schema.vcs-url="https://github.com/borjapazr/express-typescript-skeleton" \
+  org.label-schema.version="2.7.1" \
+  org.label-schema.schema-version="1.0"
+
+RUN <<EOF
+set -ex
+apt-get update
+apt-get upgrade -y
+apt-get install -y openssl
+apt-get autoremove -y
+apt-get clean -y
+rm -rf /var/lib/apt/lists/*
+npm install -g pm2
+npm cache clean --force
+EOF
+
+ENV NODE_ENV=production \
+  FORCE_COLOR=1 \
+  WAIT_VERSION=2.12.0
+
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/${WAIT_VERSION}/wait /wait
+RUN chmod +x /wait
+
+WORKDIR /app
+
+
+FROM base as builder
+
+COPY package*.json ./
+
+RUN <<EOF
+npm ci --omit=optional
+npm cache clean --force
+EOF
+
+COPY . .
+
+RUN <<EOF
+npm run prisma:generate
+npm run build
+npm prune --production
+EOF
+
+
+FROM base as runtime
 
 ARG PORT=5000
 ENV PORT $PORT
 EXPOSE $PORT
 
-RUN apt-get update
-RUN apt-get install -y openssl
+RUN mkdir logs
 
-RUN npm i npm@latest -g
+COPY --from=builder /app/node_modules /app/node_modules
+COPY --from=builder /app/dist /app
 
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
-RUN chmod +x /wait
+COPY <<EOF process.json
+{ "apps": [{ "exec_mode": "cluster", "instances": "max", "name": "express-typescript-skeleton", "script": "./index.js" }] }
+EOF
 
-
-# Builder stage
-FROM node AS builder
-
-WORKDIR /code
-
-COPY package*.json ./
-COPY ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
-
-RUN npm install --omit=optional --ignore-scripts && npm cache clean --force
-RUN npx -y prisma generate --schema ./prisma/schema.prisma
-
-ENV PATH /code/node_modules/.bin:$PATH
-
-WORKDIR /code/app
-
-COPY . ./
-
-RUN npm run build
-
-
-# Prod stage
-FROM node as prod
-
-ENV NODE_ENV=production
-ENV FORCE_COLOR=1
-
-WORKDIR /home/node/app
-RUN mkdir dist logs
-
-RUN chown -R node:node /home/node/app
-RUN npm install -g pm2
-
-USER node
-
-COPY --chown=node:node package*.json ./docker/pm2/process.json ./
-COPY --chown=node:node ./src/infrastructure/shared/persistence/prisma/schema.prisma ./prisma/schema.prisma
-
-# This is done in this way to avoid problems with Argon2
-RUN npm pkg delete scripts.prepare
-
-RUN npm ci --omit=dev && npm cache clean --force
-RUN npx -y prisma generate --schema ./prisma/schema.prisma
-
-ENV PATH /home/node/app/node_modules/.bin:$PATH
-
-COPY --chown=node:node --from=builder /code/app/dist ./dist
-
-HEALTHCHECK --interval=30s --timeout=60s --start-period=10s --retries=3 CMD node ./dist/healthcheck.js
+HEALTHCHECK --interval=30s --timeout=60s --start-period=10s --retries=3 CMD node ./healthcheck.js
 
 CMD /wait && pm2-runtime ./process.json

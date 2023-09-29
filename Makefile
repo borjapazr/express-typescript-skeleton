@@ -11,8 +11,8 @@ SHELL := $(shell which bash)
 .DEFAULT_GOAL := help
 
 ## Test if the dependencies we need to run this Makefile are installed
-DOCKER := $(shell command -v docker)
-DOCKER_COMPOSE := $(shell command -v docker-compose)
+DOCKER := DOCKER_BUILDKIT=1 $(shell command -v docker)
+DOCKER_COMPOSE := COMPOSE_DOCKER_CLI_BUILD=1 DOCKER_BUILDKIT=1 $(shell command -v docker-compose)
 DOCKER_COMPOSE_FILE := $(ROOT_DIR)/docker/docker-compose.yml
 NPM := $(shell command -v npm)
 
@@ -49,44 +49,44 @@ start: install ## Start application in development mode
 	@echo "▶️ Starting app in development mode..."
 	@npm run dev
 
-.PHONY: start/db
-start/db: ## Start database container
+.PHONY: start/docker/db
+start/docker/db: ## Start database container
 	@echo "▶️ Starting database (Docker)..."
-	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-db express-typescript-skeleton-pgweb
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-postgres express-typescript-skeleton-pgweb
 
-.PHONY: stop/db
-stop/db: ## Stop database container
+.PHONY: stop/docker/db
+stop/docker/db: ## Stop database container
 	@echo "🛑 Stopping database (Docker)..."
-	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-db express-typescript-skeleton-pgweb
+	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-postgres express-typescript-skeleton-pgweb
 
 .PHONY: start/cache
-start/cache: ## Start cache container
+start/docker/cache: ## Start cache container
 	@echo "▶️ Starting cache (Docker)..."
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d express-typescript-skeleton-redis express-typescript-skeleton-redis-commander
 
 .PHONY: stop/cache
-stop/cache: ## Stop cache container
+stop/docker/cache: ## Stop cache container
 	@echo "🛑 Stopping cache (Docker)..."
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env stop express-typescript-skeleton-redis express-typescript-skeleton-redis-commander
 
-.PHONY: start/prod
-start/prod: ## Start application in production mode
+.PHONY: start/docker
+start/docker: ## Start application in a Docker container
 	@echo "▶️ Starting app in production mode (Docker)..."
 	@mkdir -p -m 755 ${LOGS_VOLUME}
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env up -d --build
 
-.PHONY: stop/prod
-stop/prod: ## Stop production environment
+.PHONY: stop/docker
+stop/docker: ## Stop application running in a Docker container
 	@echo "🛑 Stopping app..."
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env down
 
-.PHONY: clean/prod
-clean/prod: ## Clean production environment
+.PHONY: clean/docker
+clean/docker: ## Clean all container resources
 	@echo "🧼 Cleaning all resources..."
 	@$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) --env-file .env down --rmi local --volumes --remove-orphans
 
-.PHONY: build/prod
-build/prod:  ## Build production environment
+.PHONY: build/docker
+build/docker:  ## Build Docker image of the application
 	@echo "📦 Building project Docker image..."
 	@docker build --build-arg PORT=$(PORT) -t $(APP_NAME):$(TAG) -f ./docker/Dockerfile .
 

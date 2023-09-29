@@ -76,7 +76,7 @@ jobs:
       - name: 💎 Generate Prisma models
         run: npm run prisma:generate
 
-      - name: 🧪 Run the tests
+      - name: 🧪 Run tests
         run: npm run test:coverage
 
   build:

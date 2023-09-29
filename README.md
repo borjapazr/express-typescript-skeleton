@@ -110,19 +110,19 @@ The main actions on this project are managed using a [Makefile](Makefile) as an 
 Usage: make TARGET [ARGUMENTS]
 
 Targets:
-  build/prod                Build production environment
-  clean/prod                Clean production environment
-  deps                      Check if the dependencies are installed
+  build/docker              Build Docker image of the application
+  clean/docker              Clean all container resources
   help                      Show this help
   install                   Install the project
   logs                      Show logs for all or c=<name> containers
+  requirements              Check if the requirements are satisfied
   start                     Start application in development mode
-  start/cache               Start cache container
-  start/db                  Start database container
-  start/prod                Start application in production mode
-  stop/cache                Stop cache container
-  stop/db                   Stop database container
-  stop/prod                 Stop production environment
+  start/docker              Start application in a Docker container
+  start/docker/cache        Start cache container
+  start/docker/db           Start database container
+  stop/docker               Stop application running in a Docker container
+  stop/docker/cache         Stop cache container
+  stop/docker/db            Stop database container
 ```
 
 ### ⚡ Scripts

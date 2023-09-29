@@ -12,7 +12,7 @@ const AppInfo = Object.freeze({
 });
 
 const AppConfig = Object.freeze({
-  PORT: getEnvironmentNumber('PORT', 3000),
+  PORT: getEnvironmentNumber('PORT', 5000),
   BASE_PATH: getEnvironmentString('BASE_PATH', '/api'),
   AUTHORIZATION_ACCESS_TOKEN_HEADER_NAME: 'authorization',
   ACCESS_TOKEN_HEADER_NAME: 'access-token',
