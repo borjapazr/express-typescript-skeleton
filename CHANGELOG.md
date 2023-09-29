@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.7.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.2...v2.7.3) (2023-09-29)
+
+### Bug Fixes
+
+- **sessions:** fix null session check in redis session repository ([ca29f1a](https://github.com/borjapazr/express-typescript-skeleton/commit/ca29f1a0264ed97160b2dfe5237595374bd248dc))
+
 ### [2.7.2](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.1...v2.7.2) (2023-09-29)
 
 ### Code Refactoring
