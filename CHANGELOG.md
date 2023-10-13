@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.7.4](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.3...v2.7.4) (2023-10-13)
+
+### Code Refactoring
+
+- **dockerfile:** add volume instruction and --link flak to copy instruction ([#401](https://github.com/borjapazr/express-typescript-skeleton/issues/401)) ([b9e5215](https://github.com/borjapazr/express-typescript-skeleton/commit/b9e5215ec2537c3d7f06de3577fc776ee0688ffc))
+
+### Others
+
+- **deps:** update dependencies ([#398](https://github.com/borjapazr/express-typescript-skeleton/issues/398)) ([e25dd03](https://github.com/borjapazr/express-typescript-skeleton/commit/e25dd031fcec4936ba6d430cedb098b1ab19d552))
+- **deps:** update dependencies ([#404](https://github.com/borjapazr/express-typescript-skeleton/issues/404)) ([501a6cb](https://github.com/borjapazr/express-typescript-skeleton/commit/501a6cbfb786a30e0dcc4e5a9e1d2423755ff078))
+- **node:** update nodejs version to 18.18.1 ([#405](https://github.com/borjapazr/express-typescript-skeleton/issues/405)) ([5735bf6](https://github.com/borjapazr/express-typescript-skeleton/commit/5735bf64b9dcc0bcab710a1959ea99a3c5bf4807))
+
 ### [2.7.3](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.2...v2.7.3) (2023-09-29)
 
 ### Bug Fixes
