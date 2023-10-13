@@ -18,7 +18,7 @@ services:
       - TZ=${TZ}
       - WAIT_HOSTS=express-typescript-skeleton-postgres:5432
     volumes:
-      - ${LOGS_VOLUME}:/home/node/app/logs
+      - ${LOGS_VOLUME}:/app/logs
     ports:
       - ${EXTERNAL_PORT}:${PORT}
 

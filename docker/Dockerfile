@@ -1,6 +1,8 @@
 # syntax=docker/dockerfile:1.6-labs
 
-FROM node:18-buster-slim as base
+ARG NODE_VERSION=18
+
+FROM node:${NODE_VERSION}-buster-slim as base
 
 LABEL maintainer="Borja Paz Rodríguez <borjapazr@gmail.com>" \
   version="2.7.1" \
@@ -37,14 +39,14 @@ WORKDIR /app
 
 FROM base as builder
 
-COPY package*.json ./
+COPY --link package*.json ./
 
 RUN <<EOF
 npm ci --omit=optional
 npm cache clean --force
 EOF
 
-COPY . .
+COPY --link . .
 
 RUN <<EOF
 npm run prisma:generate
@@ -58,13 +60,14 @@ FROM base as runtime
 ARG PORT=5000
 ENV PORT $PORT
 EXPOSE $PORT
+VOLUME ["/app/logs"]
 
 RUN mkdir logs
 
 COPY --from=builder /app/node_modules /app/node_modules
 COPY --from=builder /app/dist /app
 
-COPY <<EOF process.json
+COPY --link <<EOF process.json
 { "apps": [{ "exec_mode": "cluster", "instances": "max", "name": "express-typescript-skeleton", "script": "./index.js" }] }
 EOF
 
