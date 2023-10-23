@@ -1,0 +1,43 @@
+name: setup-environment
+description: Composite action to setup environment and install dependencies
+
+runs:
+  using: composite
+  steps:
+    - name: 🤹‍♂️ Install asdf
+      uses: asdf-vm/actions/setup@v2
+
+    - name: 🗂️ Cache asdf
+      id: cache-asdf
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-asdf
+      with:
+        path: ~/.asdf
+        key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}
+        restore-keys: |
+          ${{ runner.os }}-se-${{ env.cache-name }}-
+
+    - name: 🛠️ Install tools from .tool-versions
+      if: ${{ steps.cache-asdf.outputs.cache-hit != 'true' }}
+      continue-on-error: true
+      uses: asdf-vm/actions/install@v2
+
+    - name: 🗂️ Cache npm dependencies
+      id: cache-npm
+      uses: actions/cache@v3
+      env:
+        cache-name: cache-npm
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-se-${{ env.cache-name }}-
+
+    - name: 📥 Install dependencies
+      shell: bash
+      run: npm ci
+
+    - name: 💎 Generate Prisma models
+      shell: bash
+      run: npm run prisma:generate
