@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.8.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.4...v2.8.0) (2023-10-23)
+
+### Features
+
+- **ci:** add asdf tools to github actions ([#408](https://github.com/borjapazr/express-typescript-skeleton/issues/408)) ([fbefa33](https://github.com/borjapazr/express-typescript-skeleton/commit/fbefa332ee8d282cfd7c1e8f1d0e49147bcef539))
+- **ci:** improve composite action ([#409](https://github.com/borjapazr/express-typescript-skeleton/issues/409)) ([da6c996](https://github.com/borjapazr/express-typescript-skeleton/commit/da6c996c4d40dad22abf6d36c7389a070a1af4d0))
+
 ### [2.7.4](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.3...v2.7.4) (2023-10-13)
 
 ### Code Refactoring
