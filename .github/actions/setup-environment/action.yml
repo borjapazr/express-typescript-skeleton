@@ -17,8 +17,6 @@ runs:
         key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}
         restore-keys: |
           ${{ runner.os }}-se-${{ env.cache-name }}-
-          ${{ runner.os }}-se-
-          ${{ runner.os }}-
 
     - name: 🛠️ Install tools from .tool-versions
       if: ${{ steps.cache-asdf.outputs.cache-hit != 'true' }}
@@ -35,8 +33,6 @@ runs:
         key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
           ${{ runner.os }}-se-${{ env.cache-name }}-
-          ${{ runner.os }}-se-
-          ${{ runner.os }}-
 
     - name: 📥 Install dependencies
       shell: bash
