@@ -12,8 +12,9 @@ runs:
       uses: actions/cache@v3
       env:
         cache-name: cache-asdf
+        cache-path: ~/.asdf
       with:
-        path: ~/.asdf
+        path: ${{ env.cache-path }}
         key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}
         restore-keys: |
           ${{ runner.os }}-se-${{ env.cache-name }}-
@@ -28,11 +29,12 @@ runs:
       uses: actions/cache@v3
       env:
         cache-name: cache-npm
+        cache-path: ~/.npm
       with:
-        path: ~/.npm
-        key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+        path: ${{ env.cache-path }}
+        key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}-${{ hashFiles('**/package-lock.json') }}
         restore-keys: |
-          ${{ runner.os }}-se-${{ env.cache-name }}-
+          ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}-
 
     - name: 📥 Install dependencies
       shell: bash
