@@ -19,14 +19,8 @@ jobs:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v4
 
-      - name: 🛠️ Setup asdf tools
-        uses: ./.github/actions/setup-asdf-tools
-
-      - name: 📥 Install dependencies
-        run: npm ci
-
-      - name: 💎 Generate Prisma models
-        run: npm run prisma:generate
+      - name: 🧙‍♂️ Setup environment
+        uses: ./.github/actions/setup-environment
 
       - name: 🖍️ Check types
         run: npm run check:types
@@ -55,14 +49,8 @@ jobs:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v4
 
-      - name: 🛠️ Setup asdf tools
-        uses: ./.github/actions/setup-asdf-tools
-
-      - name: 📥 Install dependencies
-        run: npm ci
-
-      - name: 💎 Generate Prisma models
-        run: npm run prisma:generate
+      - name: 🧙‍♂️ Setup environment
+        uses: ./.github/actions/setup-environment
 
       - name: 🧪 Run tests
         run: npm run test:coverage
@@ -76,14 +64,8 @@ jobs:
       - name: ⬇️ Checkout project
         uses: actions/checkout@v4
 
-      - name: 🛠️ Setup asdf tools
-        uses: ./.github/actions/setup-asdf-tools
-
-      - name: 📥 Install dependencies
-        run: npm ci
-
-      - name: 💎 Generate Prisma models
-        run: npm run prisma:generate
+      - name: 🧙‍♂️ Setup environment
+        uses: ./.github/actions/setup-environment
 
       - name: ⚒️ Build project
         run: npm run build
