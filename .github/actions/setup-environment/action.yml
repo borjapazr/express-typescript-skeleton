@@ -24,19 +24,18 @@ runs:
       continue-on-error: true
       uses: asdf-vm/actions/install@v2
 
-    - name: 🗂️ Cache npm dependencies
-      id: cache-npm
+    - name: 🗂️ Cache node_modules
+      id: cache-node-modules
       uses: actions/cache@v3
       env:
-        cache-name: cache-npm
-        cache-path: ~/.npm
+        cache-name: cache-node-modules
+        cache-path: node_modules
       with:
         path: ${{ env.cache-path }}
         key: ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-se-${{ env.cache-name }}-${{ hashFiles('**/.tool-versions') }}-
 
     - name: 📥 Install dependencies
+      if: ${{ steps.cache-node-modules.outputs.cache-hit != 'true' }}
       shell: bash
       run: npm ci
 
