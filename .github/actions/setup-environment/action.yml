@@ -5,7 +5,7 @@ runs:
   using: composite
   steps:
     - name: 🤹‍♂️ Install asdf
-      uses: asdf-vm/actions/setup@v2
+      uses: asdf-vm/actions/setup@v3
 
     - name: 🗂️ Cache asdf
       id: cache-asdf
@@ -22,7 +22,7 @@ runs:
     - name: 🛠️ Install tools from .tool-versions
       if: ${{ steps.cache-asdf.outputs.cache-hit != 'true' }}
       continue-on-error: true
-      uses: asdf-vm/actions/install@v2
+      uses: asdf-vm/actions/install@v3
 
     - name: 🗂️ Cache node_modules
       id: cache-node-modules
