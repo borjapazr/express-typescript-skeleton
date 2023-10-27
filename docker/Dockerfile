@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.6-labs
 
-ARG NODE_VERSION=18
+ARG NODE_VERSION=20
 
 FROM node:${NODE_VERSION}-buster-slim as base
 
