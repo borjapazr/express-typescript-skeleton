@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.9.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.8.0...v2.9.0) (2023-10-27)
+
+### Features
+
+- **ci:** improve composite action ([c2b4385](https://github.com/borjapazr/express-typescript-skeleton/commit/c2b4385b179b304768f82c2abf61850d5781458f))
+
+### Code Refactoring
+
+- **ci:** improve composite action ([cc6f430](https://github.com/borjapazr/express-typescript-skeleton/commit/cc6f430328c97ce395f5403da89649eac554b3bc))
+
+### Others
+
+- **ci:** update node version to 20.0.9 (lts) ([fb0a730](https://github.com/borjapazr/express-typescript-skeleton/commit/fb0a730e1a2a75dca48bcc7444c4d7eb4c5d8d38))
+
 ## [2.8.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.7.4...v2.8.0) (2023-10-23)
 
 ### Features
