@@ -15,6 +15,8 @@ LABEL maintainer="Borja Paz Rodríguez <borjapazr@gmail.com>" \
   org.label-schema.version="2.7.1" \
   org.label-schema.schema-version="1.0"
 
+ARG WAIT_VERSION=2.12.1
+
 RUN <<EOF
 set -ex
 apt-get update
@@ -28,8 +30,7 @@ npm cache clean --force
 EOF
 
 ENV NODE_ENV=production \
-  FORCE_COLOR=1 \
-  WAIT_VERSION=2.12.0
+  FORCE_COLOR=1
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/${WAIT_VERSION}/wait /wait
 RUN chmod +x /wait
