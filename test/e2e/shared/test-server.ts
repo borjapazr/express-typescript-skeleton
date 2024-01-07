@@ -7,7 +7,7 @@ import SuperTest from 'supertest';
 import { bootstrap } from '@infrastructure/shared';
 import { Server } from '@presentation/rest/server';
 
-type SuperTestRequest = SuperTest.SuperTest<SuperTest.Test>;
+type SuperTestRequest = SuperTest.SuperTest<SuperTest.Test> | any;
 
 const mockExternalDependencies = (): void => {
   jest.spyOn(PrismaClient.prototype, '$connect').mockImplementation(() => Promise.resolve());
@@ -23,7 +23,7 @@ const TestServer = {
   },
 
   getSuperTestRequest: (): SuperTestRequest => {
-    return SuperTest(PlatformTest.callback());
+    return SuperTest.agent(PlatformTest.callback());
   },
   reset: async (): Promise<void> => {
     IORedisTest.reset();

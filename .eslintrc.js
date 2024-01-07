@@ -105,7 +105,7 @@ module.exports = {
         'plugin:promise/recommended',
         'plugin:optimize-regex/recommended',
         'plugin:prettier/recommended',
-        'plugin:security/recommended'
+        'plugin:security/recommended-legacy'
       ],
       plugins: [
         '@typescript-eslint',

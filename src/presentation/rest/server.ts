@@ -99,7 +99,7 @@ class Server {
       ]
     };
 
-    const loggerConfiguration: Partial<TsED.Configuration> = {
+    const loggerConfiguration: Partial<TsED.Configuration> | any = {
       logger: {
         level: 'off',
         disableRoutesSummary: true,
