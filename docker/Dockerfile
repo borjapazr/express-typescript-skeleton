@@ -1,8 +1,8 @@
 # syntax=docker/dockerfile:1.6-labs
 
-ARG NODE_VERSION=20
+ARG NODE_VERSION=20.11.1
 
-FROM node:${NODE_VERSION}-buster-slim as base
+FROM node:${NODE_VERSION}-alpine as base
 
 LABEL maintainer="Borja Paz Rodríguez <borjapazr@gmail.com>" \
   version="2.7.1" \
@@ -19,12 +19,13 @@ ARG WAIT_VERSION=2.12.1
 
 RUN <<EOF
 set -ex
-apt-get update
-apt-get upgrade -y
-apt-get install -y openssl
-apt-get autoremove -y
-apt-get clean -y
-rm -rf /var/lib/apt/lists/*
+apk update
+apk upgrade
+apk add --no-cache openssl
+rm -rf /var/cache/apk/*
+EOF
+
+RUN <<EOF
 npm install -g pm2
 npm cache clean --force
 EOF
@@ -52,7 +53,7 @@ COPY --link . .
 RUN <<EOF
 npm run prisma:generate
 npm run build
-npm prune --production
+npm prune --omit=dev
 EOF
 
 
