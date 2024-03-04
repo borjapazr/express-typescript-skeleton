@@ -9,7 +9,7 @@ runs:
 
     - name: 🗂️ Cache asdf
       id: cache-asdf
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
         cache-name: cache-asdf
         cache-path: ~/.asdf
@@ -26,7 +26,7 @@ runs:
 
     - name: 🗂️ Cache node_modules
       id: cache-node-modules
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       env:
         cache-name: cache-node-modules
         cache-path: node_modules
