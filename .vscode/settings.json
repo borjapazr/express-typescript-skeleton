@@ -5,10 +5,10 @@
   "cSpell.enabled": true,
   "cSpell.userWords": [], // only use words from .cspell.json
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
-    "source.fixAll.format": true,
-    "source.fixAll.stylelint": true,
-    "source.fixAll.htmlhint": true
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.format": "explicit",
+    "source.fixAll.stylelint": "explicit",
+    "source.fixAll.htmlhint": "explicit"
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
