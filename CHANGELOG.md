@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+### [2.9.1](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.9.0...v2.9.1) (2024-03-04)
+
+### Others
+
+- **ci:** improve dockerfile ([71dae44](https://github.com/borjapazr/express-typescript-skeleton/commit/71dae44c8aa3c167c2fd16a8220501235d23b5bd))
+- **ci:** update asdf-vm action ([ae9b0aa](https://github.com/borjapazr/express-typescript-skeleton/commit/ae9b0aaa7e899d9e0a564407fff4bdcdfd29c5da))
+- **deps:** update dependencies ([1c0a1b6](https://github.com/borjapazr/express-typescript-skeleton/commit/1c0a1b65846bbfe92968686818cbc5e6a76be506))
+- **deps:** update dependencies ([1047f90](https://github.com/borjapazr/express-typescript-skeleton/commit/1047f903524620dd8ce218cc9635b94a53cad216))
+- **deps:** update dependencies ([ff57405](https://github.com/borjapazr/express-typescript-skeleton/commit/ff57405821e6abf764db8309e315493c2e74bc57))
+- **deps:** update dependencies ([4ca4007](https://github.com/borjapazr/express-typescript-skeleton/commit/4ca40072c883f0bf37501a5736b855cfd5818b38))
+
 ## [2.9.0](https://github.com/borjapazr/express-typescript-skeleton/compare/v2.8.0...v2.9.0) (2023-10-27)
 
 ### Features
