@@ -4,7 +4,7 @@
 
 import * as http from 'node:http';
 
-import { AppConfig } from '@presentation/rest/config';
+import { AppConfig } from '@contract/rest/config';
 
 const options = {
   host: 'localhost',

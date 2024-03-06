@@ -4,8 +4,8 @@ import { IORedisTest } from '@tsed/ioredis';
 import IORedis from 'ioredis';
 import SuperTest from 'supertest';
 
-import { bootstrap } from '@infrastructure/shared';
-import { Server } from '@presentation/rest/server';
+import { Server } from '@contract/rest/server';
+import { bootstrap } from '@shared/infrastructure';
 
 type SuperTestRequest = SuperTest.SuperTest<SuperTest.Test> | any;
 

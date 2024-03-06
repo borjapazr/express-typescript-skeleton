@@ -4,9 +4,9 @@ import 'source-map-support/register';
 import { PlatformExpress } from '@tsed/platform-express';
 import * as emoji from 'node-emoji';
 
-import { Logger } from '@domain/shared';
-import { bootstrap } from '@infrastructure/shared';
-import { Server } from '@presentation/rest/server';
+import { Server } from '@contract/rest/server';
+import { Logger } from '@shared/domain';
+import { bootstrap } from '@shared/infrastructure';
 
 const start = async (): Promise<void> => {
   await bootstrap();

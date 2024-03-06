@@ -1,6 +1,6 @@
-import { HealthStatusResponse } from '@application/health';
-import { HealthStatus } from '@domain/health';
-import { AppInfo } from '@presentation/rest/config';
+import { AppInfo } from '@contract/rest/config';
+import { HealthStatusResponse } from '@modules/health/application';
+import { HealthStatus } from '@modules/health/domain';
 
 describe('Testing HealthStatusResponse generation', () => {
   it('should return a valid HealthStatusResponse from domain model', () => {

@@ -30,7 +30,7 @@ module.exports = {
 
   /* Bootstrap settings */
   // Set initial config and enable jest-extended features
-  setupFilesAfterEnv: ['<rootDir>/test/jest.setup.ts', 'jest-extended/all'],
+  setupFilesAfterEnv: ['<rootDir>/test/jest.setup.ts'],
 
   /* Global test settings */
   // Automatically clear mock calls and instances between every test

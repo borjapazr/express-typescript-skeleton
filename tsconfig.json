@@ -15,14 +15,12 @@
     "esModuleInterop": true, // fixes some issues TS originally had with the ES6 spec where TypeScript treats CommonJS/AMD/UMD modules similar to ES6 module
     "moduleResolution": "node", // Pretty much always node for modern JS. Other option is "classic"
     "paths": {
-      "@application/*": ["src/application/*"],
-      "@domain/*": ["src/domain/*"],
-      "@infrastructure/*": ["src/infrastructure/*"],
-      "@presentation/*": ["src/presentation/*"],
-      "@test/*": ["test/*"],
-      "@/*": ["src/*"]
+      "@modules/*": ["src/modules/*"],
+      "@shared/*": ["src/shared/*"],
+      "@contract/*": ["src/contract/*"],
+      "@test/*": ["test/*"]
     }, // A series of entries which re-map imports to lookup locations relative to the baseUrl
-    "typeRoots": ["../node_modules/@types", "node_modules/@types", "src/types"],
+    "typeRoots": ["../node_modules/@types", "node_modules/@types"],
 
     // Advanced
     "forceConsistentCasingInFileNames": true, // TypeScript will issue an error if a program tries to include a file by a casing different from the casing on disk

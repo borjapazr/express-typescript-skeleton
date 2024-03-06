@@ -1,6 +1,6 @@
-import { CheckHealthStatusRequest, CheckHealthStatusUseCase, HealthStatusResponse } from '@application/health';
-import { TriggeredByAnonymous } from '@domain/shared/entities/triggered-by';
-import { AppInfo } from '@presentation/rest/config';
+import { AppInfo } from '@contract/rest/config';
+import { CheckHealthStatusRequest, CheckHealthStatusUseCase, HealthStatusResponse } from '@modules/health/application';
+import { TriggeredByAnonymous } from '@shared/domain/entities/triggered-by';
 
 describe('Testing health check use case', () => {
   it('should return ALIVE health status', () => {
