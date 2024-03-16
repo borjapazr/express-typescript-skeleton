@@ -246,7 +246,7 @@ module.exports = {
       },
       overrides: [
         {
-          files: ['src/!(presentation|types)/**/*.ts'],
+          files: ['src/!(contract|types)/**/*.ts'],
           rules: {
             'hexagonal-architecture/enforce': ['error']
           }
