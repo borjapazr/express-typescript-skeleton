@@ -17,13 +17,11 @@ LABEL maintainer="Borja Paz Rodríguez <borjapazr@gmail.com>" \
 
 ARG WAIT_VERSION=2.12.1
 
-RUN <<EOF
-set -ex
-apk update
-apk upgrade
-apk add --no-cache openssl
-rm -rf /var/cache/apk/*
-EOF
+RUN set -ex
+RUN apk update
+RUN apk upgrade
+RUN apk add --no-cache openssl
+RUN rm -rf /var/cache/apk/*
 
 RUN <<EOF
 npm install -g pm2
@@ -43,18 +41,15 @@ FROM base as builder
 
 COPY --link package*.json ./
 
-RUN <<EOF
-npm ci --omit=optional
-npm cache clean --force
-EOF
+RUN npm ci --omit=optional
+RUN npm cache clean --force
+
 
 COPY --link . .
 
-RUN <<EOF
-npm run prisma:generate
-npm run build
-npm prune --omit=dev
-EOF
+RUN npm run prisma:generate
+RUN npm run build
+RUN npm prune --omit=dev
 
 
 FROM base as runtime
