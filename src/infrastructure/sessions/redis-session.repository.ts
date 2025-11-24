@@ -34,7 +34,7 @@ class RedisSessionRepository extends RedisBaseRepository<RedisSession> implement
   public async create(session: Session): Promise<Session> {
     await this.connection.hset(
       this.getKeyPrefix(session.uuid.value),
-      this.getAuditablePersitenceModel(RepositoryAction.CREATE, RedisSessionMapper.toPersistenceModel(session))
+      this.getAuditablePersistenceModel(RepositoryAction.CREATE, RedisSessionMapper.toPersistenceModel(session))
     );
     return session;
   }
@@ -42,7 +42,7 @@ class RedisSessionRepository extends RedisBaseRepository<RedisSession> implement
   public async update(session: Session): Promise<Session> {
     await this.connection.hset(
       this.getKeyPrefix(session.uuid.value),
-      this.getAuditablePersitenceModel(RepositoryAction.UPDATE, RedisSessionMapper.toPersistenceModel(session))
+      this.getAuditablePersistenceModel(RepositoryAction.UPDATE, RedisSessionMapper.toPersistenceModel(session))
     );
     return session;
   }
@@ -50,7 +50,7 @@ class RedisSessionRepository extends RedisBaseRepository<RedisSession> implement
   public async delete(uuid: SessionUuid): Promise<void> {
     await this.connection.hset(
       this.getKeyPrefix(uuid.value),
-      this.getAuditablePersitenceModel(RepositoryAction.DELETE)
+      this.getAuditablePersistenceModel(RepositoryAction.DELETE)
     );
   }
 }

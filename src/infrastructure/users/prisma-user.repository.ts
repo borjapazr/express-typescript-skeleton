@@ -52,7 +52,7 @@ class PrismaUserRepository extends BaseRepository<UserModel> implements UserRepo
 
   public async create(user: User): Promise<User> {
     const createdUser = await this.usersRepository.create({
-      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, PrismaUserMapper.toPersistenceModel(user))
+      data: this.getAuditablePersistenceModel(RepositoryAction.CREATE, PrismaUserMapper.toPersistenceModel(user))
     });
     return PrismaUserMapper.toDomainModel(createdUser);
   }
@@ -60,7 +60,7 @@ class PrismaUserRepository extends BaseRepository<UserModel> implements UserRepo
   public async update(user: User): Promise<User> {
     const updatedUser = await this.usersRepository.update({
       where: { uuid: user.uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, PrismaUserMapper.toPersistenceModel(user))
+      data: this.getAuditablePersistenceModel(RepositoryAction.UPDATE, PrismaUserMapper.toPersistenceModel(user))
     });
     return PrismaUserMapper.toDomainModel(updatedUser);
   }
@@ -68,7 +68,7 @@ class PrismaUserRepository extends BaseRepository<UserModel> implements UserRepo
   public async delete(uuid: UserUuid): Promise<void> {
     await this.usersRepository.update({
       where: { uuid: uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.DELETE)
+      data: this.getAuditablePersistenceModel(RepositoryAction.DELETE)
     });
   }
 }

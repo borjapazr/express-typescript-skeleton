@@ -9,7 +9,7 @@ enum RepositoryAction {
 }
 
 abstract class BaseRepository<T> {
-  protected getAuditablePersitenceModel(auditAction: RepositoryAction, persistenceModel?: T): T {
+  protected getAuditablePersistenceModel(auditAction: RepositoryAction, persistenceModel?: T): T {
     const username = AuthenticationUtils.getAuthentication()?.username;
     const actionDate = DateTime.utc().toISO();
 
