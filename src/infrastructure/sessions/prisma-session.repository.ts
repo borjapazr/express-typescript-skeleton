@@ -30,7 +30,7 @@ class PrismaSessionRepository extends PrismaBaseRepository<SessionModel> impleme
 
   public async create(session: Session): Promise<Session> {
     const createdSession = await this.sessionRepository.create({
-      data: this.getAuditablePersitenceModel(RepositoryAction.CREATE, PrismaSessionMapper.toPersistenceModel(session))
+      data: this.getAuditablePersistenceModel(RepositoryAction.CREATE, PrismaSessionMapper.toPersistenceModel(session))
     });
     return PrismaSessionMapper.toDomainModel(createdSession);
   }
@@ -38,7 +38,7 @@ class PrismaSessionRepository extends PrismaBaseRepository<SessionModel> impleme
   public async update(session: Session): Promise<Session> {
     const updatedSession = await this.sessionRepository.update({
       where: { uuid: session.uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.UPDATE, PrismaSessionMapper.toPersistenceModel(session))
+      data: this.getAuditablePersistenceModel(RepositoryAction.UPDATE, PrismaSessionMapper.toPersistenceModel(session))
     });
     return PrismaSessionMapper.toDomainModel(updatedSession);
   }
@@ -46,7 +46,7 @@ class PrismaSessionRepository extends PrismaBaseRepository<SessionModel> impleme
   public async delete(uuid: SessionUuid): Promise<void> {
     await this.sessionRepository.update({
       where: { uuid: uuid.value },
-      data: this.getAuditablePersitenceModel(RepositoryAction.DELETE)
+      data: this.getAuditablePersistenceModel(RepositoryAction.DELETE)
     });
   }
 }
